@@ -42,8 +42,8 @@ const HomeStories = () => {
     const zeroPad = (num: number, places: number) => String(num).padStart(places, '0');
 
     return (
-        <div className="flex px-56 py-24 bg-slate-50">
-            <div className="flex flex-col pt-8 pr-5 text-sm">
+        <div className="flex flex-col px-3 py-24 sm:px-10 md:px-20 lg:px-56 md:flex-row bg-slate-50">
+            <div className="flex flex-col pt-0 pr-5 text-sm md:pt-8">
                 <div className="font-bold text-teal-700">GORILLAFUNDME STORIES</div>
                 <div className="py-5 text-3xl font-bold text-black">{data[index].title}</div>
                 <div className="text-gray-500">{data[index].content}</div>
@@ -61,7 +61,7 @@ const HomeStories = () => {
                     </div>
                 </div>
             </div>
-            <img src={imgStory} className="w-[60%]" alt="" />
+            <img src={imgStory} className="md:w-[60%] pt-5 md:pt-0" alt="" />
         </div>
     )
 }

@@ -43,13 +43,13 @@ const HomeInvest = () => {
     ]);
 
     return (
-        <div className="flex flex-col items-center px-56 py-24 bg-white">
+        <div className="flex flex-col items-center px-3 py-24 bg-white sm:px-10 md:px-20 lg:px-56">
             <div className="text-2xl font-bold text-black">Why Should I Invest Though</div>
             <div className="text-2xl font-bold text-teal-700">GorillaFundMe</div>
-            <div className="grid grid-cols-3 gap-4 pt-6 pb-16">
+            <div className="grid grid-cols-1 gap-4 pt-6 pb-16 sm:grid-cols-2 md:grid-cols-3">
                 {
                     data.map((prop: WhyFundInterface) => (
-                        <div className="flex flex-col items-start pt-6">
+                        <div className="flex flex-col items-center pt-6 sm:items-start">
                             <img src={prop.icon} className="h-12" alt="" />
                             <div className="py-4 text-lg font-bold text-black">{prop.title}</div>
                             <div className="text-sm text-gray-500">{prop.content}</div>

@@ -86,7 +86,7 @@ const HomeProjects = () => {
     }, [index]);
 
     const nextProject = () => {
-        if(index + 1 >= data.length - 2) {
+        if(index + 1 >= data.length) {
             setIndex(0);
         }
         else setIndex(index + 1);
@@ -94,14 +94,14 @@ const HomeProjects = () => {
 
     const prevProject = () => {
         if(index - 1 < 0) {
-            setIndex(data.length - 3);
+            setIndex(data.length - 1);
         }
         else setIndex(index -1);
     }
 
     return (
-        <div className="px-56 pt-24 overflow-hidden bg-slate-50">
-            <div className="flex items-center justify-between">
+        <div className="px-3 pt-24 overflow-hidden lg:px-56 md:px-20 sm:px-10 bg-slate-50">
+            <div className="flex flex-wrap items-end justify-between gap-3">
                 <div className="flex items-center text-2xl font-bold text-black">
                     <ImFire /> Top Rated Project
                 </div>
@@ -131,12 +131,12 @@ const HomeProjects = () => {
                     ))
                 }
             </div>
-            <div className="relative z-10 left-8 -top-60 w-min">
+            <div className="relative z-10 left-8 sm:-top-60 w-min">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>
                     <img src={imgArrowLeftWhite} alt="" />
                 </button>
             </div>
-            <div className="relative right-0 flex justify-end -top-72">
+            <div className="relative flex justify-end right-8 sm:-top-72 -top-12">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={nextProject}>
                     <img src={imgArrowRightWhite} alt="" />
                 </button>

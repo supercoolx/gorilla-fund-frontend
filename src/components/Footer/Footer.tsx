@@ -5,8 +5,8 @@ import { FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <div className="px-56 py-12 text-sm text-gray-500 bg-white">
-            <div className="flex justify-between">
+        <div className="px-3 py-12 text-sm text-gray-500 bg-white md:px-10 lg:px-56">
+            <div className="flex flex-col justify-between gap-10 md:flex-row">
                 <div className="flex flex-col gap-4 w-[270px]">
                     <div className="flex items-center gap-4">
                         <img src={logo} alt="" />
@@ -14,7 +14,7 @@ const Footer = () => {
                     </div>
                     <div>My life has changed forever because of Norma and what happend. It gave me hope again.</div>
                 </div>
-                <div className="flex gap-20">
+                <div className="flex flex-col justify-between gap-5 sm:flex-row md:justify-start">
                     <div className="flex flex-col gap-3">
                         <div className="font-bold text-teal-700">Fundraising for</div>
                         <Link to="#">Gaming</Link>
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-between pt-16">
+            <div className="flex flex-col items-center justify-between gap-5 pt-16 sm:flex-row">
                 <div>© 2020 All rights reserved - GorillaFundMe</div>
                 <div className="flex items-center gap-5">
                     <Link to="#"><FaInstagram size={30} /></Link>

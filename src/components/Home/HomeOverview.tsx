@@ -6,7 +6,7 @@ import money from "assets/img/svg/money.svg";
 
 const HomeOverview = () => {
     return (
-        <div className="flex justify-between px-56 py-16 text-white bg-teal-700">
+        <div className="flex flex-col justify-between gap-3 px-3 py-8 text-white bg-teal-700 md:gap-0 md:py-16 md:flex-row xl:px-56 sm:px-10">
             <div className="flex items-center">
                 <img src={hand} className="h-10" alt="" />
                 <div className="flex flex-col pl-5">

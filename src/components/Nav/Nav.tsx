@@ -5,12 +5,12 @@ import { URL } from "libs/constants";
 
 const Nav = () => {
     return (
-        <div className="flex items-center justify-between w-full h-16 px-56 bg-white">
+        <div className="flex flex-wrap items-center justify-between w-full h-16 px-3 bg-white lg:px-56 md:px-20 sm:px-10">
             <Link to={URL.HOME} className="flex items-center gap-3">
                 <img src={logo} alt="" />
-                <div className="text-lg font-bold">Logoipsum</div>
+                <div className="hidden text-lg font-bold sm:flex">Logoipsum</div>
             </Link>
-            <div className="flex flex-row items-center gap-8">
+            <div className="flex flex-row items-center gap-3 xl:gap-8">
                 <Link to={URL.HOME} className="text-gray-500">
                     <div>Discover</div>
                 </Link>
