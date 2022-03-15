@@ -17,3 +17,8 @@ export interface FundStoryInterface {
     title: string
     content: string
 }
+
+export interface ButtonInterface {
+    icon:string
+    text: string
+}

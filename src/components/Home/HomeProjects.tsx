@@ -114,13 +114,13 @@ const HomeProjects = () => {
                 {
                     data.map((prop: ProjectInterface) => (
                         <div className="flex flex-col w-64 text-sm text-gray-500 bg-white">
-                            <img src={prop.img} className="h-44" alt="" />
+                            <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
                                 <div className="pt-2">{prop.content}</div>
-                                <div className="pt-10">{prop.donate}</div>
-                                <div className="w-full h-1 pt-3 bg-gray-50">
-                                    <div className="bg-teal-700 h-1 w-[50%]"></div>
+                                <div className="pt-10 pb-3">{prop.donate}</div>
+                                <div className="w-full h-1 bg-gray-50">
+                                    <div className="h-1 bg-teal-700" style={{ maxWidth: '100%', width: `${prop.raise /  prop.goal * 100}%` }}></div>
                                 </div>
                                 <div className="flex justify-between pt-5">
                                     <div className="font-bold text-black">${prop.raise}M raised</div>
