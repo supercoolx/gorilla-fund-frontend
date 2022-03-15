@@ -1,5 +1,4 @@
 import React from "react";
-import esport from "assets/img/home/e-sport.png";
 import { Link } from "react-router-dom";
 import { FaRegPlayCircle } from "react-icons/fa";
 

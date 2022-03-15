@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "assets/img/svg/logo.svg";
-import { URL } from "libs/constants";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
@@ -10,7 +9,7 @@ const Footer = () => {
             <div className="flex justify-between">
                 <div className="flex flex-col gap-4 w-[270px]">
                     <div className="flex items-center gap-4">
-                        <img src={logo} />
+                        <img src={logo} alt="" />
                         <div className="text-lg font-bold text-teal-700">GorillaFundMe</div>
                     </div>
                     <div>My life has changed forever because of Norma and what happend. It gave me hope again.</div>
@@ -44,8 +43,8 @@ const Footer = () => {
             <div className="flex items-center justify-between pt-16">
                 <div>© 2020 All rights reserved - GorillaFundMe</div>
                 <div className="flex items-center gap-5">
-                    <a href="#"><FaInstagram size={30} /></a>
-                    <a href="#"><FaTwitter size={30} /></a>
+                    <Link to="#"><FaInstagram size={30} /></Link>
+                    <Link to="#"><FaTwitter size={30} /></Link>
                 </div>
             </div>
         </div>

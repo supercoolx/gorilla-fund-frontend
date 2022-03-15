@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const HomeCommunity = () => {
     return (
         <div className="flex px-56 pt-24 bg-white">
-            <img src={imgBanner} className="h-[410px]" />
+            <img src={imgBanner} className="h-[410px]" alt="" />
             <div className="pt-20 pl-24">
                 <div className="text-2xl font-bold text-black">Ape Gorilla Club</div>
                 <div className="text-2xl font-bold text-teal-700">Community Benefits</div>

@@ -7,7 +7,7 @@ const Nav = () => {
     return (
         <div className="flex items-center justify-between w-full h-16 px-56 bg-white">
             <Link to={URL.HOME} className="flex items-center gap-3">
-                <img src={logo} />
+                <img src={logo} alt="" />
                 <div className="text-lg font-bold">Logoipsum</div>
             </Link>
             <div className="flex flex-row items-center gap-8">

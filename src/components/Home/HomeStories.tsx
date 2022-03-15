@@ -50,10 +50,10 @@ const HomeStories = () => {
                 <div className="py-5 font-bold text-gray-500">Raised $15.0M to help build online school for IT Industry.</div>
                 <div className="flex items-center gap-5">
                     <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300" onClick={prevStory}>
-                        <img src={imgArrowLeftBlack} />
+                        <img src={imgArrowLeftBlack} alt="" />
                     </button>
                     <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300" onClick={nextStory}>
-                        <img src={imgArrowRightBlack} />
+                        <img src={imgArrowRightBlack} alt="" />
                     </button>
                     <div className="flex">
                         <div className="font-bold text-black">{zeroPad(index + 1, 2)}</div>
@@ -61,7 +61,7 @@ const HomeStories = () => {
                     </div>
                 </div>
             </div>
-            <img src={imgStory} className="w-[60%]" />
+            <img src={imgStory} className="w-[60%]" alt="" />
         </div>
     )
 }

@@ -50,7 +50,7 @@ const HomeInvest = () => {
                 {
                     data.map((prop: WhyFundInterface) => (
                         <div className="flex flex-col items-start pt-6">
-                            <img src={prop.icon} className="h-12" />
+                            <img src={prop.icon} className="h-12" alt="" />
                             <div className="py-4 text-lg font-bold text-black">{prop.title}</div>
                             <div className="text-sm text-gray-500">{prop.content}</div>
                         </div>

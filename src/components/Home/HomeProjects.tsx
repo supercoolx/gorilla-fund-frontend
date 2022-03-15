@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { ProjectInterface } from "libs/interfaces";
-import { rawListeners } from "process";
 import { ImFire } from "react-icons/im";
 import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
@@ -108,14 +107,14 @@ const HomeProjects = () => {
                 </div>
                 <Link to="#" className="flex items-center">
                     <div className="pr-3">See more</div>
-                    <img src={imgArrowRightBlack} />
+                    <img src={imgArrowRightBlack} alt="" />
                 </Link>
             </div>
             <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
                 {
                     data.map((prop: ProjectInterface) => (
                         <div className="flex flex-col w-64 text-sm text-gray-500 bg-white">
-                            <img src={prop.img} className="h-44" />
+                            <img src={prop.img} className="h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
                                 <div className="pt-2">{prop.content}</div>
@@ -134,12 +133,12 @@ const HomeProjects = () => {
             </div>
             <div className="relative z-10 left-8 -top-60 w-min">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>
-                    <img src={imgArrowLeftWhite} />
+                    <img src={imgArrowLeftWhite} alt="" />
                 </button>
             </div>
             <div className="relative right-0 flex justify-end -top-72">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={nextProject}>
-                    <img src={imgArrowRightWhite} />
+                    <img src={imgArrowRightWhite} alt="" />
                 </button>
             </div>
         </div>

@@ -3,7 +3,7 @@ import { URL } from "../libs/constants";
 import Home from "../views/Home";
 import NotFound from "../views/NotFound";
 
-export default [
+const routes = [
     {
         component: <Home />,
         url: URL.HOME
@@ -13,3 +13,5 @@ export default [
         url: "*"
     }
 ];
+
+export default routes;
