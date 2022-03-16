@@ -5,6 +5,7 @@ import { URL } from "libs/constants";
 import Home from "views/Home";
 import NotFound from "views/NotFound";
 import Signup from "views/auth/Signup";
+import Email from "views/auth/Email";
 
 const routes = [
     {
@@ -18,6 +19,10 @@ const routes = [
     {
         component: <Signup />,
         url: URL.SIGNUP
+    },
+    {
+        component: <Email />,
+        url: URL.PASSWORD_EMAIL
     },
     {
         component: <Search />,

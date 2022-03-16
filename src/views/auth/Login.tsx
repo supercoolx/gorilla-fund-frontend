@@ -24,7 +24,7 @@ const Login = () => {
                         <input type="checkbox" name="rememeber" id="remember" className="w-4 h-4 rounded-none cursor-pointer" />
                         <label htmlFor="remember" className="pl-2 font-bold cursor-pointer">Remember me</label>
                     </div>
-                    <Link to="#" className="font-bold text-teal-700">Forget password</Link>
+                    <Link to={URL.PASSWORD_EMAIL} className="font-bold text-teal-700">Forget password</Link>
                 </div>
                 <button className="w-full py-2 font-bold text-white bg-teal-700">Sign in</button>
                 <button className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
