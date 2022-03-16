@@ -1,15 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import routes from 'router/routes';
-import Nav from 'components/Nav/Nav';
-import StartFundraising from 'components/Footer/StartFundraising';
-import Footer from 'components/Footer/Footer';
 
 function App() {
 	return (
 		<>
 		<BrowserRouter>
-			<Nav />
 			<Routes>
 				{
 					routes.map(
@@ -17,8 +13,6 @@ function App() {
 					)
 				}
 			</Routes>
-			<StartFundraising />
-			<Footer />
 		</BrowserRouter>
 		</>
 	);

@@ -11,7 +11,7 @@ const Nav = () => {
                 <div className="hidden text-lg font-bold sm:flex">Logoipsum</div>
             </Link>
             <div className="flex flex-row items-center gap-3 xl:gap-8">
-                <Link to={URL.HOME} className="text-gray-500">
+                <Link to={URL.SEARCH} className="text-gray-500">
                     <div>Discover</div>
                 </Link>
                 <Link to={URL.HOME} className="text-gray-500">

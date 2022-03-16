@@ -1,4 +1,6 @@
 export const URL = {
     HOME: '/',
-    SEARCH: 'search',
+    SEARCH: '/search',
+    LOGIN: '/login',
+    SIGNUP: '/signup'
 }
