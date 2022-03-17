@@ -1,15 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import iconEmail from "assets/img/svg/email.svg";
 import iconCheck from "assets/img/svg/check.svg";
 import iconBack from "assets/img/svg/back.svg";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
+import ReactInputVerificationCode from "react-input-verification-code";
+import "assets/styles/ReactInputVerificationCode.css";
 
 const Verify = ({ email }: { email: string }) => {
-    const [ password, setPassword ] = useState<string[]>(['', '', '', '']);
+    const [ code, setCode ] = useState<string>("");
     const [ isVerified, setIsVerified ] = useState<boolean>(false);
 
-    const sendEmail = () => {}
+    const handleClick = () => {
+        if(code === "1234") {
+            setIsVerified(true);
+            sendEmail();
+        }
+    }
+    const sendEmail = () => {
+        alert('Email Sent');
+    }
 
     return (
         <div className="flex justify-center py-40 text-sm">
@@ -33,13 +43,10 @@ const Verify = ({ email }: { email: string }) => {
                     </div>
                     <div className="pt-6 text-2xl font-bold">Check your email</div>
                     <div className="pt-3 text-center text-gray-500">We sent a verification link to  <span className="font-bold">{email}</span></div>
-                    <div className="grid w-full grid-cols-4 gap-4 py-6">
-                        <input type="text" className="focus:outline-none focus:border-teal-700 capitalize h-20 border-[1px] border-slate-200 text-center text-3xl font-bold" />
-                        <input type="text" className="focus:outline-none focus:border-teal-700 capitalize h-20 border-[1px] border-slate-200 text-center text-3xl font-bold" />
-                        <input type="text" className="focus:outline-none focus:border-teal-700 capitalize h-20 border-[1px] border-slate-200 text-center text-3xl font-bold" />
-                        <input type="text" className="focus:outline-none focus:border-teal-700 capitalize h-20 border-[1px] border-slate-200 text-center text-3xl font-bold" />
+                    <div className="flex justify-center w-full py-6">
+                        <ReactInputVerificationCode passwordMask="x" onChange={setCode} />
                     </div>
-                    <button className="w-full py-2 font-bold text-white bg-teal-700">Get started</button>
+                    <button onClick={handleClick} className="w-full py-2 font-bold text-white bg-teal-700">Get started</button>
                     <div className="pt-5 text-gray-500">Didn't receive the email? <span onClick={sendEmail} className="font-bold text-teal-700 cursor-pointer">Resend</span></div>
                     <Link to={URL.LOGIN} className="flex justify-center w-full py-2 mt-3">
                         <img src={iconBack} alt="" />

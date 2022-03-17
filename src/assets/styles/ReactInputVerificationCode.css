@@ -1,0 +1,9 @@
+.ReactInputVerificationCode__item {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: solid 1px rgb(199, 199, 199) !important;
+}
+
+.ReactInputVerificationCode__item.is-active {
+  border: solid 1px rgb(15 118 110) !important;
+}
