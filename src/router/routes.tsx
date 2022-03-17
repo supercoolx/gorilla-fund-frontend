@@ -6,6 +6,8 @@ import Home from "views/Home";
 import NotFound from "views/NotFound";
 import Signup from "views/auth/Signup";
 import Email from "views/auth/Email";
+import Reset from "views/auth/Reset";
+import Verify from "views/auth/Verify";
 
 const routes = [
     {
@@ -23,6 +25,14 @@ const routes = [
     {
         component: <Email />,
         url: URL.PASSWORD_EMAIL
+    },
+    {
+        component: <Reset />,
+        url: URL.PASSWORD_RESET
+    },
+    {
+        component: <Verify email="omar@apegorilla.com" />,
+        url: URL.EMAIL_VERIFY
     },
     {
         component: <Search />,
