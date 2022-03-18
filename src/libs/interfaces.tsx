@@ -22,3 +22,8 @@ export interface ButtonInterface {
     icon:string
     text: string
 }
+
+export interface StepInterface {
+    title: string
+    text: string
+}

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { FundStoryInterface } from "libs/interfaces";
 import imgStory from "assets/img/home/stories.png";
-import imgArrowLeftBlack from "assets/img/svg/arrow-left-black.svg";
-import imgArrowRightBlack from "assets/img/svg/arrow-right-black.svg";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const HomeStories = () => {
     const [ data ] = useState<FundStoryInterface[]>([
@@ -50,10 +49,10 @@ const HomeStories = () => {
                 <div className="py-5 font-bold text-gray-500">Raised $15.0M to help build online school for IT Industry.</div>
                 <div className="flex items-center gap-5">
                     <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300" onClick={prevStory}>
-                        <img src={imgArrowLeftBlack} alt="" />
+                        <IoIosArrowBack size={15} />
                     </button>
                     <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300" onClick={nextStory}>
-                        <img src={imgArrowRightBlack} alt="" />
+                        <IoIosArrowForward size={15} />
                     </button>
                     <div className="flex">
                         <div className="font-bold text-black">{zeroPad(index + 1, 2)}</div>

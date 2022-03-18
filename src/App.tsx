@@ -9,7 +9,7 @@ function App() {
 			<Routes>
 				{
 					routes.map(
-						prop => <Route path={prop.url} element={prop.component} />
+						(prop, key) => <Route path={prop.url} element={prop.component} key={key} />
 					)
 				}
 			</Routes>

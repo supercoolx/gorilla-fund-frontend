@@ -5,7 +5,7 @@ import iconSecurity from "assets/img/svg/security.svg";
 import iconPolicy from "assets/img/svg/policy.svg";
 import iconHand from "assets/img/svg/hand-green.svg";
 import iconFlash from "assets/img/svg/flash.svg";
-import iconGorilla from "assets/img/svg/gorilla.svg"
+import iconGorilla from "assets/img/svg/gorilla.svg";
 import { Link } from "react-router-dom";
 
 const HomeInvest = () => {
@@ -48,8 +48,8 @@ const HomeInvest = () => {
             <div className="text-2xl font-bold text-teal-700">GorillaFundMe</div>
             <div className="grid grid-cols-1 gap-4 pt-6 pb-16 sm:grid-cols-2 md:grid-cols-3">
                 {
-                    data.map((prop: WhyFundInterface) => (
-                        <div className="flex flex-col items-center pt-6 sm:items-start">
+                    data.map((prop: WhyFundInterface, key: number) => (
+                        <div className="flex flex-col items-center pt-6 sm:items-start" key={key}>
                             <img src={prop.icon} className="h-12" alt="" />
                             <div className="py-4 text-lg font-bold text-black">{prop.title}</div>
                             <div className="text-sm text-gray-500">{prop.content}</div>

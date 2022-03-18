@@ -50,8 +50,8 @@ const SearchButtons = () => {
         <div className="px-3 py-10 bg-white sm:px-10 md:px-20 lg:px-56">
             <div className="grid grid-cols-3 md:grid-cols-9">
                 {
-                    data.map((prop: ButtonInterface) => (
-                        <div className="flex flex-col items-center">
+                    data.map((prop: ButtonInterface, key: number) => (
+                        <div className="flex flex-col items-center" key={key}>
                             <button className="flex items-center justify-center w-12 h-12 pt-5 rounded-full bg-teal-50">
                                 <img src={prop.icon} alt="" />
                             </button>

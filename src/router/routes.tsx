@@ -8,6 +8,7 @@ import Signup from "views/auth/Signup";
 import Email from "views/auth/Email";
 import Reset from "views/auth/Reset";
 import Verify from "views/auth/Verify";
+import Fundraising from "views/Fundraising";
 
 const routes = [
     {
@@ -37,6 +38,10 @@ const routes = [
     {
         component: <Search />,
         url: URL.SEARCH
+    },
+    {
+        component: <Fundraising />,
+        url: URL.FUNDRAISING
     },
     {
         component: <NotFound />,

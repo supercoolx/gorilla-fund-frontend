@@ -5,9 +5,7 @@ import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
 import imgStories from "assets/img/home/stories.png";
 import imgSupport from "assets/img/home/support.png";
-import imgArrowRightBlack from "assets/img/svg/arrow-right-black.svg";
-import imgArrowLeftWhite from "assets/img/svg/arrow-left-white.svg";
-import imgArrowRightWhite from "assets/img/svg/arrow-right-white.svg";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const HomeProjects = () => {
@@ -107,13 +105,13 @@ const HomeProjects = () => {
                 </div>
                 <Link to="#" className="flex items-center">
                     <div className="pr-3">See more</div>
-                    <img src={imgArrowRightBlack} alt="" />
+                    <IoIosArrowForward />
                 </Link>
             </div>
             <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
                 {
-                    data.map((prop: ProjectInterface) => (
-                        <div className="flex flex-col w-64 text-sm text-gray-500 bg-white">
+                    data.map((prop: ProjectInterface, key: number) => (
+                        <div className="flex flex-col w-64 text-sm text-gray-500 bg-white" key={key}>
                             <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
@@ -133,12 +131,12 @@ const HomeProjects = () => {
             </div>
             <div className="relative z-10 left-8 sm:-top-60 w-min">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>
-                    <img src={imgArrowLeftWhite} alt="" />
+                    <IoIosArrowBack className="text-white" size={20} />
                 </button>
             </div>
             <div className="relative flex justify-end right-8 sm:-top-72 -top-12">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={nextProject}>
-                    <img src={imgArrowRightWhite} alt="" />
+                    <IoIosArrowForward className="text-white" size={20} />
                 </button>
             </div>
         </div>

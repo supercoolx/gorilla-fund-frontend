@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { ProjectInterface } from "libs/interfaces";
-import { ImFire } from "react-icons/im";
+import { ImFire, ImSearch } from "react-icons/im";
 import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
 import imgStories from "assets/img/home/stories.png";
-import imgSupport from "assets/img/home/support.png";
-import iconSearch from "assets/img/svg/search.svg";
-import { Link } from "react-router-dom";
 
 const SearchProjects = () => {
     const [ top ] = useState<ProjectInterface[]>([
@@ -120,8 +117,8 @@ const SearchProjects = () => {
             </div>
             <div className="grid gap-6 py-10 sm:grid-cols-2 md:grid-cols-3">
                 {
-                    top.map((prop: ProjectInterface) => (
-                        <div className="flex flex-col text-sm text-gray-500 bg-white">
+                    top.map((prop: ProjectInterface, key: number) => (
+                        <div className="flex flex-col text-sm text-gray-500 bg-white" key={key}>
                             <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
@@ -143,7 +140,7 @@ const SearchProjects = () => {
             <div className="flex flex-wrap items-center justify-between gap-5 py-10 text-sm">
                 <div className="flex bg-white">
                     <div className="flex items-center justify-center px-4">
-                        <img src={iconSearch} alt="" className="w-5" />
+                        <ImSearch className="text-gray-500" size={18} />
                     </div>
                     <input type="text" className="py-2 pr-4 focus:outline-none" placeholder="Search by name, category" />
                 </div>
@@ -170,8 +167,8 @@ const SearchProjects = () => {
             </div>
             <div className="grid gap-6 py-10 sm:grid-cols-2 md:grid-cols-3">
                 {
-                    data.map((prop: ProjectInterface) => (
-                        <div className="flex flex-col text-sm text-gray-500 bg-white">
+                    data.map((prop: ProjectInterface, key: number) => (
+                        <div className="flex flex-col text-sm text-gray-500 bg-white" key={key}>
                             <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
