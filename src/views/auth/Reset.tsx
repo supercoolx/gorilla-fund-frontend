@@ -16,7 +16,7 @@ const Reset = () => {
     const handleChange2 = (e: any) => {
         setConfirmPass(e.target.value);
     }
-    const handleClick = (e: any) => alert(token);
+    const handleClick = (e: any) => setIsReset(password.length >=8 && password === confirmPass);
 
     useEffect(() => {
         const resetPassword = () => {

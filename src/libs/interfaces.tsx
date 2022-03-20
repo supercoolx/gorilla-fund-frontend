@@ -27,3 +27,8 @@ export interface StepInterface {
     title: string
     text: string
 }
+
+export interface SelectOptionInterface {
+    value: string
+    label: string
+}
