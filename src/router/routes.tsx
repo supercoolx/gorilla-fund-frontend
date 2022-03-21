@@ -32,7 +32,7 @@ const routes = [
         url: URL.PASSWORD_RESET
     },
     {
-        component: <Verify email="omar@apegorilla.com" />,
+        component: <Verify />,
         url: URL.EMAIL_VERIFY
     },
     {
