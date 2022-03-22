@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import validator from "validator";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
@@ -43,7 +43,7 @@ const Login = () => {
     return (
         <div className="flex justify-center py-40 text-sm">
             <div className="flex flex-col items-center w-[350px]">
-                <img src={iconLogo} className="w-8" alt="" />
+                <Link to={URL.HOME}><img src={iconLogo} className="w-8" alt="" /></Link>
                 <div className="pt-6 text-2xl font-bold">Log in to your account</div>
                 <div className="pt-3 text-gray-500">Welcome back! Please enter your details.</div>
                 <div className="flex flex-col w-full pt-6">

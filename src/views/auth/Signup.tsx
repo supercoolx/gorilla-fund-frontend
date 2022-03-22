@@ -51,7 +51,7 @@ const Signup = () => {
     return (
         <div className="flex justify-center py-40 text-sm">
             <div className="flex flex-col items-center w-[350px]">
-                <img src={iconLogo} className="w-8" alt="" />
+                <Link to={URL.HOME}><img src={iconLogo} className="w-8" alt="" /></Link>
                 <div className="pt-6 text-2xl font-bold">Create an account</div>
                 <div className="pt-3 text-gray-500">Welcome! You must be Ape Gorilla holder to sign up.</div>
                 <div className="flex flex-col w-full pt-6">
