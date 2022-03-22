@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiCheck, FiArrowLeft, FiMail } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { URL } from "libs/constants";
@@ -12,8 +12,10 @@ const Verify = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    if(!user) navigate(URL.LOGIN);
-    if(user.email_verified_at) navigate(URL.HOME);
+    useEffect(() => {
+        if(!user.email) navigate(URL.LOGIN);
+        else if(user.email_verified_at) navigate(URL.HOME);
+    }, [user]);
 
     const handleClick = () => {
         if(code === "1234") {

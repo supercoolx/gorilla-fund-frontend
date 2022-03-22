@@ -10,9 +10,11 @@ import { FiArrowLeft } from "react-icons/fi";
 import Logo from "assets/img/svg/logo.svg";
 import FundPhoto from "components/Fundraising/FundPhoto";
 import FundStory from "components/Fundraising/FundStory";
+import FundSuccess from "components/Fundraising/FundSuccess";
 
 const Fundraising = () => {
     const [ step, setStep ] = useState<number>(1);
+    const [ end, setEnd ] = useState<boolean>(false);
     const [ data ] = useState<StepInterface[]>([
         {
             title: "Detail and Goal",
@@ -40,8 +42,10 @@ const Fundraising = () => {
 
     const onNext = () => step < data.length && setStep(step + 1);
     const onPrev = () => step > 1 && setStep(step - 1);
+    const onComplete = () => setEnd(true);
 
-    return (
+    return end ? <FundSuccess /> :
+    (
         <div className="flex flex-wrap bg-slate-50">
             <Stepper step={step} data={data} />
             <div className="flex flex-col flex-1 gap-16 px-2 py-12">
@@ -52,8 +56,8 @@ const Fundraising = () => {
                         { stepComponent[step - 1] }
                         {
                             step === data.length ?
-                            <button onClick={onNext} className="w-full py-2 mt-6 text-white bg-teal-700">Complete fundraiser</button> :
-                            <button className="w-full py-2 mt-6 text-white bg-teal-700">Next</button>
+                            <button onClick={onComplete} className="w-full py-2 mt-6 text-white bg-teal-700">Complete fundraiser</button> :
+                            <button onClick={onNext} className="w-full py-2 mt-6 text-white bg-teal-700">Next</button>
                         }
                         {
                             step === 1 ? <div className="pt-5 text-center text-gray-500">By continuing, you agree to the GorillaFund terms and privacy policy.</div> :

@@ -21,7 +21,7 @@ const FundPhoto = () => {
             <div className="pt-6 text-2xl font-bold">Add a cover photo</div>
             <div className="pt-3 text-center text-gray-500">A high-quality photo will help tell your story.</div>
             {
-                image ? <img src={image} className="pt-6" /> :
+                image ? <img src={image} className="pt-6" alt="" /> :
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Cover Image*</div>
                     <div className="relative">

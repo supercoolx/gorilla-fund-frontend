@@ -1,14 +1,15 @@
 import React from "react";
-import Login from "views/auth/Login";
-import Search from "views/Search";
 import { URL } from "libs/constants";
 import Home from "views/Home";
-import NotFound from "views/NotFound";
+import Login from "views/auth/Login";
 import Signup from "views/auth/Signup";
 import Email from "views/auth/Email";
 import Reset from "views/auth/Reset";
 import Verify from "views/auth/Verify";
+import Search from "views/Search";
 import Fundraising from "views/Fundraising";
+import Fund from "views/Fund";
+import NotFound from "views/NotFound";
 
 const routes = [
     {
@@ -41,7 +42,11 @@ const routes = [
     },
     {
         component: <Fundraising />,
-        url: URL.FUNDRAISING
+        url: URL.FUNDRAISE
+    },
+    {
+        component: <Fund />,
+        url: URL.FUND
     },
     {
         component: <NotFound />,

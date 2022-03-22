@@ -1,7 +1,8 @@
 export const URL = {
     HOME: '/',
     SEARCH: '/search',
-    FUNDRAISING: '/fundraising',
+    FUNDRAISE: '/fund',
+    FUND: '/fund/:id',
     LOGIN: '/login',
     SIGNUP: '/signup',
     PASSWORD_EMAIL: '/email',
