@@ -6,10 +6,8 @@ import FundLeft from "components/Fund/FundLeft";
 import FundProject from "components/Fund/FundProject";
 import Nav from "components/Nav/Nav";
 import React from "react";
-import { useParams } from "react-router-dom";
 
 const Fund = () => {
-    const { id } = useParams<string>();
 
     return (
         <div className="bg-slate-50">

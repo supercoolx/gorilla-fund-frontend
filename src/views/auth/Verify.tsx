@@ -11,11 +11,11 @@ const Verify = () => {
     const [ isVerified, setIsVerified ] = useState<boolean>(false);
     const { user } = useAuth();
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         if(!user.email) navigate(URL.LOGIN);
         else if(user.email_verified_at) navigate(URL.HOME);
-    }, [user]);
+    }, [user, navigate]);
 
     const handleClick = () => {
         if(code === "1234") {

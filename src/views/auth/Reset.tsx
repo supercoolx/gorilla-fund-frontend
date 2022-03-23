@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import iconKey from "assets/img/svg/key.svg";
 import { FiCheck, FiArrowLeft } from "react-icons/fi";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
 
 const Reset = () => {
-    const { token } = useParams<string>();
     const [ password, setPassword ] = useState<string>("");
     const [ confirmPass, setConfirmPass ] = useState<string>("");
     const [ isReset, setIsReset ] = useState<boolean>(false);
