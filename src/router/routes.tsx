@@ -10,6 +10,7 @@ import Search from "views/Search";
 import Fundraising from "views/Fundraising";
 import Fund from "views/Fund";
 import NotFound from "views/NotFound";
+import KYC from "views/KYC";
 
 const routes = [
     {
@@ -47,6 +48,10 @@ const routes = [
     {
         component: <Fund />,
         url: URL.FUND
+    },
+    {
+        component: <KYC />,
+        url: URL.KYC
     },
     {
         component: <NotFound />,

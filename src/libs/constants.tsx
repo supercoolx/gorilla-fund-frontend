@@ -3,6 +3,7 @@ export const URL = {
     SEARCH: '/search',
     FUNDRAISE: '/fund',
     FUND: '/fund/:id',
+    KYC: '/kyc',
     LOGIN: '/login',
     SIGNUP: '/signup',
     PASSWORD_EMAIL: '/email',

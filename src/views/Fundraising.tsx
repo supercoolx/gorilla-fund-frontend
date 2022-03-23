@@ -48,7 +48,7 @@ const Fundraising = () => {
     (
         <div className="flex flex-wrap bg-slate-50">
             <Stepper step={step} data={data} />
-            <div className="flex flex-col flex-1 gap-16 px-2 py-12">
+            <div className="flex flex-col flex-1 min-w-[360px] gap-16 px-2 py-12">
                 <div className="pr-10 text-right">Already have an account? <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link></div>
                 <div className="flex justify-center text-sm">
                     <div className="flex flex-col items-center w-full max-w-[500px]">

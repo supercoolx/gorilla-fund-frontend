@@ -15,7 +15,7 @@ const Stepper = ({step, data}: {step: number, data: StepInterface[]}) => {
             </Link>
             <div className="flex">
                 <div className="relative w-[2px] h-full left-[15px] bg-gray-200"></div>
-                <div className="relative flex flex-col gap-10">
+                <div className="relative flex flex-col gap-16">
                     {
                         data.map((item: StepInterface, key: number) => (
                             <div className="flex items-center gap-2 bg-white" key={key}>
