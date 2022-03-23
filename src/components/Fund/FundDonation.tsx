@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import imgAvatar from "assets/img/home/avatar.png";
 
 const FundDonations = () => {
