@@ -8,6 +8,7 @@ import imgStories from "assets/img/home/stories.png";
 const FundProject = () => {
     const [ top ] = useState<ProjectInterface[]>([
         {
+            uid: "uid",
             img: imgEsport,
             title: "E-Sports Startup",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
@@ -16,6 +17,7 @@ const FundProject = () => {
             raise: 14.2
         },
         {
+            uid: "uid",
             img: imgStories,
             title: "Fundraising School for IT",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
@@ -24,6 +26,7 @@ const FundProject = () => {
             raise: 7.5
         },
         {
+            uid: "uid",
             img: imgRobot,
             title: "Smart Robots",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",

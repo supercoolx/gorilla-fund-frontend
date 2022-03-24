@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { URL } from "libs/constants";
 import { WhyFundInterface } from "libs/interfaces";
 import iconPencil from "assets/img/svg/pencil.svg";
 import iconSecurity from "assets/img/svg/security.svg";
@@ -6,7 +8,6 @@ import iconPolicy from "assets/img/svg/policy.svg";
 import iconHand from "assets/img/svg/hand-green.svg";
 import iconFlash from "assets/img/svg/flash.svg";
 import iconGorilla from "assets/img/svg/gorilla.svg";
-import { Link } from "react-router-dom";
 
 const HomeInvest = () => {
     const [ data ] = useState<WhyFundInterface[]>([
@@ -57,7 +58,7 @@ const HomeInvest = () => {
                     ))
                 }
             </div>
-            <Link to="#" className="px-6 py-3 font-bold text-white bg-teal-700">Create account</Link>
+            <Link to={URL.SIGNUP} className="px-6 py-3 font-bold text-white bg-teal-700">Create account</Link>
         </div>
     )
 }

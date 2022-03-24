@@ -15,7 +15,7 @@ const Nav = () => {
                     <Link to={URL.SEARCH} className="text-gray-500">
                         <div>Discover</div>
                     </Link>
-                    <Link to={URL.HOME} className="text-gray-500">
+                    <Link to="#" className="text-gray-500">
                         <div>How it works</div>
                     </Link>
                     <Link to={URL.FUNDRAISE} className="px-5 py-1 text-teal-600 border-[1px] border-teal-600 rounded-full hover:bg-teal-600 hover:text-white transition-all duration-300">

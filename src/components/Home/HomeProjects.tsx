@@ -1,78 +1,87 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { URL } from "libs/constants";
 import { ProjectInterface } from "libs/interfaces";
 import { ImFire } from "react-icons/im";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
 import imgStories from "assets/img/home/stories.png";
 import imgSupport from "assets/img/home/support.png";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { Link } from "react-router-dom";
 
 const HomeProjects = () => {
     const [ data ] = useState<ProjectInterface[]>([
         {
+            uid: "uid",
             img: imgEsport,
             title: "E-Sports Startup",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is  a minute ago",
             goal: 30.0,
-            raise: 14.2
+            raise: 14.2,
         },
         {
+            uid: "uid",
             img: imgStories,
             title: "Fundraising School for IT",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 7 minute ago",
             goal: 15.0,
-            raise: 7.5
+            raise: 7.5,
         },
         {
+            uid: "uid",
             img: imgRobot,
             title: "Smart Robots",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 23 minute ago",
             goal: 5.0,
-            raise: 3.4
+            raise: 3.4,
         },
         {
+            uid: "uid",
             img: imgSupport,
             title: "Support Ukraine",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 23 minute ago",
             goal: 2.7,
-            raise: 3.5
+            raise: 3.5,
         },
         {
+            uid: "uid",
             img: imgRobot,
             title: "Smart Robots",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 23 minute ago",
             goal: 5.0,
-            raise: 3.4
+            raise: 3.4,
         },
         {
+            uid: "uid",
             img: imgRobot,
             title: "Smart Robots",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 23 minute ago",
             goal: 5.0,
-            raise: 3.4
+            raise: 3.4,
         },
         {
+            uid: "uid",
             img: imgRobot,
             title: "Smart Robots",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 23 minute ago",
             goal: 5.0,
-            raise: 3.4
+            raise: 3.4,
         },
         {
+            uid: "uid",
             img: imgRobot,
             title: "Smart Robots",
             content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
             donate: "Last donation is 23 minute ago",
             goal: 5.0,
-            raise: 3.4
+            raise: 3.4,
         }
     ]);
 
@@ -104,14 +113,14 @@ const HomeProjects = () => {
                     <ImFire /> Top Rated Project
                 </div>
                 <Link to="#" className="flex items-center">
-                    <div className="pr-3">See more</div>
+                    <Link to={URL.SEARCH} className="pr-3">See more</Link>
                     <IoIosArrowForward />
                 </Link>
             </div>
             <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
                 {
                     data.map((prop: ProjectInterface, key: number) => (
-                        <div className="flex flex-col w-64 text-sm text-gray-500 bg-white" key={key}>
+                        <Link to={URL.FUNDRAISE + "/uid"} className="flex flex-col w-64 text-sm text-gray-500 bg-white" key={key}>
                             <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
@@ -125,7 +134,7 @@ const HomeProjects = () => {
                                     <div>${prop.goal}M Goal</div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>

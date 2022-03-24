@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { URL } from "libs/constants";
 import { FaRegPlayCircle } from "react-icons/fa";
 
 const HomeTop = () => {
@@ -9,7 +10,7 @@ const HomeTop = () => {
                 <div className="text-3xl font-bold xl:text-5xl">Trusted fundraising for all of life's moments</div>
                 <div className="text-sm text-gray-500">We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support.</div>
                 <div className="flex flex-wrap items-center gap-3">
-                    <Link to="#" className="px-4 py-3 font-bold text-white bg-teal-700">Start a GorillaFund</Link>
+                    <Link to={URL.FUNDRAISE} className="px-4 py-3 font-bold text-white bg-teal-700">Start a GorillaFund</Link>
                     <Link to="#" className="flex items-center gap-3 px-4">
                         <FaRegPlayCircle size={30} color="gray" />
                         <div className="text-gray-500">How it works?</div>
