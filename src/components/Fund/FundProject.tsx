@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
 import imgStories from "assets/img/home/stories.png";
+import Progress from "components/util/element/Progress";
 
 const FundProject = () => {
     const [ top ] = useState<ProjectInterface[]>([
@@ -54,9 +55,7 @@ const FundProject = () => {
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
                                 <div className="pt-2">{prop.content}</div>
                                 <div className="pt-10 pb-3">{prop.donate}</div>
-                                <div className="w-full h-1 bg-gray-50">
-                                    <div className="h-1 bg-teal-700" style={{ maxWidth: '100%', width: `${prop.raise /  prop.goal * 100}%` }}></div>
-                                </div>
+                                <Progress percent={prop.raise /  prop.goal * 100} />
                                 <div className="flex justify-between pt-5">
                                     <div className="font-bold text-black">${prop.raise}M raised</div>
                                     <div>${prop.goal}M Goal</div>

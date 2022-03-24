@@ -3,6 +3,7 @@ export const URL = {
     SEARCH: '/search',
     FUNDRAISE: '/fund',
     FUND: '/fund/:uid',
+    DONATE: '/donate/:uid',
     KYC: '/kyc',
     LOGIN: '/login',
     SIGNUP: '/signup',
