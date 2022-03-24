@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { BsExclamationOctagon } from "react-icons/bs";
 import imgPhoto from "assets/img/home/fund_photo.png";
 import imgGame from "assets/img/home/game_play.png";
@@ -11,14 +12,14 @@ const FundContent = () => {
             <img src={imgPhoto} alt="" />
             <div className="flex justify-between py-5">
                 <div className="flex gap-2">
-                    <div className="px-3 text-teal-700 bg-teal-100 rounded-full">Business</div>
-                    <div className="px-3 text-teal-700 bg-teal-100 rounded-full">Education</div>
+                    <Link to="#" className="px-3 text-teal-700 bg-teal-100 rounded-full">Business</Link>
+                    <Link to="#" className="px-3 text-teal-700 bg-teal-100 rounded-full">Education</Link>
                     <div className="">Created 3 days ago</div>
                 </div>
-                <div className="flex items-center gap-2 font-semibold">
+                <Link to="#" className="flex items-center gap-2 font-semibold">
                     <BsExclamationOctagon />
                     Report fundraising
-                </div>
+                </Link>
             </div>
             <hr />
             <div className="py-5 text-lg font-bold text-black">Story</div>
