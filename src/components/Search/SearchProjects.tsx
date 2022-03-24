@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { URL } from "libs/constants";
 import { ProjectInterface } from "libs/interfaces";
+import { Link } from "react-router-dom";
 import { ImFire, ImSearch } from "react-icons/im";
 import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
@@ -130,7 +132,7 @@ const SearchProjects = () => {
             <div className="grid gap-6 py-10 sm:grid-cols-2 md:grid-cols-3">
                 {
                     top.map((prop: ProjectInterface, key: number) => (
-                        <div className="flex flex-col text-sm text-gray-500 bg-white" key={key}>
+                        <Link to={URL.FUNDRAISE + "/uid"} className="flex flex-col text-sm text-gray-500 bg-white" key={key}>
                             <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
@@ -144,7 +146,7 @@ const SearchProjects = () => {
                                     <div>${prop.goal}M Goal</div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>
@@ -180,7 +182,7 @@ const SearchProjects = () => {
             <div className="grid gap-6 py-10 sm:grid-cols-2 md:grid-cols-3">
                 {
                     data.map((prop: ProjectInterface, key: number) => (
-                        <div className="flex flex-col text-sm text-gray-500 bg-white" key={key}>
+                        <Link to={URL.FUNDRAISE + "/uid"} className="flex flex-col text-sm text-gray-500 bg-white" key={key}>
                             <img src={prop.img} className="object-cover h-44" alt="" />
                             <div className="flex flex-col px-4 py-5">
                                 <div className="text-lg font-bold text-black">{prop.title}</div>
@@ -194,7 +196,7 @@ const SearchProjects = () => {
                                     <div>${prop.goal}M Goal</div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
             </div>
