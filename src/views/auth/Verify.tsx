@@ -1,30 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { FiCheck, FiArrowLeft, FiMail } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
-import { URL } from "libs/constants";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import ReactInputVerificationCode from "react-input-verification-code";
-import "assets/styles/ReactInputVerificationCode.css";
+import { FiCheck, FiArrowLeft, FiMail } from "react-icons/fi";
 import { useAuth } from "contexts/authContext";
+import { URL } from "libs/constants";
+import Auth from "api/auth";
+import "assets/styles/ReactInputVerificationCode.css";
 
 const Verify = () => {
     const [ code, setCode ] = useState<string>("");
     const [ isVerified, setIsVerified ] = useState<boolean>(false);
-    const { user } = useAuth();
-    const navigate = useNavigate();
-    
-    useEffect(() => {
-        if(!user.email) navigate(URL.LOGIN);
-        else if(user.email_verified_at) navigate(URL.HOME);
-    }, [user, navigate]);
+    const { user, setUser } = useAuth();
 
     const handleClick = () => {
-        if(code === "1234") {
-            setIsVerified(true);
-            sendEmail();
-        }
+        Auth.verifyEmail(code)
+        .then(res => {
+            if(res.data.success) {
+                setUser({...user, email_verified_at: res.data.email_verified_at});
+                setIsVerified(true);
+            }
+        })
+        .catch(err => {
+            if(!err.response) alert("You're offline.");
+            if(err.response.data.message) alert(err.response.data.message);
+            else alert(err.message);
+        })
     }
     const sendEmail = () => {
-        alert('Email Sent');
+        Auth.setVerifyEmail()
+        .then(res => {
+            if(res.data.success) {
+                alert("Email sent.");
+            }
+        })
+        .catch(err => {
+            alert(err.message);
+        });
     }
 
     return (
@@ -56,7 +67,7 @@ const Verify = () => {
                     <div className="pt-5 text-gray-500">Didn't receive the email? <span onClick={sendEmail} className="font-bold text-teal-700 cursor-pointer">Resend</span></div>
                     <Link to={URL.LOGIN} className="flex items-center justify-center w-full py-2 mt-3">
                         <FiArrowLeft size={16} />
-                        <div className="pl-1 font-bold">Back to log in</div>
+                        <Link to={URL.LOGIN} className="pl-1 font-bold">Back to log in</Link>
                     </Link>
                 </div>
             )}

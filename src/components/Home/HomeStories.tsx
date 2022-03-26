@@ -60,7 +60,7 @@ const HomeStories = () => {
                     </div>
                 </div>
             </div>
-            <img src={imgStory} className="md:w-[60%] pt-5 md:pt-0" alt="" />
+            <img src={imgStory} className="md:w-[60%] object-cover pt-5 md:pt-0" alt="" />
         </div>
     )
 }

@@ -1,30 +1,36 @@
 import Auth from "api/auth";
 import React, { useContext, useEffect, useState } from "react";
 
+const Token = {
+    set: token => localStorage.setItem('token', token),
+    get: () => localStorage.getItem('token') || '',
+    clear: () => localStorage.removeItem('token')
+}
 const AuthContext = React.createContext<any>(undefined);
-export const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({children}) => {
     const [ user, setUser ] = useState<any>({});
+
     const logIn = token => {
-        localStorage.setItem('token', token);
+        Token.set(token);
         Auth.me().then(res => setUser(res.data));
     } 
     const logOut = () => {
-        localStorage.removeItem('token');
+        Token.clear();
         setUser({});
     }
 
     useEffect(() => {
-        const token = localStorage.getItem('token') || '';
+        const token = Token.get();
         if (token) Auth.me().then(res => setUser(res.data));
-    }, [])
+    }, []);
 
     return (
-        <AuthContext.Provider value={{ user, logIn, logOut }} >
+        <AuthContext.Provider value={{ user, setUser, logIn, logOut }} >
             {children}
         </AuthContext.Provider>
     )
 }
 
+export const useAuth = () => useContext(AuthContext);
 export default AuthProvider;

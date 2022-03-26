@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import iconKey from "assets/img/svg/key.svg";
 import { FiCheck, FiArrowLeft } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { URL } from "libs/constants";
+import Auth from "api/auth";
+import NotFound from "views/NotFound";
 
 const Reset = () => {
     const [ password, setPassword ] = useState<string>("");
     const [ confirmPass, setConfirmPass ] = useState<string>("");
     const [ isReset, setIsReset ] = useState<boolean>(false);
+    const { email, token } = useParams();
+    const [ is404, set404] = useState<boolean>(true);
 
     const handleChange1 = (e: any) => {
         setPassword(e.target.value);
@@ -15,17 +19,36 @@ const Reset = () => {
     const handleChange2 = (e: any) => {
         setConfirmPass(e.target.value);
     }
-    const handleClick = (e: any) => setIsReset(password.length >=8 && password === confirmPass);
-
-    useEffect(() => {
-        const resetPassword = () => {
-            alert();
+    const handleClick = (e: any) => {
+        if(!(password.length >=8 && password === confirmPass)) {
+            alert("Email must be at least 8");
+            return;
         }
 
-        if(isReset) resetPassword();
-    }, [isReset]);
+        Auth.resetPassword(email || "", token || "", password)
+        .then(res => {
+            if(res.data.success) {
+                setIsReset(true);
+            }
+        })
+        .catch(err => {
+            if(!err.response) alert("You're offline.");
+            else if(err.response.data.message) alert(err.response.data.message);
+            else alert(err.message);
+        });
+    }
 
-    return (
+    useEffect(() => {
+        Auth.verifyResetLink(email || "", token || "")
+        .then(res => {
+            set404(false);
+        })
+        .catch(err => {
+            set404(true);
+        })
+    }, []);
+
+    return is404 ? <NotFound /> : (
         <div className="flex justify-center py-40 text-sm">
             { isReset ? (
                 <div className="flex flex-col items-center w-[350px]">

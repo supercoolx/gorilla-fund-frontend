@@ -8,7 +8,7 @@ export const URL = {
     LOGIN: '/login',
     SIGNUP: '/signup',
     PASSWORD_EMAIL: '/email',
-    PASSWORD_RESET: '/reset/:token',
+    PASSWORD_RESET: '/reset/:email/:token',
     EMAIL_VERIFY: '/verify'
 }
 

@@ -42,7 +42,8 @@ const Signup = () => {
             })
             .catch(err => {
                 setValid(false);
-                if(err.response.status === 409) setError(err.response.data.message);
+                if(!err.response) setError("You're offline.");
+                else if(err.response.status === 409) setError(err.response.data.message);
                 else setError(err);
             });
         }

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import validator from "validator";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { URL } from "libs/constants";
 import Auth from "api/auth";
 import { useAuth } from "contexts/authContext";
@@ -12,12 +12,13 @@ const Login = () => {
     const [ password, setPassword ] = useState<string>("");
     const [ valid, setValid ] = useState<boolean>(true);
     const [ error, setError ] = useState<string>("");
-    const { logIn } = useAuth();
+    const { user, logIn } = useAuth();
+    const navigate = useNavigate();
 
     const handleChangeEmail = e => setEmail(e.target.value);
     const handleChangePassword = e => setPassword(e.target.value);
 
-    const login = () => {
+    const handleLogin = () => {
         if(!validator.isEmail(email)) {
             setValid(false);
             setError("Input email correctly.");
@@ -34,11 +35,16 @@ const Login = () => {
             })
             .catch(err => {
                 setValid(false);
-                if(err.response.status === 401 || err.response.status === 403) setError(err.response.data.message);
+                if(!err.response) setError("You're offline.");
+                else if(err.response.data.message) setError(err.response.data.message);
                 else setError(err.message);
             });
         }
     }
+
+    useEffect(() => {
+        if(user.email) navigate(URL.HOME);
+    }, [user, navigate]);
 
     return (
         <div className="flex justify-center py-40 text-sm">
@@ -62,7 +68,7 @@ const Login = () => {
                     <Link to={URL.PASSWORD_EMAIL} className="font-bold text-teal-700">Forget password</Link>
                 </div>
                 { !valid && <div className="w-full py-3 mb-5 text-center bg-red-400">{error}</div> }
-                <button onClick={login} className="w-full py-2 font-bold text-white bg-teal-700">Sign in</button>
+                <button onClick={handleLogin} className="w-full py-2 font-bold text-white bg-teal-700">Sign in</button>
                 <button className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />
                     <div className="pl-1 font-bold border-slate-200">Sign in with Metamsk</div>
