@@ -22,7 +22,7 @@ const AuthProvider = ({children}) => {
 
     useEffect(() => {
         const token = Token.get();
-        if (token) Auth.me().then(res => setUser(res.data));
+        if (token) Auth.me().then(res => setUser(res.data)).catch(err => err);
     }, []);
 
     return (

@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import Stepper from "components/util/Stepper";
-import FundPreview from "components/Fundraising/FundPreview";
-import { StepInterface } from "libs/interfaces";
-import { URL } from "libs/constants";
 import { Link } from "react-router-dom";
-import StepBar from "components/util/StepBar";
+import FundProvider, { useFund } from "contexts/fundContext";
+import Stepper from "components/util/Stepper";
 import FundGoal from "components/Fundraising/FundGoal";
-import { FiArrowLeft } from "react-icons/fi";
-import Logo from "assets/img/svg/logo.svg";
 import FundPhoto from "components/Fundraising/FundPhoto";
 import FundStory from "components/Fundraising/FundStory";
+import FundPreview from "components/Fundraising/FundPreview";
+import { URL } from "libs/constants";
+import { useAuth } from "contexts/authContext";
+import { StepInterface } from "libs/interfaces";
+import StepBar from "components/util/StepBar";
+import Logo from "assets/img/svg/logo.svg";
 import FundSuccess from "components/Fundraising/FundSuccess";
 
-const Fundraising = () => {
-    const [ step, setStep ] = useState<number>(1);
-    const [ end, setEnd ] = useState<boolean>(false);
+const FundraisingPage = () => {
+    const { step, welcome } = useFund();
+    const { user } = useAuth();
     const [ data ] = useState<StepInterface[]>([
         {
             title: "Detail and Goal",
@@ -40,37 +41,35 @@ const Fundraising = () => {
         <FundPreview />
     ]
 
-    const onNext = () => step < data.length && setStep(step + 1);
-    const onPrev = () => step > 1 && setStep(step - 1);
-    const onComplete = () => setEnd(true);
-
-    return end ? <FundSuccess /> :
-    (
+    return welcome ? <FundSuccess /> : (
         <div className="flex flex-wrap bg-slate-50">
             <Stepper step={step} data={data} />
             <div className="flex flex-col flex-1 min-w-[360px] gap-16 px-2 py-12">
-                <div className="pr-10 text-right">Already have an account? <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link></div>
+                {
+                    user.email ? 
+                    <div className="flex items-center justify-end gap-3 pr-10 cursor-pointer">
+                        <div>{user.name}</div>
+                        <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
+                    </div> :
+                    <div className="pr-10 text-right">Already have an account? <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link></div>
+                }
                 <div className="flex justify-center text-sm">
                     <div className="flex flex-col items-center w-full max-w-[500px]">
                         <img src={Logo} className="w-8" alt="" />
                         { stepComponent[step - 1] }
-                        {
-                            step === data.length ?
-                            <button onClick={onComplete} className="w-full py-2 mt-6 text-white bg-teal-700">Complete fundraiser</button> :
-                            <button onClick={onNext} className="w-full py-2 mt-6 text-white bg-teal-700">Next</button>
-                        }
-                        {
-                            step === 1 ? <div className="pt-5 text-center text-gray-500">By continuing, you agree to the GorillaFund terms and privacy policy.</div> :
-                            <button onClick={onPrev} className="flex items-center justify-center w-full py-2 mt-3 bg-white">
-                                <FiArrowLeft size={16} />
-                                <div className="pl-1 font-bold">Go back</div>
-                            </button>
-                        }
                         <StepBar step={step} length={data.length} />
                     </div>
                 </div>
             </div>
         </div>
+    )
+}
+
+const Fundraising = () => {
+    return (
+        <FundProvider>
+            <FundraisingPage />
+        </FundProvider>
     )
 }
 

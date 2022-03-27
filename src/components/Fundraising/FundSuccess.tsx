@@ -13,9 +13,9 @@ const FundSuccess = () => {
                 <div className="pt-6 text-2xl font-bold text-center">Your fundariser is ready. Let's start getting donations.</div>
                 <div className="py-4 text-center text-gray-500">Turn-based grand strategy video games are beloved by many but are often time consuming and inconvenient to play multiplayer.</div>
                 <button className="w-full py-2 font-bold text-center text-white bg-teal-700">Next</button>
-                <Link to={URL.LOGIN} className="flex items-center justify-center w-full py-2 mt-3">
+                <Link to={URL.HOME} className="flex items-center justify-center w-full py-2 mt-3">
                     <FiArrowLeft size={16} />
-                    <div className="pl-1 font-bold">Back to log in</div>
+                    <div className="pl-1 font-bold">Back to home page</div>
                 </Link>
             </div>
         </div>

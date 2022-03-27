@@ -46,7 +46,7 @@ const Reset = () => {
         .catch(err => {
             set404(true);
         })
-    }, []);
+    }, [email, token]);
 
     return is404 ? <NotFound /> : (
         <div className="flex justify-center py-40 text-sm">

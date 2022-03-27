@@ -1,6 +1,20 @@
 import React from "react";
+import { useFund } from "contexts/fundContext";
+import { FiArrowLeft } from "react-icons/fi";
 
 const FundStory = () => {
+    const { setStep, head, setHead, desc, setDesc } = useFund();
+
+    const onChangeHead = e => setHead(e.target.value);
+    const onChangeDesc = e => setDesc(e.target.value);
+    const handleNext = () => {
+        let isValid = true;
+        if(head.trim().length < 10) isValid = false;
+        if(desc.trim().length < 10) isValid = false;
+        if(isValid) setStep(4);
+        else alert("Please provide correct details.");
+    };
+    const handlePrev = () => setStep(2);
     
     return (
         <>
@@ -8,12 +22,17 @@ const FundStory = () => {
             <div className="pt-3 text-center text-gray-500">Please fill in your information to proceed with creating a fundraising.</div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Headline</div>
-                <input type="text" className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter a headline" />
+                <input type="text" value={head} onChange={onChangeHead} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter a headline" />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Description</div>
-                <textarea className="w-full h-[150px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter a description..." />
+                <textarea value={desc} onChange={onChangeDesc} className="w-full h-[150px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter a description..." />
             </div>
+            <button onClick={handleNext} className="w-full py-2 mt-6 text-white bg-teal-700">Continue</button>
+            <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 bg-white">
+                <FiArrowLeft size={16} />
+                <div className="pl-1 font-bold">Go back</div>
+            </button>
         </>
     )
 }
