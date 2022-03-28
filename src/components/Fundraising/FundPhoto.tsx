@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFund } from "contexts/fundContext";
+import { useFund } from "contexts/FundContext";
 import FundAPI from "api/fund";
 import { FiArrowLeft, FiPaperclip } from "react-icons/fi";
 
@@ -43,7 +43,7 @@ const FundPhoto = () => {
         <>
             <div className="pt-6 text-2xl font-bold">Add a cover photo</div>
             <div className="pt-3 text-center text-gray-500">A high-quality photo will help tell your story.</div>
-            <input ref={el => imageInput = el} type="file" accept="image/*" id="image" onChange={handleChange} className="hidden"  />
+            <input ref={el => imageInput = el} type="file" accept="image/*" onChange={handleChange} className="hidden" />
             {
                 photo ? <img onClick={handleClick} src={photo} className="w-full mt-6 border-2 border-teal-700 cursor-pointer" alt="" /> :
                 <div className="flex flex-col w-full pt-6">

@@ -7,7 +7,7 @@ const FundProvider = ({children}) => {
     const [step, setStep] = useState<number>(1);
     const [name, setName] = useState<string>("");
     const [amount, setAmount] = useState<string>("1000");
-    const [forId, setFor] = useState<number>(0);
+    const [forId, setFor] = useState<any>(0);
     const [address, setAddress] = useState<string>("");
     const [image, setImage] = useState<string>("");
     const [head, setHead] = useState<string>("");
@@ -16,7 +16,8 @@ const FundProvider = ({children}) => {
 
     const submit = () => {
         FundAPI.create({
-            name, amount, forId, image,
+            name, amount, image,
+            forId: forId.value,
             walletAddress: address,
             headline: head,
             description: desc

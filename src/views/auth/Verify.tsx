@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ReactInputVerificationCode from "react-input-verification-code";
 import { FiCheck, FiArrowLeft, FiMail } from "react-icons/fi";
-import { useAuth } from "contexts/authContext";
+import { useAuth } from "contexts/AuthContext";
 import { URL } from "libs/constants";
 import Auth from "api/auth";
 import "assets/styles/ReactInputVerificationCode.css";

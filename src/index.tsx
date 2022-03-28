@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import AuthProvider from 'contexts/authContext';
+import AuthProvider from 'contexts/AuthContext';
 import reportWebVitals from './reportWebVitals';
 import 'assets/styles/index.css';
 

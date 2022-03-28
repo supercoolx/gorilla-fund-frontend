@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import FundProvider, { useFund } from "contexts/fundContext";
+import FundProvider, { useFund } from "contexts/FundContext";
 import Stepper from "components/util/Stepper";
 import FundGoal from "components/Fundraising/FundGoal";
 import FundPhoto from "components/Fundraising/FundPhoto";
 import FundStory from "components/Fundraising/FundStory";
 import FundPreview from "components/Fundraising/FundPreview";
 import { URL } from "libs/constants";
-import { useAuth } from "contexts/authContext";
+import { useAuth } from "contexts/AuthContext";
 import { StepInterface } from "libs/interfaces";
 import StepBar from "components/util/StepBar";
 import Logo from "assets/img/svg/logo.svg";

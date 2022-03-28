@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import { URL } from "libs/constants";
 import Auth from "api/auth";
-import { useAuth } from "contexts/authContext";
+import { useAuth } from "contexts/AuthContext";
 import iconLogo from "assets/img/svg/logo.svg";
 import iconMetamask from "assets/img/svg/metamask.svg";
 

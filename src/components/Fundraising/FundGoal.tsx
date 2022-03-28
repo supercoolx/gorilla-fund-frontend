@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 import CurrencyInput from "react-currency-input-field";
-import { useFund } from "contexts/fundContext";
+import { useFund } from "contexts/FundContext";
 import { SelectPurposeInterface } from "libs/interfaces";
 import "assets/styles/ReactSelect.css";
 
@@ -20,7 +20,6 @@ const FundGoal = () => {
 
     const handleChangeName = e => setName(e.target.value);
     const handleChangeAmount = val => setAmount(val);
-    const handleChangeType = val => setFor(val.value);
     const handleChangeAddress = e => setAddress(e.target.value);
     const handleNext = () => {
         let isValid = true;
@@ -46,7 +45,7 @@ const FundGoal = () => {
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">What are you fundarising for?</div>
-                <Select options={typeOptions} value={typeOptions[forId]} onChange={handleChangeType} />
+                <Select options={typeOptions} value={forId} onChange={setFor} />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Ethereum Address*</div>

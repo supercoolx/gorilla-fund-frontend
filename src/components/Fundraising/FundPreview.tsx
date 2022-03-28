@@ -1,5 +1,5 @@
 import React from "react";
-import { useFund } from "contexts/fundContext";
+import { useFund } from "contexts/FundContext";
 import { FiArrowLeft } from "react-icons/fi";
 
 const FundPreview = () => {
