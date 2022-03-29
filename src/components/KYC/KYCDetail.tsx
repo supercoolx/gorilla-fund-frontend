@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import Select from "react-select";
-import countryList from "react-select-country-list";
+import countries from "libs/countries";
 import { useKYC } from "contexts/KycContext";
 import { ImSearch } from "react-icons/im";
 import { MdOutlineSecurity } from "react-icons/md";
@@ -9,8 +9,6 @@ import "assets/styles/ReactSelect.css";
 
 const KYCDetail = () => {
     const { setStep, firstName, setFirst, lastName, setLast, country, setCountry, phone, setPhone, zip, setZip, city, setCity, address, setAddress } = useKYC();
-    const options = useMemo(() => countryList().getData(), []);
-
     const changeFirst = e => setFirst(e.target.value);
     const changeLast = e => setLast(e.target.value);
     const changePhone = e => setPhone(e.target.value);
@@ -46,9 +44,9 @@ const KYCDetail = () => {
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Where do you live</div>
                 <div className="flex gap-3">
-                    <Select options={options} value={country} onChange={setCountry} className="w-full" />
+                    <Select options={countries} value={country} onChange={setCountry} className="w-full" />
                     <div className="flex w-full border-[1px] border-slate-200">
-                        <div className="flex items-center h-full px-2 bg-white">+387</div>
+                        <div className="flex items-center h-full px-2 bg-white">+{country.code}</div>
                         <div className="w-[1px] my-2 bg-slate-200"></div>
                         <input type="text" value={phone} onChange={changePhone} className="w-full px-3 py-2 focus:outline-none" placeholder="Phone number" />
                     </div>
@@ -61,7 +59,7 @@ const KYCDetail = () => {
                         <div className="flex items-center justify-center px-3">
                             <ImSearch className="text-gray-500" size={14} />
                         </div>
-                        <input type="text" value={zip} onChange={changeZip} className="py-2 pr-4 focus:outline-none" placeholder="Search for your zip code..." />
+                        <input type="text" value={zip} onChange={changeZip} className="w-full py-2 pr-4 focus:outline-none" placeholder="Search for your zip code..." />
                     </div>
                     <div className="w-full">
                         <input type="text" value={city} onChange={changeCity} className="py-2 px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="City" />
@@ -74,7 +72,7 @@ const KYCDetail = () => {
                     <div className="flex items-center justify-center px-3">
                         <FaMapMarkerAlt className="text-gray-500" size={14} />
                     </div>
-                    <input type="text" value={address} onChange={changeAddress} className="py-2 pr-4 focus:outline-none" placeholder="Search for your zip code..." />
+                    <input type="text" value={address} onChange={changeAddress} className="w-full py-2 pr-4 focus:outline-none" placeholder="Search for your zip code..." />
                 </div>
             </div>
             <button onClick={onNext} className="w-full py-2 mt-6 text-white bg-teal-700">Next</button>

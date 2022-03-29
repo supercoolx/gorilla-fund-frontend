@@ -27,7 +27,8 @@ const KycProvider = ({children}) => {
         KYC.upload(formData)
         .then(res => {
             let data = {
-                firstName, lastName, country, phone, zip, city, address, idType, number, expire, ether,
+                firstName, lastName, country, zip, city, address, idType, number, expire, ether,
+                phone: country.code + phone,
                 img1: res.data.path1,
                 img2: res.data.path2,
             }

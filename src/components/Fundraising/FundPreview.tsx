@@ -1,4 +1,5 @@
 import React from "react";
+import { nFormatter } from "libs/utils";
 import { useFund } from "contexts/FundContext";
 import { FiArrowLeft } from "react-icons/fi";
 
@@ -21,7 +22,7 @@ const FundPreview = () => {
                 <hr className="mt-5" />
                 <div className="flex justify-between pt-5">
                     <div className="text-base font-bold">$0.0M raised</div>
-                    <div className="text-base text-gray-500">${amount} Goal</div>
+                    <div className="text-base text-gray-500">${nFormatter(amount, 1)} Goal</div>
                 </div>
             </div>
             <button onClick={handleComplete} className="w-full py-2 mt-6 text-white bg-teal-700">Complete fundraiser</button>
