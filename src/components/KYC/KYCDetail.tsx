@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import Select from "react-select";
 import countries from "libs/countries";
 import { useKYC } from "contexts/KycContext";

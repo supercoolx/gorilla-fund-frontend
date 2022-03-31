@@ -1,25 +1,37 @@
-import Footer from "components/Footer/Footer";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import FundAPI from "api/fund";
+import Nav from "components/Nav/Nav";
 import StartFundraising from "components/Footer/StartFundraising";
 import FundContent from "components/Fund/FundContent";
 import FundDonations from "components/Fund/FundDonation";
 import FundLeft from "components/Fund/FundLeft";
 import FundProject from "components/Fund/FundProject";
-import Nav from "components/Nav/Nav";
-import React from "react";
+import Footer from "components/Footer/Footer";
+import NotFound from "views/NotFound";
 
 const Fund = () => {
+    const { uid } = useParams();
+    const [ data, setData ] = useState<any>({});
+    const [ error, setError ] = useState<boolean>(false);
+    
+    useEffect(() => {
+        FundAPI.findByUid(uid)
+        .then(res => setData(res.data))
+        .catch(err => setError(true));
+    }, [uid]);
 
-    return (
+    return error ? <NotFound /> : (
         <div className="bg-slate-50">
             <Nav />
             <div className="flex flex-col max-w-[900px] mx-auto">
                 <div className="px-3">
-                    <div className="pt-16 text-lg font-bold">Hexarchy - Historical Deck Building Strategy Royale</div>
-                    <div className="py-6 pt-1 text-sm text-gray-500">An innovative historical 4x game. 1 to 10 players. One-hour games.</div>
+                    <div className="pt-16 text-lg font-bold">{data.name}</div>
+                    <div className="py-6 pt-1 text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
-                    <FundContent />
-                    <FundLeft />
+                    <FundContent photo={data.image} categoryId={data.category_id} date={data.createdAt} story={data.description} />
+                    <FundLeft uid={data.uid} donate={527260} goal={data.amount} />
                 </div>
                 <hr className="my-5" />
                 <FundDonations />

@@ -29,11 +29,6 @@ export interface StepInterface {
     text: string
 }
 
-export interface SelectOptionInterface {
-    value: string
-    label: string
-}
-
 export interface SelectPurposeInterface {
     value: number,
     label: string

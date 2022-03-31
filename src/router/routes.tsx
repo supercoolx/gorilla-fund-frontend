@@ -12,6 +12,7 @@ import Fund from "views/Fund";
 import NotFound from "views/NotFound";
 import KYC from "views/KYC";
 import Donate from "views/Donate";
+import Dashboard from "views/Dashboard";
 
 const routes = [
     {
@@ -57,6 +58,10 @@ const routes = [
     {
         component: <KYC />,
         url: URL.KYC
+    },
+    {
+        component: <Dashboard />,
+        url: URL.DASHBOARD
     },
     {
         component: <NotFound />,

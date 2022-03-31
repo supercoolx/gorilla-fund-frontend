@@ -1,96 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import FundAPI from "api/fund";
 import { URL } from "libs/constants";
-import { ProjectInterface } from "libs/interfaces";
 import { ImFire } from "react-icons/im";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import imgEsport from "assets/img/home/e-sport.png";
-import imgRobot from "assets/img/home/robot.png";
-import imgStories from "assets/img/home/stories.png";
-import imgSupport from "assets/img/home/support.png";
-import Progress from "components/util/element/Progress";
+import ProjectCard from "components/util/element/ProjectCard";
 
 const HomeProjects = () => {
-    const [ data ] = useState<ProjectInterface[]>([
-        {
-            uid: "uid",
-            img: imgEsport,
-            title: "E-Sports Startup",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is  a minute ago",
-            goal: 30.0,
-            raise: 14.2,
-        },
-        {
-            uid: "uid",
-            img: imgStories,
-            title: "Fundraising School for IT",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 7 minute ago",
-            goal: 15.0,
-            raise: 7.5,
-        },
-        {
-            uid: "uid",
-            img: imgRobot,
-            title: "Smart Robots",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 23 minute ago",
-            goal: 5.0,
-            raise: 3.4,
-        },
-        {
-            uid: "uid",
-            img: imgSupport,
-            title: "Support Ukraine",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 23 minute ago",
-            goal: 2.7,
-            raise: 3.5,
-        },
-        {
-            uid: "uid",
-            img: imgRobot,
-            title: "Smart Robots",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 23 minute ago",
-            goal: 5.0,
-            raise: 3.4,
-        },
-        {
-            uid: "uid",
-            img: imgRobot,
-            title: "Smart Robots",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 23 minute ago",
-            goal: 5.0,
-            raise: 3.4,
-        },
-        {
-            uid: "uid",
-            img: imgRobot,
-            title: "Smart Robots",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 23 minute ago",
-            goal: 5.0,
-            raise: 3.4,
-        },
-        {
-            uid: "uid",
-            img: imgRobot,
-            title: "Smart Robots",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ...",
-            donate: "Last donation is 23 minute ago",
-            goal: 5.0,
-            raise: 3.4,
-        }
-    ]);
+    const [data, setData] = useState<any[]>([]); 
 
     const [pos, setPos] = useState(0);
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        setPos(-index * 276);
+        FundAPI.topRated(8).then(res => setData(res.data)).catch(err => alert(err.message));
+    }, [])
+
+    useEffect(() => {
+        setPos(-index * 340);
     }, [index]);
 
     const nextProject = () => {
@@ -119,23 +46,7 @@ const HomeProjects = () => {
                 </Link>
             </div>
             <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
-                {
-                    data.map((prop: ProjectInterface, key: number) => (
-                        <Link to={URL.FUNDRAISE + "/uid"} className="flex flex-col w-64 text-sm text-gray-500 bg-white" key={key}>
-                            <img src={prop.img} className="object-cover h-44" alt="" />
-                            <div className="flex flex-col px-4 py-5">
-                                <div className="text-lg font-bold text-black">{prop.title}</div>
-                                <div className="pt-2">{prop.content}</div>
-                                <div className="pt-10 pb-3">{prop.donate}</div>
-                                <Progress percent={prop.raise /  prop.goal * 100} />
-                                <div className="flex justify-between pt-5">
-                                    <div className="font-bold text-black">${prop.raise}M raised</div>
-                                    <div>${prop.goal}M Goal</div>
-                                </div>
-                            </div>
-                        </Link>
-                    ))
-                }
+                { data.map((prop, key: number) => <ProjectCard data={prop} key={key} className="w-64" />) }
             </div>
             <div className="relative z-10 left-8 sm:-top-60 w-min">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>

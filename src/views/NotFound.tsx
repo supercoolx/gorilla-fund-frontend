@@ -8,7 +8,6 @@ const NotFound = () => {
         <div>
             <Nav />
             <div className="py-10 text-5xl font-bold text-center bg-slate-50">404 ERROR</div>
-            <StartFundraising />
             <Footer />
         </div>
     )

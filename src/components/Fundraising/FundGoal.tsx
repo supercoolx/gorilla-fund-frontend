@@ -2,21 +2,11 @@ import React from "react";
 import Select from "react-select";
 import CurrencyInput from "react-currency-input-field";
 import { useFund } from "contexts/FundContext";
-import { SelectPurposeInterface } from "libs/interfaces";
+import { FUNDCATEGORY } from "libs/constants";
 import "assets/styles/ReactSelect.css";
 
 const FundGoal = () => {
-    const { setStep, name, setName, forId, setFor, amount, setAmount, address, setAddress } = useFund();
-    const typeOptions: SelectPurposeInterface[] = [
-        {
-            value: 0,
-            label: "Select..."
-        },
-        {
-            value: 1,
-            label: "Education & Learning"
-        }
-    ];
+    const { setStep, name, setName, category, setCategory, amount, setAmount, address, setAddress } = useFund();
 
     const handleChangeName = e => setName(e.target.value);
     const handleChangeAmount = val => setAmount(val);
@@ -25,7 +15,7 @@ const FundGoal = () => {
         let isValid = true;
         if(name.trim().length < 10) isValid = false;
         if(!amount) isValid = false;
-        if(!forId) isValid = false;
+        if(!category) isValid = false;
         if(!address) isValid = false;
         if(isValid) setStep(2);
         else alert("Please provide correct details.");
@@ -45,7 +35,7 @@ const FundGoal = () => {
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">What are you fundarising for?</div>
-                <Select options={typeOptions} value={forId} onChange={setFor} />
+                <Select options={FUNDCATEGORY} value={category} onChange={setCategory} />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">Ethereum Address*</div>

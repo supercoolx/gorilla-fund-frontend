@@ -1,3 +1,15 @@
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
+
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo('en-US');
+
+export const timeAgoFormat = str => {
+    if(!str) return "";
+    const date = new Date(str);
+    return timeAgo.format(date);
+}
+
 export const nFormatter = (num: number | string, digits: number) => {
     if(typeof num === 'string') num = parseInt(num);
     const lookup = [
@@ -15,3 +27,7 @@ export const nFormatter = (num: number | string, digits: number) => {
     });
     return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
 }
+
+export const textSlice = (text: string, length: number) => text.slice(0, length) + (text.length > length ? "..." : "");
+
+export const zeroPad = (num: number, places: number) => String(num).padStart(places, '0');

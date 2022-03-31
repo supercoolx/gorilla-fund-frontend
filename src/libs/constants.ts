@@ -1,5 +1,6 @@
 export const URL = {
     HOME: '/',
+    DASHBOARD: '/dashboard',
     SEARCH: '/search',
     FUNDRAISE: '/fund',
     FUND: '/fund/:uid',
@@ -26,3 +27,40 @@ export const SOCIAL = {
     WHITEPAPER: "https://apegorilla.com/documents/Ape_Gorilla_Club_White_Paper.pdf",
     TERMS: "https://apegorilla.com/documents/Ape_Gorilla_Club_Terms_Conditions.pdf"
 }
+
+export const FUNDCATEGORY = [
+    {
+        label: "All"
+    },
+    {
+        value: 1,
+        label: "Education & Learning"
+    },
+    {
+        value: 2,
+        label: "Gaming"
+    },
+    {
+        value: 3,
+        label: "Medical"
+    },
+    {
+        value: 4,
+        label: "Industry"
+    },
+    {
+        value: 5,
+        label: "Startup"
+    }
+]
+
+export const FUNDSORT = [
+    {
+        value: 1,
+        label: "Most recent"
+    },
+    {
+        value: 2,
+        label: "Most rated"
+    }
+]
