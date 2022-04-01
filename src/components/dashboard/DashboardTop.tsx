@@ -1,10 +1,21 @@
-import React from "react";
-import imgPhoto from "assets/img/home/fund_photo.png";
-import Progress from "components/util/element/Progress";
-import { MdOutlineSettings } from "react-icons/md";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Modal from "components/util/Modal";
+import Progress from "components/util/Progress";
+import CopyInput from "components/util/CopyInput";
+import { URL } from "libs/constants";
 import { FiShare2 } from "react-icons/fi";
+import { ImTwitter } from "react-icons/im";
+import { AiOutlineMail } from "react-icons/ai";
+import { MdOutlineSettings } from "react-icons/md";
+import { BsFacebook, BsInstagram, BsDiscord } from "react-icons/bs";
+import imgPhoto from "assets/img/home/fund_photo.png";
 
 const DashboardTop = () => {
+    const [ isOpen, setOpen ] = useState<boolean>(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
     return (
         <div className="bg-white">
             <img src={imgPhoto} className="object-cover w-full opacity-30 h-44" alt="" />
@@ -28,14 +39,49 @@ const DashboardTop = () => {
                 <div className="flex gap-3">
                     <button className="flex items-center gap-2 border-[1px] py-2 px-3">
                         <MdOutlineSettings size={20} />
-                        <div className="text-sm font-bold">Setting</div>
+                        <Link to={URL.SETTING} className="text-sm font-bold">Setting</Link>
                     </button>
-                    <button className="flex items-center gap-2 border-[1px] py-2 px-3">
+                    <button onClick={handleOpen} className="flex items-center gap-2 border-[1px] py-2 px-3">
                         <FiShare2 size={20} />
                         <div className="text-sm font-bold">Share fundraiser</div>
                     </button>
                 </div>
             </div>
+            <Modal isOpen={isOpen}>
+                <div className="w-full max-w-md p-6 bg-white">
+                    <div className="flex items-end justify-between">
+                        <div className="font-bold text-black">Help by sharing</div>
+                        <div onClick={handleClose} className="text-2xl font-bold text-gray-500 cursor-pointer">&times;</div>
+                    </div>
+                    <div className="pt-2 text-sm text-gray-500">Fundraisers shared on social networks raise up to 5x more</div>
+                    <hr className="my-5" />
+                    <div className="grid grid-cols-3 gap-3 text-sm font-semibold text-gray-500">
+                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                            <BsFacebook size={30} className="text-blue-600" />
+                            <div>Facebook</div>
+                        </div>
+                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                            <ImTwitter size={30} className="text-sky-500" />
+                            <div>Twitter</div>
+                        </div>
+                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                            <BsInstagram size={30} />
+                            <div>Instagram</div>
+                        </div>
+                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                            <BsDiscord size={30} className="text-indigo-400" />
+                            <div>Discord</div>
+                        </div>
+                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                            <AiOutlineMail size={30} />
+                            <div>Email</div>
+                        </div>
+                    </div>
+                    <hr className="my-5" />
+                    <div className="pb-1 font-bold text-gray-800">Share via link</div>
+                    <CopyInput value="https://www.gorillafund.me/f/p35aef-help-me" className="text-sm text-gray-500" />
+                </div>
+            </Modal>
         </div>
     )
 }

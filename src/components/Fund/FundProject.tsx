@@ -4,7 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import imgEsport from "assets/img/home/e-sport.png";
 import imgRobot from "assets/img/home/robot.png";
 import imgStories from "assets/img/home/stories.png";
-import Progress from "components/util/element/Progress";
+import Progress from "components/util/Progress";
 
 const FundProject = () => {
     const [ top ] = useState<ProjectInterface[]>([

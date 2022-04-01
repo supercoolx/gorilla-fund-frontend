@@ -13,59 +13,64 @@ import NotFound from "views/NotFound";
 import KYC from "views/KYC";
 import Donate from "views/Donate";
 import Dashboard from "views/Dashboard";
+import Setting from "views/Setting";
 
 const routes = [
     {
+        url: URL.HOME,
         component: <Home />,
-        url: URL.HOME
     },
     {
+        url: URL.LOGIN,
         component: <Login />,
-        url: URL.LOGIN
     },
     {
+        url: URL.SIGNUP,
         component: <Signup />,
-        url: URL.SIGNUP
     },
     {
+        url: URL.PASSWORD_EMAIL,
         component: <Email />,
-        url: URL.PASSWORD_EMAIL
     },
     {
+        url: URL.PASSWORD_RESET,
         component: <Reset />,
-        url: URL.PASSWORD_RESET
     },
     {
+        url: URL.EMAIL_VERIFY,
         component: <Verify />,
-        url: URL.EMAIL_VERIFY
     },
     {
+        url: URL.SEARCH,
         component: <Search />,
-        url: URL.SEARCH
     },
     {
+        url: URL.FUNDRAISE,
         component: <Fundraising />,
-        url: URL.FUNDRAISE
     },
     {
+        url: URL.FUND,
         component: <Fund />,
-        url: URL.FUND
     },
     {
+        url: URL.DONATE,
         component: <Donate />,
-        url: URL.DONATE
     },
     {
+        url: URL.KYC,
         component: <KYC />,
-        url: URL.KYC
     },
     {
+        url: URL.DASHBOARD,
         component: <Dashboard />,
-        url: URL.DASHBOARD
     },
     {
+        url: URL.SETTING,
+        component: <Setting />
+    },
+    {
+        url: "*",
         component: <NotFound />,
-        url: "*"
     }
 ];
 

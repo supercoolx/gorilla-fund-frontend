@@ -16,10 +16,10 @@ const Nav = () => {
                 </Link>
                 {
                     user.email ?
-                    <div className="flex items-center justify-end gap-3 cursor-pointer">
+                    <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 cursor-pointer">
                         <div>{user.name}</div>
                         <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
-                    </div> :
+                    </Link> :
                     <div className="flex flex-row items-center gap-3 xl:gap-8">
                         <Link to={URL.SEARCH} className="text-gray-500">
                             <div>Discover</div>

@@ -1,6 +1,7 @@
 export const URL = {
     HOME: '/',
     DASHBOARD: '/dashboard',
+    SETTING: '/setting',
     SEARCH: '/search',
     FUNDRAISE: '/fund',
     FUND: '/fund/:uid',
@@ -10,7 +11,7 @@ export const URL = {
     SIGNUP: '/signup',
     PASSWORD_EMAIL: '/email',
     PASSWORD_RESET: '/reset/:email/:token',
-    EMAIL_VERIFY: '/verify'
+    EMAIL_VERIFY: '/verify',
 }
 
 export const SOCIAL = {

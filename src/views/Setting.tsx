@@ -1,15 +1,16 @@
 import React from "react";
 import Nav from "components/Nav/Nav";
+import SettingPage from "components/Setting/SettingPage";
 import Footer from "components/Footer/Footer";
 
-const NotFound = () => {
+const Setting = () => {
     return (
         <div>
             <Nav />
-            <div className="py-10 text-5xl font-bold text-center bg-slate-50">404 ERROR</div>
+            <SettingPage />
             <Footer />
         </div>
     )
 }
 
-export default NotFound;
+export default Setting;

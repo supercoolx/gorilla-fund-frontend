@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
 import imgAvatar from "assets/img/home/avatar.png";
-import Progress from "components/util/element/Progress";
+import Progress from "components/util/Progress";
 
 const FundLeft = ({ uid, donate, goal }) => {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Progress from "components/util/element/Progress";
+import Progress from "components/util/Progress";
 import { URL } from "libs/constants";
 import { nFormatter, timeAgoFormat } from "libs/utils";
 

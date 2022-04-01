@@ -4,7 +4,7 @@ import FundAPI from "api/fund";
 import { URL } from "libs/constants";
 import { ImFire } from "react-icons/im";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import ProjectCard from "components/util/element/ProjectCard";
+import ProjectCard from "components/util/ProjectCard";
 
 const HomeProjects = () => {
     const [data, setData] = useState<any[]>([]); 
@@ -14,7 +14,7 @@ const HomeProjects = () => {
 
     useEffect(() => {
         FundAPI.topRated(8).then(res => setData(res.data)).catch(err => alert(err.message));
-    }, [])
+    }, []);
 
     useEffect(() => {
         setPos(-index * 340);

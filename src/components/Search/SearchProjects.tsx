@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactSelect from "react-select";
-import ProjectCard from "components/util/element/ProjectCard";
+import ProjectCard from "components/util/ProjectCard";
 import FundAPI from "api/fund";
 import { FUNDCATEGORY, FUNDSORT } from "libs/constants";
 import { ImFire, ImSearch } from "react-icons/im";
@@ -26,8 +26,8 @@ const SearchProjects = () => {
     }
 
     useEffect(() => {
-        FundAPI.topRated(3).then(res => setTop(res.data)).catch(err => alert(err.message))
-        FundAPI.search({}).then(res => setData(res.data)).catch(err => alert(err.message))
+        FundAPI.topRated(3).then(res => setTop(res.data)).catch(err => alert(err.message));
+        FundAPI.search({}).then(res => setData(res.data)).catch(err => alert(err.message));
     }, []);
     useEffect(search, [sort, category]);
 

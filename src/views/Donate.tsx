@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import QRCode from "react-qr-code";
 import NotFound from "views/NotFound";
-import Progress from "components/util/element/Progress";
+import Progress from "components/util/Progress";
 import FundAPI from "api/fund";
 import EthAPI from "api/eth";
 import { URL } from "libs/constants";
@@ -10,8 +10,8 @@ import logo from "assets/img/svg/logo.svg";
 import { FiArrowLeft } from "react-icons/fi";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsExclamationOctagon } from "react-icons/bs";
-import { MdOutlineContentCopy } from "react-icons/md";
 import { FaEthereum, FaExchangeAlt } from "react-icons/fa";
+import CopyInput from "components/util/CopyInput";
 
 const Donate = () => {
     const { uid } = useParams();
@@ -21,7 +21,6 @@ const Donate = () => {
     const [ USD, setUSD ] = useState<any>('0');
     
     const handleChange = e => setAmount(e.target.value);
-    const handleCopy = () => window.navigator.clipboard.writeText(data.wallet_address).then(() => alert('Copied.'));
 
     useEffect(() => {
         EthAPI.get('/exchange-rates?currency=ETH')
@@ -94,10 +93,7 @@ const Donate = () => {
                                 </div>
                             </div>
                             <div className="pt-6 pb-2 font-semibold text-gray-500">Send your ETH donation to:</div>
-                            <div className="border-[1px] flex items-center justify-center px-1">
-                                <input value={data.wallet_address || ''} className="w-full px-1 py-2 font-semibold focus:outline-none" readOnly />
-                                <MdOutlineContentCopy onClick={handleCopy} size={24} className="text-gray-700 cursor-pointer" />
-                            </div>
+                            <CopyInput value={data.wallet_address || ''} />
                             <div className="pt-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
                         </div>
                     </div>
