@@ -30,7 +30,7 @@ const Fund = () => {
                     <div className="py-6 pt-1 text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
-                    <FundContent photo={data.image} categoryId={data.category_id} date={data.createdAt} story={data.description} />
+                    <FundContent photo={data.image} categoryId={data.categoryId} date={data.createdAt} story={data.description} />
                     <FundLeft uid={data.uid} donate={527260} goal={data.amount} />
                 </div>
                 <hr className="my-5" />

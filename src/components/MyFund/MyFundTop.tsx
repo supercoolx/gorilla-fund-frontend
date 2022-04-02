@@ -1,26 +1,32 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Modal from "components/util/Modal";
 import Progress from "components/util/Progress";
 import CopyInput from "components/util/CopyInput";
+import FundAPI from "api/fund";
 import { URL } from "libs/constants";
 import { FiShare2 } from "react-icons/fi";
 import { ImTwitter } from "react-icons/im";
 import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineSettings } from "react-icons/md";
 import { BsFacebook, BsInstagram, BsDiscord } from "react-icons/bs";
-import imgPhoto from "assets/img/home/fund_photo.png";
 
-const DashboardTop = () => {
+const MyFundTop = () => {
+    const { uid } = useParams();
+    const [ data, setData ] = useState<any>({});
     const [ isOpen, setOpen ] = useState<boolean>(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    useEffect(() => {
+        FundAPI.myFund(uid).then(res => setData(res.data)).catch(err => alert(err.message));
+    }, [uid]);
+
     return (
         <div className="bg-white">
-            <img src={imgPhoto} className="object-cover w-full opacity-30 h-44" alt="" />
+            <img src={data.image} className="object-cover w-full opacity-30 h-44" alt="" />
             <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5 max-w-[900px] px-3 mx-auto -translate-y-20 -mb-20">
-                <img src={imgPhoto} className="object-cover h-40 w-72" alt="" />
+                <img src={data.image} className="object-cover h-40 w-72" alt="" />
                 <div className="flex flex-col w-full gap-2 sm:flex-1">
                     <div className="text-sm text-gray-500">Fundraising progress</div>
                     <Progress percent={50} />
@@ -33,14 +39,14 @@ const DashboardTop = () => {
             <hr className="my-6" />
             <div className="flex items-center flex-wrap gap-3 pb-3 justify-between max-w-[900px] mx-auto px-3">
                 <div className="flex flex-col gap-2">
-                    <div className="font-bold">Hexarchy - Historical Deck Building Strategy Royale</div>
-                    <div className="text-sm text-gray-500">An innovative historical 4x game. 1 to 10 players. One-hour games.</div>
+                    <div className="font-bold">{data.name}</div>
+                    <div className="text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex gap-3">
-                    <button className="flex items-center gap-2 border-[1px] py-2 px-3">
+                    <Link to={URL.SETTING.replace(':uid', uid || '')} className="flex items-center gap-2 border-[1px] py-2 px-3">
                         <MdOutlineSettings size={20} />
-                        <Link to={URL.SETTING} className="text-sm font-bold">Setting</Link>
-                    </button>
+                        <div className="text-sm font-bold">Setting</div>
+                    </Link>
                     <button onClick={handleOpen} className="flex items-center gap-2 border-[1px] py-2 px-3">
                         <FiShare2 size={20} />
                         <div className="text-sm font-bold">Share fundraiser</div>
@@ -86,4 +92,4 @@ const DashboardTop = () => {
     )
 }
 
-export default DashboardTop;
+export default MyFundTop;

@@ -89,11 +89,11 @@ const Donate = () => {
                         <div className="w-full p-6 bg-white">
                             <div className="flex justify-center">
                                 <div className="border-[1px] p-2 border-gray-500">
-                                    <QRCode value={`ethereum:${data.wallet_address}`} level="M" size={130} />
+                                    <QRCode value={`ethereum:${data.walletAddress}`} level="M" size={130} />
                                 </div>
                             </div>
                             <div className="pt-6 pb-2 font-semibold text-gray-500">Send your ETH donation to:</div>
-                            <CopyInput value={data.wallet_address || ''} />
+                            <CopyInput value={data.walletAddress || ''} />
                             <div className="pt-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
                         </div>
                     </div>

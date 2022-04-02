@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import FundAPI from "api/fund";
+import { URL } from "libs/constants";
 import SettingOverview from "components/Setting/SettingOverview";
 import SettingPhoto from "components/Setting/SettingPhoto";
 import SettingStory from "components/Setting/SettingStory";
 import SettingNotification from "components/Setting/SettingNotification";
-import imgPhoto from "assets/img/home/fund_photo.png";
 import { FiCheck, FiArrowLeft } from "react-icons/fi";
+import imgPhoto from "assets/img/home/fund_photo.png";
 
 const SettingPage = () => {
+    const { uid } = useParams();
+    const [ data, setData ] = useState<any>({});
     const [ index, setIndex ] = useState<number>(1);
     const [ content, setContent ] = useState<any>();
     const changeContent = i => (() => setIndex(i));
+    const updateFund = () => FundAPI.update(data).then(res => alert("Saved successfully.")).catch(err => alert(err.message));
 
     useEffect(() => {
-        index === 1 && setContent(<SettingOverview />);
-        index === 2 && setContent(<SettingPhoto />);
-        index === 3 && setContent(<SettingStory />);
+        FundAPI.findByUid(uid).then(res => setData(res.data)).catch(err => alert(err.message));
+    }, [uid]);
+    useEffect(() => {
+        index === 1 && setContent(<SettingOverview data={data} setData={setData} />);
+        index === 2 && setContent(<SettingPhoto data={data} setData={setData} />);
+        index === 3 && setContent(<SettingStory data={data} setData={setData} />);
         index === 4 && setContent(<SettingNotification />);
-    }, [index])
+    }, [index, data]);
     
     return (
         <div className="bg-white">
@@ -24,16 +33,16 @@ const SettingPage = () => {
                 <div className="w-full bg-white bg-opacity-70">
                     <div className="flex gap-2 items-center py-6 max-w-[900px] mx-auto px-3 text-gray-800">
                         <FiArrowLeft size={16} />
-                        <div className="text-sm font-semibold opacity-100">Back to manage</div>
+                        <Link to={URL.MYFUND.replace(':uid', uid || "")} className="text-sm font-semibold opacity-100">Back to manage</Link>
                     </div>
                 </div>
             </div>
             <div className="max-w-[900px] mx-auto px-3 flex flex-wrap justify-between items-end pt-3">
                 <div className="pr-5">
                     <div className="text-lg font-bold text-black">Edit campaign</div>
-                    <div className="text-sm text-gray-500">Hexarchy - Historical Deck Building Strategy Royale</div>
+                    <div className="text-sm text-gray-500">{data.name}</div>
                 </div>
-                <button className="flex items-center gap-2 px-3 py-2 mt-3 text-white bg-teal-700">
+                <button onClick={updateFund} className="flex items-center gap-2 px-3 py-2 mt-3 text-white bg-teal-700">
                     <FiCheck />
                     <div className="text-sm font-semibold">Save changes</div>
                 </button>

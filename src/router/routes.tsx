@@ -1,6 +1,7 @@
 import React from "react";
 import { URL } from "libs/constants";
 import Home from "views/Home";
+import Dashboard from "views/Dashboard";
 import Login from "views/auth/Login";
 import Signup from "views/auth/Signup";
 import Email from "views/auth/Email";
@@ -12,7 +13,7 @@ import Fund from "views/Fund";
 import NotFound from "views/NotFound";
 import KYC from "views/KYC";
 import Donate from "views/Donate";
-import Dashboard from "views/Dashboard";
+import MyFund from "views/Myfund";
 import Setting from "views/Setting";
 
 const routes = [
@@ -65,8 +66,12 @@ const routes = [
         component: <Dashboard />,
     },
     {
+        url: URL.MYFUND,
+        component: <MyFund />,
+    },
+    {
         url: URL.SETTING,
-        component: <Setting />
+        component: <Setting />,
     },
     {
         url: "*",

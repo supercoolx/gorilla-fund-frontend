@@ -1,7 +1,8 @@
 export const URL = {
     HOME: '/',
     DASHBOARD: '/dashboard',
-    SETTING: '/setting',
+    MYFUND: '/myfund/:uid',
+    SETTING: '/myfund/:uid/setting',
     SEARCH: '/search',
     FUNDRAISE: '/fund',
     FUND: '/fund/:uid',

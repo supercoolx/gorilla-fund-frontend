@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Donation from "components/dashboard/content/Donation";
-import Comment from "components/dashboard/content/Comment";
-import Update from "components/dashboard/content/Update";
+import Donation from "components/MyFund/content/Donation";
+import Comment from "components/MyFund/content/Comment";
+import Update from "components/MyFund/content/Update";
 
-const DashboardContent = () => {
+const MyFundContent = () => {
     const [ index, setIndex ] = useState<number>(1);
     const [ content, setContent ] = useState<any>(<Donation />);
     const changeContent = i => (() => setIndex(i));
@@ -27,4 +27,4 @@ const DashboardContent = () => {
     )
 }
 
-export default DashboardContent;
+export default MyFundContent;

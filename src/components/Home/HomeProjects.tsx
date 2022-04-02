@@ -46,7 +46,10 @@ const HomeProjects = () => {
                 </Link>
             </div>
             <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
-                { data.map((prop, key: number) => <ProjectCard data={prop} key={key} className="w-64" />) }
+                {   data.length ?
+                    data.map((prop, key: number) => <ProjectCard data={prop} key={key} className="w-64" />) :
+                    <div className="font-semibold">Nothing to show...</div>
+                }
             </div>
             <div className="relative z-10 left-8 sm:-top-60 w-min">
                 <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>

@@ -5,7 +5,7 @@ const Toggle = ({onChange, checked}) => {
     return (
         <Switch
             onChange={onChange}
-            checked={checked}
+            checked={checked || false}
             checkedIcon={false}
             uncheckedIcon={false}
             activeBoxShadow="0px 0px 1px 10px rgba(15, 118, 110, 0.3)"
