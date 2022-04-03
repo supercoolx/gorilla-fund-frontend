@@ -4,6 +4,7 @@ import ReactSelect from "react-select";
 import CurrencyInput from "react-currency-input-field";
 import Toggle from "components/util/Toggle";
 import CopyInput from "components/util/CopyInput";
+import WalletAddressInput from "components/util/WalletAddressInput";
 import FundAPI from "api/fund";
 import { FUNDCATEGORY, URL } from "libs/constants";
 
@@ -12,7 +13,7 @@ const SettingOverview = ({data, setData}) => {
     const navigate = useNavigate();
     const changeName = e => setData({ ...data, name: e.target.value });
     const changeAmount = val => setData({ ...data, amount: val });
-    const changeAddress = e => setData({ ...data, walletAddress: e.target.value  });
+    const changeAddress = val => setData({ ...data, walletAddress: val  });
     const changeCategory = val => setData({ ...data, categoryId: val.value });
     const changeDonor = val => setData({ ...data, allowDonorComment: val });
     const changeVisitor = val => setData({ ...data, allowVisitorComment: val });
@@ -41,7 +42,7 @@ const SettingOverview = ({data, setData}) => {
                     </div>
                     <div className="pt-4">
                         <div className="pb-1 font-bold">Address</div>
-                        <input type="text" value={data.walletAddress || ""} onChange={changeAddress} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Your ethereum address" />
+                        <WalletAddressInput value={data.walletAddress || ""} onChange={changeAddress} />
                     </div>
                     <div className="pt-4">
                         <div className="pb-1 font-bold">Campaign link</div>

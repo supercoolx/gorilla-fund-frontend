@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import QRCode from "react-qr-code";
+import { Link, useParams } from "react-router-dom";
+import EthAPI from "api/eth";
+import FundAPI from "api/fund";
+import { URL } from "libs/constants";
+import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
 import Progress from "components/util/Progress";
-import FundAPI from "api/fund";
-import EthAPI from "api/eth";
-import { URL } from "libs/constants";
-import logo from "assets/img/svg/logo.svg";
+import CopyInput from "components/util/CopyInput";
 import { FiArrowLeft } from "react-icons/fi";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsExclamationOctagon } from "react-icons/bs";
 import { FaEthereum, FaExchangeAlt } from "react-icons/fa";
-import CopyInput from "components/util/CopyInput";
+import logo from "assets/img/svg/logo.svg";
 
 const Donate = () => {
+    const { user } = useAuth();
     const { uid } = useParams();
     const [ data, setData ] = useState<any>({});
     const [ error, setError ] = useState<boolean>(false);
@@ -45,10 +47,17 @@ const Donate = () => {
                         <img src={logo} className="h-8" alt="" />
                         <div className="text-lg font-bold">Logoipsum</div>
                     </Link>
-                    <div className="flex gap-2 text-right">
-                        <div className="hidden text-gray-500 sm:block">Already have an account? </div>
-                        <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link>
-                    </div>
+                    {
+                        user.email ? 
+                        <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 cursor-pointer">
+                            <div>{user.name}</div>
+                            <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
+                        </Link> :
+                        <div className="flex gap-2 text-right">
+                            <div className="hidden text-gray-500 sm:block">Already have an account? </div>
+                            <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link>
+                        </div>
+                    }
                 </div>
                 <div className="flex flex-col gap-[2px] pt-6">
                     <div>
