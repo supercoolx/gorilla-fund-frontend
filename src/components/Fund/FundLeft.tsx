@@ -36,7 +36,7 @@ const FundLeft = ({ uid, donate, goal }) => {
                         <div className="text-gray-500">30 minutes ago</div>
                     </div>
                 </div>
-                <button className="w-full py-2 text-gray-500 border-[1px]">See all donations</button>
+                <button className="w-full transition-all duration-200 py-2 text-gray-500 border-[1px] hover:border-teal-700 hover:bg-teal-700 hover:text-white">See all donations</button>
             </div>
         </div>
     )

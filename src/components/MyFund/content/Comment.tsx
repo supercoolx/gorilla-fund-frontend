@@ -23,12 +23,12 @@ const Comment = () => {
             </div>
             <hr />
             <div className="flex items-center justify-between px-6 py-4">
-                <button className="flex items-center gap-3 text-black">
+                <button className="flex items-center gap-3 text-gray-500" disabled>
                     <FiArrowLeft />
                     <div className="font-bold">Previous</div>
                 </button>
                 <div className="flex items-center">
-                    <div className="flex items-center justify-center w-8 h-8 cursor-pointer hover:bg-slate-300">1</div>
+                    <div className="flex items-center justify-center w-8 h-8 font-semibold text-black cursor-pointer hover:bg-slate-300">1</div>
                     <div className="flex items-center justify-center w-8 h-8 cursor-pointer hover:bg-slate-300">2</div>
                     <div className="flex items-center justify-center w-8 h-8 cursor-pointer hover:bg-slate-300">3</div>
                     <div className="px-3">...</div>

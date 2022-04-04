@@ -48,10 +48,10 @@ const SettingPage = () => {
                 </button>
             </div>
             <div className="flex gap-5 mt-10 max-w-[900px] mx-auto px-3">
-                <div onClick={changeContent(1)} className={`py-3 text-sm font-semibold${index === 1 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Overview</div>
-                <div onClick={changeContent(2)} className={`py-3 text-sm font-semibold${index === 2 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Photo</div>
-                <div onClick={changeContent(3)} className={`py-3 text-sm font-semibold${index === 3 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Story</div>
-                <div onClick={changeContent(4)} className={`py-3 text-sm font-semibold${index === 4 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Notifications</div>
+                <div onClick={changeContent(1)} className={`py-3 text-sm font-semibold hover:border-b-teal-700 hover:border-b-2${index === 1 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Overview</div>
+                <div onClick={changeContent(2)} className={`py-3 text-sm font-semibold hover:border-b-teal-700 hover:border-b-2${index === 2 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Photo</div>
+                <div onClick={changeContent(3)} className={`py-3 text-sm font-semibold hover:border-b-teal-700 hover:border-b-2${index === 3 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Story</div>
+                <div onClick={changeContent(4)} className={`py-3 text-sm font-semibold hover:border-b-teal-700 hover:border-b-2${index === 4 ? " border-b-teal-700 border-b-2" : " cursor-pointer text-gray-500"}`}>Notifications</div>
             </div>
             {content}
         </div>

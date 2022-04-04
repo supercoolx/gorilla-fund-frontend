@@ -11,9 +11,9 @@ const HomeTop = () => {
                 <div className="text-sm text-gray-500">We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support.</div>
                 <div className="flex flex-wrap items-center gap-3">
                     <Link to={URL.FUNDRAISE} className="px-4 py-3 font-bold text-white bg-teal-700">Start a GorillaFund</Link>
-                    <Link to="#" className="flex items-center gap-3 px-4">
-                        <FaRegPlayCircle size={30} color="gray" />
-                        <div className="text-gray-500">How it works?</div>
+                    <Link to="#" className="flex items-center gap-3 px-4 py-2 text-gray-500 transition-all duration-200 hover:text-teal-700">
+                        <FaRegPlayCircle size={30} />
+                        <div className="font-bold">How it works?</div>
                     </Link>
                 </div>
             </div>

@@ -19,34 +19,34 @@ const Footer = () => {
                     <div className="flex flex-col justify-between gap-5 sm:flex-row md:justify-start">
                         <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Fundraising for</div>
-                            <Link to="#">Gaming</Link>
-                            <Link to="#">Charity</Link>
-                            <Link to="#">Startups</Link>
-                            <Link to="#">School</Link>
-                            <Link to="#">IT Industry</Link>
+                            <Link to="#" className="hover:text-black">Gaming</Link>
+                            <Link to="#" className="hover:text-black">Charity</Link>
+                            <Link to="#" className="hover:text-black">Startups</Link>
+                            <Link to="#" className="hover:text-black">School</Link>
+                            <Link to="#" className="hover:text-black">IT Industry</Link>
                         </div>
                         <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Learn more</div>
-                            <Link to="#">How GorillaFundMe works</Link>
-                            <Link to="#">Frequently Asked Questions</Link>
-                            <Link to="#">Success Stories</Link>
-                            <Link to="#">Allowed users</Link>
+                            <Link to="#" className="hover:text-black">How GorillaFundMe works</Link>
+                            <Link to="#" className="hover:text-black">Frequently Asked Questions</Link>
+                            <Link to="#" className="hover:text-black">Success Stories</Link>
+                            <Link to="#" className="hover:text-black">Allowed users</Link>
                         </div>
                         <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Resources</div>
-                            <Link to="#">Help center</Link>
-                            <Link to="#">Blog</Link>
-                            <Link to="#">Press Center</Link>
-                            <Link to="#">About</Link>
-                            <Link to="#">Founders</Link>
+                            <Link to="#" className="hover:text-black">Help center</Link>
+                            <Link to="#" className="hover:text-black">Blog</Link>
+                            <Link to="#" className="hover:text-black">Press Center</Link>
+                            <Link to="#" className="hover:text-black">About</Link>
+                            <Link to="#" className="hover:text-black">Founders</Link>
                         </div>
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-5 pt-16 sm:flex-row">
                     <div>© 2020 All rights reserved - GorillaFundMe</div>
                     <div className="flex items-center gap-5">
-                        <a href={SOCIAL.INSTAGRAM}><FaInstagram size={30} /></a>
-                        <a href={SOCIAL.TWITTER}><FaTwitter size={30} /></a>
+                        <a href={SOCIAL.INSTAGRAM}><FaInstagram size={30} className="transition-all duration-200 hover:text-black" /></a>
+                        <a href={SOCIAL.TWITTER}><FaTwitter size={30} className="transition-all duration-200 hover:text-sky-500" /></a>
                     </div>
                 </div>
             </div>

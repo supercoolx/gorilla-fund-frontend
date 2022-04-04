@@ -20,7 +20,10 @@ const SettingOverview = ({data, setData}) => {
     const changeDonation = val => setData({ ...data, allowDonation: val });
     const changeSearch = val => setData({ ...data, allowSearch: val });
 
-    const handleDelete = () => FundAPI.delete(data.uid).then(res => navigate(URL.DASHBOARD)).catch(err => alert(err.message));
+    const handleDelete = () => {
+        let sure = window.confirm("Are you sure?");
+        sure && FundAPI.delete(data.uid).then(res => navigate(URL.DASHBOARD)).catch(err => alert(err.message));
+    }
 
     return (
         <div className="w-full bg-slate-50">
@@ -79,7 +82,7 @@ const SettingOverview = ({data, setData}) => {
                         <div className="text-xs text-gray-500">If you received donations, your donors will still be able to view a summary.</div>
                     </div>
                     <div className="">
-                        <button onClick={handleDelete} className="px-4 py-2 font-semibold text-white bg-red-400">Delete fundraiser</button>
+                        <button onClick={handleDelete} className="px-4 py-2 font-semibold text-white transition-all duration-200 bg-red-400 hover:bg-red-600 hover:shadow-md">Delete fundraiser</button>
                     </div>
                 </div>
             </div>

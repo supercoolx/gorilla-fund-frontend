@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useMoralis } from "react-moralis";
 
 const WalletAddressInput = ({value, onChange}: {value?: string, onChange: Function}) => {

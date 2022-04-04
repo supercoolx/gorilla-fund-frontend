@@ -43,11 +43,11 @@ const MyFundTop = () => {
                     <div className="text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex gap-3">
-                    <Link to={URL.SETTING.replace(':uid', uid || '')} className="flex items-center gap-2 border-[1px] py-2 px-3">
+                    <Link to={URL.SETTING.replace(':uid', uid || '')} className="flex items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <MdOutlineSettings size={20} />
                         <div className="text-sm font-bold">Setting</div>
                     </Link>
-                    <button onClick={handleOpen} className="flex items-center gap-2 border-[1px] py-2 px-3">
+                    <button onClick={handleOpen} className="flex items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <FiShare2 size={20} />
                         <div className="text-sm font-bold">Share fundraiser</div>
                     </button>
