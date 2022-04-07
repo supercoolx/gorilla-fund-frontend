@@ -8,33 +8,40 @@ import iconLogo from "assets/img/svg/logo.svg";
 import iconMetamask from "assets/img/svg/metamask.svg";
 
 const Login = () => {
+    var loginButton;
+    var errMessage;
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
-    const [ valid, setValid ] = useState<boolean>(true);
     const [ error, setError ] = useState<string>("");
-    const { user, logIn } = useAuth();
+    const { logIn } = useAuth();
     const navigate = useNavigate();
 
     const handleChangeEmail = e => setEmail(e.target.value);
     const handleChangePassword = e => setPassword(e.target.value);
 
     const handleLogin = () => {
+        loginButton.disabled = true;
+        errMessage.style.display = 'none';
         if(!validator.isEmail(email)) {
-            setValid(false);
+            errMessage.style.display = 'block';
             setError("Input email correctly.");
+            loginButton.disabled = false;
         }
         else if(!validator.isLength(password, { min: 8 })) {
-            setValid(false);
+            errMessage.style.display = 'block';
             setError("Password must be at least 8 characters");
+            loginButton.disabled = false;
         }
         else {
             Auth.login({ email, password})
             .then(res => {
                 logIn(res.data.token);
-                setValid(true);
+                errMessage.style.display = 'none';
+                loginButton.disabled = false;
             })
             .catch(err => {
-                setValid(false);
+                errMessage.style.display = 'block';
+                loginButton.disabled = false;
                 if(!err.response) setError("You're offline.");
                 else if(err.response.data.message) setError(err.response.data.message);
                 else setError(err.message);
@@ -43,8 +50,8 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if(user.email) navigate(URL.HOME);
-    }, [user, navigate]);
+        Auth.me().then(res => navigate(URL.HOME)).catch();
+    }, [navigate]);
 
     return (
         <div className="flex justify-center py-40 text-sm">
@@ -67,11 +74,11 @@ const Login = () => {
                     </div>
                     <Link to={URL.PASSWORD_EMAIL} className="font-bold text-teal-700">Forget password</Link>
                 </div>
-                { !valid && <div className="w-full py-3 mb-5 text-center bg-red-400">{error}</div> }
-                <button onClick={handleLogin} className="w-full py-2 font-bold text-white bg-teal-700">Sign in</button>
+                <div ref={el => errMessage = el} className="hidden w-full py-3 mb-5 text-center bg-red-400">{error}</div>
+                <button onClick={handleLogin} ref={el => loginButton = el} className="w-full py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign in</button>
                 <button className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />
-                    <div className="pl-1 font-bold border-slate-200">Sign in with Metamsk</div>
+                    <div className="pl-1 font-bold border-slate-200">Sign in with Metamask</div>
                 </button>
                 <div className="pt-6 text-gray-500">
                     Don't have an account?

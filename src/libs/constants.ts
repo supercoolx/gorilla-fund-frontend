@@ -1,4 +1,5 @@
 export const URL = {
+    PING: '/ping',
     HOME: '/',
     DASHBOARD: '/dashboard',
     MYFUND: '/myfund/:uid',

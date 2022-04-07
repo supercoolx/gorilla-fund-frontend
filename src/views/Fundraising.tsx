@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
+import { URL } from "libs/constants";
+import { StepInterface } from "libs/interfaces";
+import { useAuth } from "contexts/AuthContext";
 import FundProvider, { useFund } from "contexts/FundContext";
+import StepBar from "components/util/StepBar";
 import Stepper from "components/util/Stepper";
 import FundGoal from "components/Fundraising/FundGoal";
 import FundPhoto from "components/Fundraising/FundPhoto";
 import FundStory from "components/Fundraising/FundStory";
 import FundPreview from "components/Fundraising/FundPreview";
-import { URL } from "libs/constants";
-import { useAuth } from "contexts/AuthContext";
-import { StepInterface } from "libs/interfaces";
-import StepBar from "components/util/StepBar";
-import Logo from "assets/img/svg/logo.svg";
 import FundSuccess from "components/Fundraising/FundSuccess";
+import Logo from "assets/img/svg/logo.svg";
 
 const FundraisingPage = () => {
     const { step, welcome } = useFund();
@@ -39,7 +39,7 @@ const FundraisingPage = () => {
         <FundPhoto />,
         <FundStory />,
         <FundPreview />
-    ]
+    ];
 
     return welcome ? <FundSuccess /> : (
         <div className="flex flex-wrap bg-slate-50">

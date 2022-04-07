@@ -15,8 +15,13 @@ import KYC from "views/KYC";
 import Donate from "views/Donate";
 import MyFund from "views/Myfund";
 import Setting from "views/Setting";
+import Pong from "views/Pong";
 
 const routes = [
+    {
+        url: URL.PING,
+        component: <Pong />
+    },
     {
         url: URL.HOME,
         component: <Home />,
@@ -40,6 +45,7 @@ const routes = [
     {
         url: URL.EMAIL_VERIFY,
         component: <Verify />,
+        auth: true
     },
     {
         url: URL.SEARCH,
@@ -48,6 +54,7 @@ const routes = [
     {
         url: URL.FUNDRAISE,
         component: <Fundraising />,
+        auth: true
     },
     {
         url: URL.FUND,
@@ -60,18 +67,22 @@ const routes = [
     {
         url: URL.KYC,
         component: <KYC />,
+        auth: true
     },
     {
         url: URL.DASHBOARD,
         component: <Dashboard />,
+        auth: true
     },
     {
         url: URL.MYFUND,
         component: <MyFund />,
+        auth: true
     },
     {
         url: URL.SETTING,
         component: <Setting />,
+        auth: true
     },
     {
         url: "*",

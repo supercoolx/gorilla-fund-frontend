@@ -25,20 +25,22 @@ const Update = () => {
                     <div className="font-bold text-black">Send update to</div>
                     <label className="flex items-center gap-3 pt-3 pl-1 cursor-pointer">
                         <input type="radio" value={0} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
-                        <div className="">Campaign Page</div>
+                        <div className="font-semibold">Campaign Page</div>
                     </label>
                     <label className="flex items-center gap-3 pt-3 pl-1 cursor-pointer">
                         <input type="radio" value={1} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
-                        <div className="">Donors and Followers</div>
+                        <div className="font-semibold">Donors and Followers</div>
                     </label>
                     <label className="flex items-center gap-3 pt-3 pl-1 cursor-pointer">
                         <input type="radio" value={2} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
-                        <div className="">Facebook</div>
+                        <div className="font-semibold">Facebook</div>
                     </label>
                     <label className="flex items-center gap-3 pt-3 pl-1 cursor-pointer">
                         <input type="radio" value={3} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
-                        <div className="">Twitter</div>
+                        <div className="font-semibold">Twitter</div>
                     </label>
+                    <hr className="my-5" />
+                    <button className="w-full py-2 font-bold text-white bg-teal-700">Post an update</button>
                 </div>
             </Modal>
         </div>
