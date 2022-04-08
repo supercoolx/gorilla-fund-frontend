@@ -4,8 +4,19 @@ import { useFund } from "contexts/FundContext";
 import { FiArrowLeft } from "react-icons/fi";
 
 const FundPreview = () => {
-    const { setStep, name, amount, image, head, desc, submit } = useFund();
-    const handleComplete = () => submit();
+    var button;
+    const { setStep, name, amount, image, head, desc, submit, setWel } = useFund();
+    const handleComplete = () => {
+        button.disabled = true;
+        submit().then(res => {
+            button.disable = false;
+            setWel(res.data.uid);
+        })
+        .catch(err => {
+            alert(err.message);
+            button.disabled = false;
+        });
+    }
     const handlePrev = () => setStep(3);
 
     return (
@@ -25,7 +36,7 @@ const FundPreview = () => {
                     <div className="text-base text-gray-500">${nFormatter(amount, 1)} Goal</div>
                 </div>
             </div>
-            <button onClick={handleComplete} className="w-full py-2 mt-6 text-white bg-teal-700">Complete fundraiser</button>
+            <button onClick={handleComplete} ref={el => button = el} className="w-full py-2 mt-6 text-white bg-teal-700 disabled:opacity-50">Complete fundraiser</button>
             <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 bg-white">
                 <FiArrowLeft size={16} />
                 <div className="pl-1 font-bold">Go back</div>

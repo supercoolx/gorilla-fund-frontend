@@ -13,7 +13,7 @@ const PrivatePage = ({ children }) => {
             if(err.response.status === 401) setComponent(<Navigate to={URL.LOGIN} />);
             else setComponent(<NotFound />);
         })
-    }, []);
+    }, [children]);
     
     return component;
 }

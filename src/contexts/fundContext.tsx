@@ -12,21 +12,15 @@ const FundProvider = ({children}) => {
     const [image, setImage] = useState<string>("");
     const [head, setHead] = useState<string>("");
     const [desc, setDesc] = useState<string>("");
-    const [welcome, setWel] = useState<boolean>(false);
+    const [welcome, setWel] = useState<string>("");
 
-    const submit = () => {
-        FundAPI.create({
-            name, amount, image,
-            categoryId: category.value,
-            walletAddress: address,
-            headline: head,
-            description: desc
-        })
-        .then(res => {
-            setWel(true);
-        })
-        .catch(err => alert(err.message));
-    }
+    const submit = () => FundAPI.create({
+        name, amount, image,
+        categoryId: category.value,
+        walletAddress: address,
+        headline: head,
+        description: desc
+    });
 
     return (
         <FundContext.Provider value={{ 
@@ -46,6 +40,7 @@ const FundProvider = ({children}) => {
             setHead,
             desc,
             setDesc,
+            setWel,
             submit,
             welcome
         }}>

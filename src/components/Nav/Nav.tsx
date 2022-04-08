@@ -1,11 +1,18 @@
-import React from "react";
+import React, { Ref } from "react";
+import DropdownMenu, { DropdownItem, DropdownItemGroup } from "@atlaskit/dropdown-menu";
 import { useAuth } from "contexts/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { URL } from "libs/constants";
 import logo from "assets/img/svg/logo.svg"
+import "assets/styles/DropdownMenu.css";
 
 const Nav = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        logOut();
+        navigate(URL.HOME);
+    }
 
     return (
         <div className="w-full bg-white">
@@ -16,10 +23,24 @@ const Nav = () => {
                 </Link>
                 {
                     user.email ?
-                    <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 cursor-pointer">
-                        <div>{user.name}</div>
-                        <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
-                    </Link> :
+                    <div className="">
+                        <DropdownMenu
+                            trigger={({ triggerRef, ...props }) => (
+                                <div {...props} ref={triggerRef as Ref<HTMLDivElement>} className="flex items-center justify-end gap-3">
+                                    <div>{user.name}</div>
+                                    <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
+                                </div>
+                            )}
+                            placement="bottom-end"
+                        >
+                            <DropdownItemGroup>
+                                <Link to={URL.DASHBOARD}><DropdownItem>Dashboard</DropdownItem></Link>
+                                <Link to={URL.KYC}><DropdownItem>KYC</DropdownItem></Link>
+                                <hr />
+                                <DropdownItem onClick={handleLogout}>Log out</DropdownItem>
+                            </DropdownItemGroup>
+                        </DropdownMenu>
+                    </div> :
                     <div className="flex flex-row items-center gap-3 xl:gap-8">
                         <Link to={URL.SEARCH} className="text-gray-500 hover:text-black">
                             <div>Discover</div>

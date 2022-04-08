@@ -36,6 +36,7 @@ const Login = () => {
             Auth.login({ email, password})
             .then(res => {
                 logIn(res.data.token);
+                navigate(URL.HOME);
                 errMessage.style.display = 'none';
                 loginButton.disabled = false;
             })

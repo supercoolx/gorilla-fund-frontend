@@ -5,6 +5,7 @@ import { FiArrowLeft, FiPaperclip } from "react-icons/fi";
 
 const FundPhoto = () => {
     var imageInput;
+    var nextButton;
     const imageType = ["image/png", "image/jpeg", "image/gif", "image/svg+xml"];
     const { setStep, image, setImage } = useFund();
     const [ photo, setPhoto ] = useState<any>(image);
@@ -24,18 +25,29 @@ const FundPhoto = () => {
         setPhoto(window.URL.createObjectURL(file));
     }
     const handleNext = () => {
-        if(!photo) return;
+        nextButton.disabled = true;
+        if(!photo) {
+            nextButton.disabled = false;
+            return;
+        }
         if(img) {
             const formData = new FormData();
             formData.append('photo', img);
             FundAPI.photoUpload(formData)
             .then(res => {
+                nextButton.disabled = false;
                 setImage(res.data.filePath);
                 setStep(3);
             })
-            .catch(err => alert(err));
+            .catch(err => {
+                alert(err);
+                nextButton.disabled = false;
+            });
         }
-        else setStep(3);
+        else {
+            nextButton.disabled = false;
+            setStep(3);
+        }
     }
     const handlePrev = () => setStep(1);
     
@@ -54,7 +66,7 @@ const FundPhoto = () => {
                     </div>
                 </div>
             }
-            <button onClick={handleNext} className={`w-full py-2 mt-6 text-white ${photo ? "bg-teal-700" : "bg-teal-700/50 cursor-default"}`}>Save</button>
+            <button onClick={handleNext} ref={el => nextButton = el} className={`w-full disabled:opacity-50 py-2 mt-6 text-white ${photo ? "bg-teal-700" : "bg-teal-700/50 cursor-default"}`}>Save</button>
             <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 bg-white">
                 <FiArrowLeft size={16} />
                 <div className="pl-1 font-bold">Go back</div>
