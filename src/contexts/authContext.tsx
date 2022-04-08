@@ -13,7 +13,7 @@ const AuthProvider = ({children}) => {
 
     const logIn = token => {
         Token.set(token);
-        Auth.me().then(res => setUser(res.data));
+        Auth.me().then(res => setUser(res.data)).catch(err => {});
     } 
     const logOut = () => {
         Token.clear();

@@ -63,6 +63,7 @@ const routes = [
     {
         url: URL.DONATE,
         component: <Donate />,
+        auth: true
     },
     {
         url: URL.KYC,

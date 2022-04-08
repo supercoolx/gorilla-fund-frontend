@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation, createSearchParams } from "react-router-dom";
 import Auth from "api/auth";
 import { URL } from "libs/constants";
 import NotFound from "views/NotFound";
 
 const PrivatePage = ({ children }) => {
     const [ component, setComponent ] = useState<JSX.Element>(<></>);
+    const { pathname, search } = useLocation();
+    const params = createSearchParams({
+        redirect: pathname + search
+    }).toString();
     useEffect(() => {
         Auth.me()
         .then(res => setComponent(children))
         .catch(err => {
-            if(err.response.status === 401) setComponent(<Navigate to={URL.LOGIN} />);
+            if(err.response.status === 401) setComponent(<Navigate to={URL.LOGIN + '?' + params} />);
             else setComponent(<NotFound />);
         })
-    }, [children]);
+    }, [children, params]);
     
     return component;
 }
