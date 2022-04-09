@@ -1,11 +1,16 @@
 import React from "react";
+import web3, { isWeb3Enable } from "libs/web3";
 
 const WalletAddressInput = ({value, onChange}: {value?: string, onChange: Function}) => {
 
     const handleClick = () => {
-        // web3.eth.requestAccounts()
-        // .then(users => window.console.log(users));
-        // window.console.log(web3);
+        if(!isWeb3Enable) {
+            alert('Please install metamask.');
+            return;
+        }
+        web3.eth.requestAccounts()
+        .then(users => onChange(users[0]))
+        .catch(err => window.console.log(err.message));
     }
     return (
         <button

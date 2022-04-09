@@ -47,8 +47,8 @@ const SearchButtons = () => {
     ]);
 
     return (
-        <div className="px-3 py-10 bg-white sm:px-10 md:px-20 lg:px-56">
-            <div className="grid grid-cols-3 md:grid-cols-9">
+        <div className="w-full py-10 bg-white">
+            <div className="grid grid-cols-3 md:grid-cols-9 max-w-[900px] mx-auto px-3">
                 {
                     data.map((prop: ButtonInterface, key: number) => (
                         <div className="flex flex-col items-center" key={key}>

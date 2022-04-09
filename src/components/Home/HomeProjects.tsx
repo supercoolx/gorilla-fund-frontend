@@ -35,31 +35,33 @@ const HomeProjects = () => {
     }
 
     return (
-        <div className="px-3 pt-24 overflow-hidden lg:px-56 md:px-20 sm:px-10 bg-slate-50">
-            <div className="flex flex-wrap items-end justify-between gap-3">
-                <div className="flex items-center text-2xl font-bold text-black">
-                    <ImFire /> Top Rated Project
+        <div className="w-full overflow-hidden bg-slate-50">
+            <div className="px-3 pt-24 max-w-[900px] mx-auto">
+                <div className="flex flex-wrap items-end justify-between gap-3">
+                    <div className="flex items-center text-2xl font-bold text-black">
+                        <ImFire /> Top Rated Project
+                    </div>
+                    <Link to={URL.SEARCH} className="flex items-center">
+                        <div className="pr-3">See more</div>
+                        <IoIosArrowForward />
+                    </Link>
                 </div>
-                <Link to={URL.SEARCH} className="flex items-center">
-                    <div className="pr-3">See more</div>
-                    <IoIosArrowForward />
-                </Link>
-            </div>
-            <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
-                {   data.length ?
-                    data.map((prop, key: number) => <ProjectCard data={prop} key={key} className="w-64" />) :
-                    <div className="font-semibold">Nothing to show...</div>
-                }
-            </div>
-            <div className="relative z-10 left-8 sm:-top-60 w-min">
-                <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>
-                    <IoIosArrowBack className="text-white" size={20} />
-                </button>
-            </div>
-            <div className="relative flex justify-end right-8 sm:-top-72 -top-12">
-                <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={nextProject}>
-                    <IoIosArrowForward className="text-white" size={20} />
-                </button>
+                <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
+                    {   data.length ?
+                        data.map((prop, key: number) => <ProjectCard data={prop} key={key} className="w-64" />) :
+                        <div className="font-semibold">Nothing to show...</div>
+                    }
+                </div>
+                <div className="relative z-10 left-8 sm:-top-60 w-min">
+                    <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={prevProject}>
+                        <IoIosArrowBack className="text-white" size={20} />
+                    </button>
+                </div>
+                <div className="relative flex justify-end right-8 sm:-top-72 -top-12">
+                    <button className="flex items-center justify-center w-12 h-12 bg-teal-700 rounded-full" onClick={nextProject}>
+                        <IoIosArrowForward className="text-white" size={20} />
+                    </button>
+                </div>
             </div>
         </div>
     )

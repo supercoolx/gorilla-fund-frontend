@@ -31,8 +31,8 @@ const Nav = () => {
                                     <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
                                 </div>
                         } align="end" transition>
-                            <MenuItem><Link to={URL.DASHBOARD}>Dashboard</Link></MenuItem>
-                            <MenuItem><Link to={URL.KYC}>KYC</Link></MenuItem>
+                            <Link to={URL.DASHBOARD}><MenuItem>Dashboard</MenuItem></Link>
+                            <Link to={URL.KYC}><MenuItem>KYC</MenuItem></Link>
                             <MenuDivider />
                             <MenuItem onClick={handleLogout}>Log out</MenuItem>
                         </Menu>

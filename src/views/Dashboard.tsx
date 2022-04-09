@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Nav from "components/Nav/Nav";
+import NavAuth from "components/Nav/NavAuth";
 import Footer from "components/Footer/Footer";
 import FundAPI from "api/fund";
 import { URL } from "libs/constants";
@@ -14,7 +14,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <Nav />
+            <NavAuth />
             <div className="w-full bg-slate-50">
                 <div className="flex flex-col gap-3 max-w-[900px] mx-auto px-3 py-5">
                     {

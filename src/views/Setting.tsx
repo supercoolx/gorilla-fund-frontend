@@ -8,7 +8,7 @@ import NotFound from "views/NotFound";
 
 const Setting = () => {
     const { uid } = useParams();
-    const [ is404, set404 ] = useState<boolean>(true);
+    const [ is404, set404 ] = useState<boolean>(false);
     useEffect(() => {
         FundAPI.myFund(uid).then(res => set404(false)).catch(err => set404(true));
     }, [uid]);

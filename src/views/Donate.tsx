@@ -3,7 +3,7 @@ import QRCode from "react-qr-code";
 import { Link, useParams } from "react-router-dom";
 import EthAPI from "api/eth";
 import FundAPI from "api/fund";
-import { URL } from "libs/constants";
+import { URL, COMMUNITY_WALLET } from "libs/constants";
 import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
 import Progress from "components/util/Progress";
@@ -98,11 +98,11 @@ const Donate = () => {
                         <div className="w-full p-6 bg-white">
                             <div className="flex justify-center">
                                 <div className="border-[1px] p-2 border-gray-500">
-                                    <QRCode value={`ethereum:${data.walletAddress}`} level="M" size={130} />
+                                    <QRCode value={`ethereum:${COMMUNITY_WALLET}`} level="M" size={130} />
                                 </div>
                             </div>
                             <div className="pt-6 pb-2 font-semibold text-gray-500">Send your ETH donation to:</div>
-                            <CopyInput value={data.walletAddress || ''} />
+                            <CopyInput value={COMMUNITY_WALLET} />
                             <div className="pt-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ const MyFundTop = () => {
     const handleClose = () => setOpen(false);
 
     useEffect(() => {
-        FundAPI.myFund(uid).then(res => setData(res.data)).catch(err => alert(err.message));
+        FundAPI.myFund(uid).then(res => setData(res.data)).catch(err => {});
     }, [uid]);
 
     return (

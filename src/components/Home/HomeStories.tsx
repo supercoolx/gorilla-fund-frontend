@@ -22,28 +22,30 @@ const HomeStories = () => {
     }, []);
 
     return (
-        <div className="flex flex-col px-3 py-24 sm:px-10 md:px-20 lg:px-56 md:flex-row bg-slate-50">
-            <div className="flex flex-col justify-between pt-0 pr-5 text-sm md:pt-8">
-                <div>
-                    <div className="font-bold text-teal-700">GORILLAFUNDME STORIES</div>
-                    <div className="pt-5 text-2xl font-bold text-black line-clamp-1">{data[index]?.headline}</div>
-                    <div className="pt-5 text-gray-500 line-clamp-3">{data[index]?.description}</div>
-                    <div className="py-5 font-bold text-gray-500">Raised $15.0M to help build online school for IT Industry.</div>
-                </div>
-                <div className="flex items-center gap-5">
-                    <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={prevStory}>
-                        <IoIosArrowBack size={15} />
-                    </button>
-                    <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={nextStory}>
-                        <IoIosArrowForward size={15} />
-                    </button>
-                    <div className="flex">
-                        <div className="font-bold text-black">{zeroPad(index + 1, 2)}</div>
-                        &nbsp;/&nbsp;{zeroPad(data.length, 2)}
+        <div className="w-full bg-slate-50">
+            <div className="flex flex-col px-3 py-24 md:flex-row max-w-[900px] mx-auto">
+                <div className="flex flex-col justify-between pt-0 pr-5 text-sm md:pt-8">
+                    <div>
+                        <div className="font-bold text-teal-700">GORILLAFUNDME STORIES</div>
+                        <div className="pt-5 text-2xl font-bold text-black line-clamp-1">{data[index]?.headline}</div>
+                        <div className="pt-5 text-gray-500 line-clamp-3">{data[index]?.description}</div>
+                        <div className="py-5 font-bold text-gray-500">Raised $15.0M to help build online school for IT Industry.</div>
+                    </div>
+                    <div className="flex items-center gap-5">
+                        <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={prevStory}>
+                            <IoIosArrowBack size={15} />
+                        </button>
+                        <button className="flex items-center justify-center w-10 h-10 rounded-full border-[1px] border-gray-300 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200" onClick={nextStory}>
+                            <IoIosArrowForward size={15} />
+                        </button>
+                        <div className="flex">
+                            <div className="font-bold text-black">{zeroPad(index + 1, 2)}</div>
+                            &nbsp;/&nbsp;{zeroPad(data.length, 2)}
+                        </div>
                     </div>
                 </div>
+                <img src={imgStory} className="md:w-[60%] object-cover pt-5 md:pt-0" alt="" />
             </div>
-            <img src={imgStory} className="md:w-[60%] object-cover pt-5 md:pt-0" alt="" />
         </div>
     )
 }
