@@ -1,10 +1,11 @@
-import React, { Ref } from "react";
-import DropdownMenu, { DropdownItem, DropdownItemGroup } from "@atlaskit/dropdown-menu";
-import { useAuth } from "contexts/AuthContext";
+import React from "react";
+import { Menu, MenuItem, MenuDivider } from "@szhsin/react-menu";
 import { Link, useNavigate } from "react-router-dom";
 import { URL } from "libs/constants";
-import logo from "assets/img/svg/logo.svg"
-import "assets/styles/DropdownMenu.css";
+import { useAuth } from "contexts/AuthContext";
+import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/transitions/slide.css';
+import logo from "assets/img/svg/logo.svg";
 
 const Nav = () => {
     const { user, logOut } = useAuth();
@@ -24,22 +25,17 @@ const Nav = () => {
                 {
                     user.email ?
                     <div className="">
-                        <DropdownMenu
-                            trigger={({ triggerRef, ...props }) => (
-                                <div {...props} ref={triggerRef as Ref<HTMLDivElement>} className="flex items-center justify-end gap-3">
+                        <Menu menuButton={
+                                <div className="flex items-center justify-end gap-3 cursor-pointer">
                                     <div>{user.name}</div>
                                     <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
                                 </div>
-                            )}
-                            placement="bottom-end"
-                        >
-                            <DropdownItemGroup>
-                                <Link to={URL.DASHBOARD}><DropdownItem>Dashboard</DropdownItem></Link>
-                                <Link to={URL.KYC}><DropdownItem>KYC</DropdownItem></Link>
-                                <hr />
-                                <DropdownItem onClick={handleLogout}>Log out</DropdownItem>
-                            </DropdownItemGroup>
-                        </DropdownMenu>
+                        } align="end" transition>
+                            <MenuItem><Link to={URL.DASHBOARD}>Dashboard</Link></MenuItem>
+                            <MenuItem><Link to={URL.KYC}>KYC</Link></MenuItem>
+                            <MenuDivider />
+                            <MenuItem onClick={handleLogout}>Log out</MenuItem>
+                        </Menu>
                     </div> :
                     <div className="flex flex-row items-center gap-3 xl:gap-8">
                         <Link to={URL.SEARCH} className="text-gray-500 hover:text-black">

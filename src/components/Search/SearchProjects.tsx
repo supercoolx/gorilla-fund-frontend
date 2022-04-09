@@ -8,6 +8,7 @@ import { ImFire, ImSearch } from "react-icons/im";
 const SearchProjects = () => {
     const [ top, setTop ] = useState<any[]>([]);
     const [ data, setData ] = useState<any[]>([]);
+    const [ key, setKey ] = useState<string>("");
     const [ keyword, setKeyword ] = useState<string>("");
     const [ category, setCategory ] = useState<any>(FUNDCATEGORY[0]);
     const [ sort, setSort ] = useState<any>(FUNDSORT[0]);
@@ -15,11 +16,11 @@ const SearchProjects = () => {
     const onChangeKeyword = e => setKeyword(e.target.value);
     const onKeydownKeyword = e => {
         if(e.keyCode !== 13) return;
-        search();
+        setKey(keyword);
     }
     const search = () => {
         FundAPI.search({
-            s: keyword,
+            s: key,
             category: category.value,
             sort: sort.value
         }).then(res => setData(res.data)).catch(err => alert(err.message));
@@ -29,7 +30,7 @@ const SearchProjects = () => {
         FundAPI.topRated(3).then(res => setTop(res.data)).catch(err => alert(err.message));
         FundAPI.search({}).then(res => setData(res.data)).catch(err => alert(err.message));
     }, []);
-    useEffect(search, [sort, category]);
+    useEffect(search, [key, sort, category]);
 
     return (
         <div className="px-3 py-24 bg-slate-50 sm:px-10 md:px-20 lg:px-56">

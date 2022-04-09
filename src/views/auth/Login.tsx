@@ -38,9 +38,9 @@ const Login = () => {
         else {
             Auth.login({ email, password})
             .then(res => {
+                errMessage.style.display = 'none';
                 logIn(res.data.token);
                 navigate(redirect);
-                errMessage.style.display = 'none';
                 loginButton.disabled = false;
             })
             .catch(err => {
@@ -55,7 +55,7 @@ const Login = () => {
 
     useEffect(() => {
         Auth.me().then(res => navigate(redirect)).catch(err => {});
-    }, [navigate]);
+    }, [navigate, redirect]);
 
     return (
         <div className="flex justify-center py-40 text-sm">
@@ -80,7 +80,7 @@ const Login = () => {
                 </div>
                 <div ref={el => errMessage = el} className="hidden w-full py-3 mb-5 text-center bg-red-400">{error}</div>
                 <button type="submit" ref={el => loginButton = el} className="w-full py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign in</button>
-                <button className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
+                <button type="button" className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />
                     <div className="pl-1 font-bold border-slate-200">Sign in with Metamask</div>
                 </button>

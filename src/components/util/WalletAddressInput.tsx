@@ -1,10 +1,12 @@
 import React from "react";
-import { useMoralis } from "react-moralis";
 
 const WalletAddressInput = ({value, onChange}: {value?: string, onChange: Function}) => {
-    const { authenticate } = useMoralis();
-    const handleClick = () => authenticate().then(user => onChange(user?.attributes.ethAddress));
 
+    const handleClick = () => {
+        // web3.eth.requestAccounts()
+        // .then(users => window.console.log(users));
+        // window.console.log(web3);
+    }
     return (
         <button
             onClick={handleClick}

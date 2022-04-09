@@ -2,20 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import AuthProvider from 'contexts/AuthContext';
-import { MoralisProvider } from 'react-moralis';
 import reportWebVitals from './reportWebVitals';
 import 'assets/styles/index.css';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<MoralisProvider
-			appId="xe2kRzesb2s8YC2n6pXiHrnHsdaOilE3gMfDMSr0"
-			serverUrl="https://crruyp33mqrb.usemoralis.com:2053/server"
-		>
-			<AuthProvider>
-				<App />
-			</AuthProvider>
-		</MoralisProvider>
+		<AuthProvider>
+			<App />
+		</AuthProvider>
 	</React.StrictMode>,
   document.getElementById('root')
 );
