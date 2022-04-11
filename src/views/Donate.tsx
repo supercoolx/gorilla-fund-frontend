@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { ethers } from 'ethers'
 import QRCode from "react-qr-code";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import EthAPI from "api/eth";
 import FundAPI from "api/fund";
 import { addressFormat } from "libs/utils";
+import web3, { isWeb3Enable, switchNetwork } from "libs/web3";
 import { URL, COMMUNITY_WALLET } from "libs/constants";
 import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
@@ -24,6 +26,26 @@ const Donate = () => {
     const [ USD, setUSD ] = useState<any>('0');
     
     const handleChange = e => setAmount(e.target.value);
+    const handleDonate = () => {
+        if(!isWeb3Enable) return alert('Please install metamask.');
+        let eth = ethers.utils.parseEther(amount);
+        switchNetwork(1).
+        then(() => web3.eth.requestAccounts())
+        .then(user => user[0])
+        .then(wallet_address =>
+            (window as any).ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [{
+                    from: wallet_address,
+                    to: COMMUNITY_WALLET,
+                    gas: '0x5208',
+                    value: eth._hex
+                }]
+            })
+        )
+        .then(res => console.log(res))
+        .catch(err => alert(err.message));
+    }
 
     useEffect(() => {
         EthAPI.get('/exchange-rates?currency=ETH')
@@ -94,7 +116,8 @@ const Donate = () => {
                                     <FaExchangeAlt className="text-gray-500 rotate-90" />
                                 </div>
                             </div>
-                            <div className="pt-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
+                            <div className="py-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
+                            <button onClick={handleDonate} className="w-full py-2 font-bold text-white bg-teal-700">Donate</button>
                         </div>
                         <div className="w-full p-6 bg-white">
                             <div className="flex justify-center">

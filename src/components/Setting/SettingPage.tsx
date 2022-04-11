@@ -7,7 +7,6 @@ import SettingPhoto from "components/Setting/SettingPhoto";
 import SettingStory from "components/Setting/SettingStory";
 import SettingNotification from "components/Setting/SettingNotification";
 import { FiCheck, FiArrowLeft } from "react-icons/fi";
-import imgPhoto from "assets/img/home/fund_photo.png";
 
 const SettingPage = () => {
     const { uid } = useParams();
@@ -29,7 +28,7 @@ const SettingPage = () => {
     
     return (
         <div className="bg-white">
-            <div className="bg-center bg-image" style={{backgroundImage: `url(${imgPhoto})`}}>
+            <div className="bg-center bg-image" style={{backgroundImage: `url(${data.image})`}}>
                 <div className="w-full bg-white bg-opacity-70">
                     <div className="flex gap-2 items-center py-6 max-w-[900px] mx-auto px-3 text-gray-800">
                         <FiArrowLeft size={16} />
