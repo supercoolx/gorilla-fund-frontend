@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FundAPI from "api/fund";
-import Nav from "components/Nav/Nav";
+import NavAuth from "components/Nav/NavAuth";
 import MyFundTop from "components/MyFund/MyFundTop";
 import MyFundContent from "components/MyFund/MyFundContent";
 import Footer from "components/Footer/Footer";
@@ -16,7 +16,7 @@ const MyFund = () => {
 
     return is404 ? <NotFound /> : (
         <div className="bg-slate-100">
-            <Nav />
+            <NavAuth />
             <MyFundTop />
             <MyFundContent />
             <Footer />

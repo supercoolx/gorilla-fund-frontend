@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import validator from "validator";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { URL } from "libs/constants";
+import web3, { isWeb3Enable } from "libs/web3";
 import Auth from "api/auth";
 import { useAuth } from "contexts/AuthContext";
 import iconLogo from "assets/img/svg/logo.svg";
@@ -20,7 +21,6 @@ const Login = () => {
 
     const handleChangeEmail = e => setEmail(e.target.value);
     const handleChangePassword = e => setPassword(e.target.value);
-
     const handleLogin = (e) => {
         e.preventDefault();
         loginButton.disabled = true;
@@ -52,6 +52,29 @@ const Login = () => {
             });
         }
     }
+    const handleMetamaskLogin = () => {
+        if(!isWeb3Enable) {
+            alert('Please install metamask.');
+            return;
+        }
+        web3.eth.requestAccounts()
+        .then(users => Auth.getMetamaskToken(users[0]))
+        .then(async res => {
+            let address = res.data.address;
+            let signature = await web3!.eth.personal.sign(
+                `Please sign the message to authenticate.\ntoken: ${res.data.randomkey}`,
+                address,
+                ''
+            );
+            return { address, signature };
+        })
+        .then(res => Auth.signinMetamask(res))
+        .then(res => {
+            logIn(res.data.token);
+            navigate(redirect);
+        })
+        .catch(err => alert(err.message));
+    }
 
     useEffect(() => {
         Auth.me().then(res => navigate(redirect)).catch(err => {});
@@ -80,7 +103,7 @@ const Login = () => {
                 </div>
                 <div ref={el => errMessage = el} className="hidden w-full py-3 mb-5 text-center bg-red-400">{error}</div>
                 <button type="submit" ref={el => loginButton = el} className="w-full py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign in</button>
-                <button type="button" className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
+                <button type="button" onClick={handleMetamaskLogin} className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />
                     <div className="pl-1 font-bold border-slate-200">Sign in with Metamask</div>
                 </button>

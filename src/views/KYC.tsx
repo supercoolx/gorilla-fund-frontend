@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
+import { addressFormat } from "libs/utils";
 import { StepInterface } from "libs/interfaces";
 import { useAuth } from "contexts/AuthContext";
 import KycProvider, { useKYC } from "contexts/KycContext";
@@ -37,9 +38,9 @@ const KYCPage = () => {
             <Stepper step={step} data={data} />
             <div className="flex flex-col flex-1 min-w-[360px] gap-16 px-2 py-12">
                 {
-                    user.email ? 
+                    user.id ?
                     <div className="flex items-center justify-end gap-3 pr-10 cursor-pointer">
-                        <div>{user.name}</div>
+                        <div>{user.name || addressFormat(user.address)}</div>
                         <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
                     </div> :
                     <div className="pr-10 text-right">Already have an account? <Link to={URL.LOGIN} className="font-bold text-teal-700">Sign in</Link></div>

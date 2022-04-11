@@ -3,6 +3,7 @@ import QRCode from "react-qr-code";
 import { Link, useParams } from "react-router-dom";
 import EthAPI from "api/eth";
 import FundAPI from "api/fund";
+import { addressFormat } from "libs/utils";
 import { URL, COMMUNITY_WALLET } from "libs/constants";
 import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
@@ -48,9 +49,9 @@ const Donate = () => {
                         <div className="text-lg font-bold">Logoipsum</div>
                     </Link>
                     {
-                        user.email ? 
+                        user.id ? 
                         <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 cursor-pointer">
-                            <div>{user.name}</div>
+                            <div>{user.name || addressFormat(user.address)}</div>
                             <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
                         </Link> :
                         <div className="flex gap-2 text-right">

@@ -18,7 +18,7 @@ const SettingPage = () => {
     const updateFund = () => FundAPI.update(data).then(res => alert("Saved successfully.")).catch(err => alert(err.message));
 
     useEffect(() => {
-        FundAPI.findByUid(uid).then(res => setData(res.data)).catch(err => alert(err.message));
+        FundAPI.findByUid(uid).then(res => setData(res.data)).catch(err => {});
     }, [uid]);
     useEffect(() => {
         index === 1 && setContent(<SettingOverview data={data} setData={setData} />);

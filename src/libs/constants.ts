@@ -6,6 +6,7 @@ export const URL = {
     DASHBOARD: '/dashboard',
     MYFUND: '/myfund/:uid',
     SETTING: '/myfund/:uid/setting',
+    PROFILE: '/profile',
     SEARCH: '/search',
     FUNDRAISE: '/fund',
     FUND: '/fund/:uid',

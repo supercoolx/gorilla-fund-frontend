@@ -31,3 +31,5 @@ export const nFormatter = (num: number | string, digits: number) => {
 export const textSlice = (text: string, length: number) => text.slice(0, length) + (text.length > length ? "..." : "");
 
 export const zeroPad = (num: number, places: number) => String(num).padStart(places, '0');
+
+export const addressFormat = (address: string) => address.slice(0, 6) + '...' + address.slice(address.length - 4, address.length);

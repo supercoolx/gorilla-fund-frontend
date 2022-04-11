@@ -1,7 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import ReactSelect from "react-select";
+import { useNavigate } from "react-router-dom";
 import CurrencyInput from "react-currency-input-field";
+import Modal from "components/util/Modal";
 import Toggle from "components/util/Toggle";
 import CopyInput from "components/util/CopyInput";
 import WalletAddressInput from "components/util/WalletAddressInput";
@@ -11,6 +12,8 @@ import { FUNDCATEGORY, URL } from "libs/constants";
 const SettingOverview = ({data, setData}) => {
 
     const navigate = useNavigate();
+    const [isOpen, setOpen] = useState<boolean>(false);
+    const [isValid, setValid] = useState<boolean>(false);
     const changeName = e => setData({ ...data, name: e.target.value });
     const changeAmount = val => setData({ ...data, amount: val });
     const changeAddress = val => setData({ ...data, walletAddress: val  });
@@ -20,10 +23,14 @@ const SettingOverview = ({data, setData}) => {
     const changeDonation = val => setData({ ...data, allowDonation: val });
     const changeSearch = val => setData({ ...data, allowSearch: val });
 
-    const handleDelete = () => {
-        let sure = window.confirm("Are you sure?");
-        sure && FundAPI.delete(data.uid).then(res => navigate(URL.DASHBOARD)).catch(err => alert(err.message));
+    const handleDelete = (e) => {
+        e.preventDefault();
+        if(!isValid) return;
+        FundAPI.delete(data.uid).then(res => navigate(URL.DASHBOARD)).catch(err => alert(err.message));
     }
+    const handleChange = e => setValid(e.target.value === "delete");
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return (
         <div className="w-full bg-slate-50">
@@ -82,10 +89,23 @@ const SettingOverview = ({data, setData}) => {
                         <div className="text-xs text-gray-500">If you received donations, your donors will still be able to view a summary.</div>
                     </div>
                     <div className="">
-                        <button onClick={handleDelete} className="px-4 py-2 font-semibold text-white transition-all duration-200 bg-red-400 hover:bg-red-600 hover:shadow-md">Delete fundraiser</button>
+                        <button onClick={handleOpen} className="px-4 py-2 font-semibold text-white transition-all duration-200 bg-red-400 rounded-md hover:bg-red-600 hover:shadow-md">Delete fundraiser</button>
                     </div>
                 </div>
             </div>
+            <Modal isOpen={isOpen}>
+                <form onSubmit={handleDelete} className="w-full max-w-md p-6 bg-white">
+                    <div className="flex items-end justify-between">
+                        <div className="font-bold text-black">Delete your fundraisers</div>
+                        <div onClick={handleClose} className="text-2xl font-bold text-gray-500 cursor-pointer">&times;</div>
+                    </div>
+                    <p className="text-sm text-gray-500">You will no longer have access to this fundraiser after deleting.</p>
+                    <p className="text-sm text-gray-500">If you wnat to continue with this action, type "delete" below.</p>
+                    <hr className="my-4" />
+                    <input type="text" onChange={handleChange} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" autoComplete="off" placeholder="delete" />
+                    <button type="submit" className="w-full py-2 mt-4 font-bold text-white transition-all duration-200 bg-teal-700 disabled:opacity-70" disabled={!isValid}>Delete fundraiser</button>
+                </form>
+            </Modal>
         </div>
     )
 }

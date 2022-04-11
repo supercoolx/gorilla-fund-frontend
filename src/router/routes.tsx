@@ -16,6 +16,7 @@ import Donate from "views/Donate";
 import MyFund from "views/Myfund";
 import Setting from "views/Setting";
 import Pong from "views/Pong";
+import Profile from "views/Profile";
 
 const routes = [
     {
@@ -83,6 +84,11 @@ const routes = [
     {
         url: URL.SETTING,
         component: <Setting />,
+        auth: true
+    },
+    {
+        url: URL.PROFILE,
+        component: <Profile />,
         auth: true
     },
     {
