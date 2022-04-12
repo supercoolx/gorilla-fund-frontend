@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from 'ethers'
 import QRCode from "react-qr-code";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import EthAPI from "api/eth";
 import FundAPI from "api/fund";
 import { addressFormat } from "libs/utils";
@@ -28,9 +28,10 @@ const Donate = () => {
     const handleChange = e => setAmount(e.target.value);
     const handleDonate = () => {
         if(!isWeb3Enable) return alert('Please install metamask.');
+        if(amount === '0') return alert('Donation must be greater than 0');
         let eth = ethers.utils.parseEther(amount);
-        switchNetwork(1).
-        then(() => web3.eth.requestAccounts())
+        switchNetwork(1)
+        .then(() => web3.eth.requestAccounts())
         .then(user => user[0])
         .then(wallet_address =>
             (window as any).ethereum.request({

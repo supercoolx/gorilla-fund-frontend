@@ -8,6 +8,7 @@ import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
 import logo from "assets/img/svg/logo.svg";
 import { ImSearch } from "react-icons/im";
+import { IoIosArrowDown } from "react-icons/io";
 
 const NavAuth = () => {
     const { user, logOut } = useAuth();
@@ -31,18 +32,19 @@ const NavAuth = () => {
                         <img src={logo} className="w-7" alt="" />
                         <div className="hidden font-extrabold sm:block">Logoipsum</div>
                     </Link>
-                    <div className="flex bg-white border-[1px] border-white border-l-slate-200">
+                    <div className="flex bg-white border-l">
                         <div className="flex items-center justify-center px-2">
                             <ImSearch className="text-gray-500" size={16} />
                         </div>
-                        <input type="text" value={keyword} onChange={onChangeKeyword} onKeyDown={onKeydownKeyword} className="w-48 pr-4 text-sm focus:outline-none" placeholder="Search by name, category" />
+                        <input type="text" value={keyword} onChange={onChangeKeyword} onKeyDown={onKeydownKeyword} className="pr-4 text-sm w-44 focus:outline-none focus:border-b" placeholder="Search by name, category" />
                     </div>
                 </div>
                 <div className="">
                     <Menu menuButton={
                         <div className="flex items-center justify-end gap-3 cursor-pointer">
-                            <div className="hidden xs:block">{user.name || addressFormat(user.address)}</div>
                             <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
+                            <div className="hidden xs:block">{user.name || addressFormat(user.address)}</div>
+                            <IoIosArrowDown className="hidden xs:block" />
                         </div>
                     } align="end" transition>
                         <Link to={URL.DASHBOARD}><MenuItem>Dashboard</MenuItem></Link>
