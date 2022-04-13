@@ -12,13 +12,13 @@ const Signup = () => {
     var signupButton;
     var errMessage;
     const navigate = useNavigate();
-    const [ name, setName ] = useState<string>("");
+    const [ username, setUsername ] = useState<string>("");
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
     const [ error, setError ] = useState<string>("");
     const { logIn } = useAuth();
 
-    const handleChangeName = e => setName(e.target.value);
+    const handleChangeUsername = e => setUsername(e.target.value);
     const handleChangeEmail = e => setEmail(e.target.value);
     const handleChangePassword = e => setPassword(e.target.value);
 
@@ -30,10 +30,10 @@ const Signup = () => {
         e.preventDefault();
         signupButton.disabled = true;
         errMessage.style.display = 'none';
-        if(!validator.isLength(name, { min: 2 })) {
+        if(!/^\w+$/.test(username)) {
             errMessage.style.display = 'block';
             signupButton.disabled = false;
-            setError("Name must be at least 2 characters");
+            setError("Name must be at least 2 characters and alphanumeric.");
         }
         else if(!validator.isEmail(email)) {
             errMessage.style.display = 'block';
@@ -46,7 +46,7 @@ const Signup = () => {
             setError("Password must be at least 8 characters");
         }
         else {
-            Auth.signup({ name, email, password })
+            Auth.signup({ username, email, password })
             .then(res => {
                 logIn(res.data.token);
                 errMessage.style.display = 'none';
@@ -58,7 +58,7 @@ const Signup = () => {
                 signupButton.disabled = false;
                 if(!err.response) setError("You're offline.");
                 else if(err.response.status === 409) setError(err.response.data.message);
-                else setError(err);
+                else setError(err.message);
             });
         }
     }
@@ -70,15 +70,15 @@ const Signup = () => {
         web3.eth.requestAccounts()
         .then(users => Auth.getMetamaskToken(users[0]))
         .then(async res => {
-            let address = res.data.address;
+            let walletAddress = res.data.walletAddress;
             let signature = await web3!.eth.personal.sign(
                 `Please sign the message to authenticate.\ntoken: ${res.data.randomkey}`,
-                address,
+                walletAddress,
                 ''
             );
-            return { address, signature };
+            return { walletAddress, signature };
         })
-        .then(res => Auth.signupMetamask(res))
+        .then(res => Auth.signinMetamask(res))
         .then(res => {
             logIn(res.data.token);
             navigate(URL.HOME);
@@ -93,8 +93,8 @@ const Signup = () => {
                 <div className="pt-6 text-2xl font-bold">Create an account</div>
                 <div className="pt-3 text-gray-500">Welcome! You must be Ape Gorilla holder to sign up.</div>
                 <div className="flex flex-col w-full pt-6">
-                    <div className="pb-1 font-bold">Name*</div>
-                    <input type="text" value={name} onChange={handleChangeName} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your name" autoComplete="true" />
+                    <div className="pb-1 font-bold">Username*</div>
+                    <input type="text" value={username} onChange={handleChangeUsername} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your username" autoComplete="true" />
                 </div>
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Email*</div>

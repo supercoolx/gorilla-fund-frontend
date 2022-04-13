@@ -24,11 +24,11 @@ const Nav = () => {
                     <div className="hidden font-extrabold sm:flex">Logoipsum</div>
                 </Link>
                 {
-                    user.id ?
+                    user.loggedIn ?
                     <div className="">
                         <Menu menuButton={
                                 <div className="flex items-center justify-end gap-3 cursor-pointer">
-                                    <div>{user.name || addressFormat(user.address)}</div>
+                                    <div>{user.username || addressFormat(user.walletAddress)}</div>
                                     <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
                                 </div>
                         } align="end" transition>

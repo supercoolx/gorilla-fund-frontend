@@ -59,7 +59,7 @@ const Verify = () => {
                         <FiMail className="text-teal-700" size={24} />
                     </div>
                     <div className="pt-6 text-2xl font-bold">Check your email</div>
-                    <div className="pt-3 text-center text-gray-500">We sent a verification link to  <span className="font-bold">{user.email}</span></div>
+                    <div className="pt-3 text-center text-gray-500">We sent a verification link to  <a href={`mailto:${user.email}`} className="font-bold">{user.email}</a></div>
                     <div className="flex justify-center w-full py-6">
                         <ReactInputVerificationCode passwordMask="x" onChange={setCode} />
                     </div>
@@ -67,7 +67,7 @@ const Verify = () => {
                     <div className="pt-5 text-gray-500">Didn't receive the email? <span onClick={sendEmail} className="font-bold text-teal-700 cursor-pointer">Resend</span></div>
                     <Link to={URL.LOGIN} className="flex items-center justify-center w-full py-2 mt-3">
                         <FiArrowLeft size={16} />
-                        <Link to={URL.LOGIN} className="pl-1 font-bold">Back to log in</Link>
+                        <div className="pl-1 font-bold">Back to log in</div>
                     </Link>
                 </div>
             )}

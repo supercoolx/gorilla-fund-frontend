@@ -60,13 +60,13 @@ const Login = () => {
         web3.eth.requestAccounts()
         .then(users => Auth.getMetamaskToken(users[0]))
         .then(async res => {
-            let address = res.data.address;
+            let walletAddress = res.data.walletAddress;
             let signature = await web3!.eth.personal.sign(
                 `Please sign the message to authenticate.\ntoken: ${res.data.randomkey}`,
-                address,
+                walletAddress,
                 ''
             );
-            return { address, signature };
+            return { walletAddress, signature };
         })
         .then(res => Auth.signinMetamask(res))
         .then(res => {

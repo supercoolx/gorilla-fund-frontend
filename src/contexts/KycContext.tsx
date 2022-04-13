@@ -1,42 +1,51 @@
 import React, { createContext, useContext, useState } from "react";
-import KYC from "api/kyc";
+import UserAPI from "api/user";
+import { useAuth } from "./AuthContext";
 
 const KycContext = createContext<any>(undefined);
 
 export const useKYC = () => useContext(KycContext);
 
 const KycProvider = ({children}) => {
+    const { user } = useAuth();
     const [ step, setStep ] = useState<number>(1);
-    const [ firstName, setFirst ] = useState<string>("");
-    const [ lastName, setLast ] = useState<string>("");
-    const [ country, setCountry ] = useState<any>("");
-    const [ phone, setPhone ] = useState<string>("");
-    const [ zip, setZip ] = useState<string>("");
-    const [ city, setCity ] = useState<string>("");
-    const [ address, setAddress ] = useState<string>("");
-    const [ idType, setType ] = useState<number>(1);
-    const [ number, setNumber ] = useState<string>("");
-    const [ expire, setExpire ] = useState<string>("");
-    const [ img1, setImage1 ] = useState<string>("");
-    const [ img2, setImage2 ] = useState<string>("");
-    const [ ether, setEther ] = useState<string>("");
+    const [ firstName, setFirst ] = useState<string>(user.firstName);
+    const [ lastName, setLast ] = useState<string>(user.lastName);
+    const [ country, setCountry ] = useState<any>(user.country);
+    const [ phone, setPhone ] = useState<string>(user.phone);
+    const [ zipCode, setZip ] = useState<string>(user.zipCode);
+    const [ city, setCity ] = useState<string>(user.city);
+    const [ address, setAddress ] = useState<string>(user.address);
+    const [ identifyType, setType ] = useState<number>(user.identifyType);
+    const [ identifyNumber, setNumber ] = useState<string>(user.identifyNumber);
+    const [ identifyExpire, setExpire ] = useState<string>(user.identifyExpire);
+    const [ doc1, setDoc1 ] = useState<string>(user.doc1);
+    const [ doc2, setDoc2 ] = useState<string>(user.doc2);
+    const [ walletAddress, setWallet ] = useState<string>(user.walletAddress);
     const submit = () => {
         const formData = new FormData();
-        formData.append('img1', img1);
-        formData.append('img2', img2);
-        KYC.upload(formData)
+        formData.append('doc1', doc1);
+        formData.append('doc2', doc2);
+        return UserAPI.docUpload(formData)
         .then(res => {
             let data = {
-                firstName, lastName, country, zip, city, address, idType, number, expire, ether,
+                firstName,
+                lastName,
+                country,
+                zipCode,
+                city,
+                address,
+                identifyType,
+                identifyNumber,
+                identifyExpire,
+                walletAddress,
                 phone: country.code + phone,
-                img1: res.data.path1,
-                img2: res.data.path2,
+                doc1: res.data.path1,
+                doc2: res.data.path2,
             }
             return data;
         })
-        .then(data => KYC.create(data))
-        .then(res => alert("Submitted successfully."))
-        .catch(err => alert(err.message));
+        .then(data => UserAPI.kyc(data))
     }
 
     return (
@@ -46,15 +55,15 @@ const KycProvider = ({children}) => {
             lastName, setLast,
             country, setCountry,
             phone, setPhone,
-            zip, setZip,
+            zipCode, setZip,
             city, setCity,
             address, setAddress,
-            idType, setType,
-            number, setNumber,
-            expire, setExpire,
-            img1, setImage1,
-            img2, setImage2,
-            ether, setEther,
+            identifyType, setType,
+            identifyNumber, setNumber,
+            identifyExpire, setExpire,
+            doc1, setDoc1,
+            doc2, setDoc2,
+            walletAddress, setWallet,
             submit
         }}>
             {children}

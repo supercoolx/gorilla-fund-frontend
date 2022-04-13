@@ -6,7 +6,7 @@ import EthAPI from "api/eth";
 import FundAPI from "api/fund";
 import { addressFormat } from "libs/utils";
 import web3, { isWeb3Enable, switchNetwork } from "libs/web3";
-import { URL, COMMUNITY_WALLET } from "libs/constants";
+import { URL } from "libs/constants";
 import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
 import Progress from "components/util/Progress";
@@ -38,7 +38,7 @@ const Donate = () => {
                 method: 'eth_sendTransaction',
                 params: [{
                     from: wallet_address,
-                    to: COMMUNITY_WALLET,
+                    to: data.walletAddress,
                     gas: '0x5208',
                     value: eth._hex
                 }]
@@ -72,9 +72,9 @@ const Donate = () => {
                         <div className="text-lg font-bold">Logoipsum</div>
                     </Link>
                     {
-                        user.id ? 
+                        user.loggedIn ? 
                         <Link to={URL.DASHBOARD} className="flex items-center justify-end gap-3 cursor-pointer">
-                            <div>{user.name || addressFormat(user.address)}</div>
+                            <div>{user.username || addressFormat(user.walletAddress)}</div>
                             <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
                         </Link> :
                         <div className="flex gap-2 text-right">
@@ -123,11 +123,11 @@ const Donate = () => {
                         <div className="w-full p-6 bg-white">
                             <div className="flex justify-center">
                                 <div className="border-[1px] p-2 border-gray-500">
-                                    <QRCode value={`ethereum:${COMMUNITY_WALLET}`} level="M" size={130} />
+                                    <QRCode value={`ethereum:${data.walletAddress}`} level="M" size={130} />
                                 </div>
                             </div>
                             <div className="pt-6 pb-2 font-semibold text-gray-500">Send your ETH donation to:</div>
-                            <CopyInput value={COMMUNITY_WALLET} />
+                            <CopyInput value={data.walletAddress} />
                             <div className="pt-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
                         </div>
                     </div>

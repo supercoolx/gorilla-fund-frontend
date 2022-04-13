@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useAuth } from "contexts/AuthContext";
-import SettingAPI from "api/setting";
+import UserAPI from "api/user";
 
 const SettingNotification = () => {
     const { user } = useAuth();
     const [ option, setOption ] = useState<string>(user.emailSetting + "");
     const handleChange = e => {
-        SettingAPI.changeEmailSetting(parseInt(e.target.value))
+        UserAPI.changeEmailSetting(parseInt(e.target.value))
         .then(res => {
             alert("Changed successfully")
             setOption(e.target.value);
