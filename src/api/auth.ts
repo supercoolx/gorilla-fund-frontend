@@ -10,6 +10,8 @@ const Auth = {
     verifyEmail: (token: string) => API.post('/auth/verify_email', { token }),
     getMetamaskToken: (walletAddress: string) => API.post('/auth/getMetamaskToken', {walletAddress}),
     signinMetamask: credentials => API.post('/auth/signinMetamask', credentials),
+    changePassword: (current: string, newPass: string) => API.put('/auth/change_password', { current, newPass }),
+    deleteAccount: () => API.delete('/auth/delete'),
     me: () => API.get('/auth/me')
 }
 

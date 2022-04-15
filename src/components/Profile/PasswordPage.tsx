@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Auth from "api/auth";
 import { MdLockOutline } from "react-icons/md";
 
-const PasswordPage = () => {
+const PasswordPage = ({submit, setSubmit}) => {
+    const [ current, setCurrent ] = useState<string>("");
+    const [ newPass, setNew ] = useState<string>("");
+    const [ repeat, setRepeat ] = useState<string>("");
+
+    const handleCurrent = e => setCurrent(e.target.value);
+    const handleNew = e => setNew(e.target.value);
+    const handleRepeat = e => setRepeat(e.target.value);
+
+    const setPassword = () => {
+        setSubmit(false);
+        if(newPass.length < 8) return alert('Password must be at least 8 characters.');
+        if(newPass !== repeat) return alert('Please input password correctly.');
+        Auth.changePassword(current, newPass)
+        .then(res => {
+            if(res.data.success) return alert("Changed successfully.");
+            else return alert(res.data.message);
+        })
+        .catch(err => alert(err?.response.data.message || err.message));
+    }
+
+    useEffect(() => {
+        if(submit) setPassword();
+    }, [submit]);
+
     return (
         <div className="py-5 bg-slate-50">
             <div className="max-w-[900px] w-full mx-auto px-3">
@@ -18,7 +43,7 @@ const PasswordPage = () => {
                                 <div className="flex items-center justify-center px-3">
                                     <MdLockOutline className="text-gray-500" size={16} />
                                 </div>
-                                <input type="password" className="w-full py-2 pr-4 focus:outline-none" placeholder="Current password" />
+                                <input type="password" value={current} onChange={handleCurrent} className="w-full py-2 pr-4 focus:outline-none" placeholder="Current password" />
                             </div>
                         </div>
                         <div className="pt-4">
@@ -27,7 +52,7 @@ const PasswordPage = () => {
                                 <div className="flex items-center justify-center px-3">
                                     <MdLockOutline className="text-gray-500" size={16} />
                                 </div>
-                                <input type="password" className="w-full py-2 pr-4 focus:outline-none" placeholder="New password" />
+                                <input type="password" value={newPass} onChange={handleNew} className="w-full py-2 pr-4 focus:outline-none" placeholder="New password" />
                             </div>
                             <div className="pt-1 text-gray-500">Must be at least 8 characters.</div>
                         </div>
@@ -37,7 +62,7 @@ const PasswordPage = () => {
                                 <div className="flex items-center justify-center px-3">
                                     <MdLockOutline className="text-gray-500" size={16} />
                                 </div>
-                                <input type="password" className="w-full py-2 pr-4 focus:outline-none" placeholder="Re-enter password" />
+                                <input type="password" value={repeat} onChange={handleRepeat} className="w-full py-2 pr-4 focus:outline-none" placeholder="Re-enter password" />
                             </div>
                             <div className="pt-1 text-gray-500">Password must match with new password.</div>
                         </div>

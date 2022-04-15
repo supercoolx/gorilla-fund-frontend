@@ -9,17 +9,18 @@ import Footer from "components/Footer/Footer";
 
 const Profile = () => {
     const [ index, setIndex ] = useState<number>(0);
+    const [ submit, setSubmit ] = useState<boolean>(false);
     const pages = [
-        <ProfilePage />,
-        <PasswordPage />,
-        <WalletPage />,
-        <NotificationPage />
+        <ProfilePage submit={submit} setSubmit={setSubmit} />,
+        <PasswordPage submit={submit} setSubmit={setSubmit} />,
+        <WalletPage submit={submit} setSubmit={setSubmit} />,
+        <NotificationPage submit={submit} setSubmit={setSubmit} />
     ];
 
     return (
         <div>
             <NavAuth />
-            <ProfileMenu index={index} setIndex={setIndex} />
+            <ProfileMenu setSubmit={setSubmit} index={index} setIndex={setIndex} />
             {pages[index]}
             <Footer />
         </div>

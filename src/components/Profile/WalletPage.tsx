@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import UserAPI from "api/user";
+import web3, { isWeb3Enable } from "libs/web3";
+import { useAuth } from "contexts/AuthContext";
 import { FiLink2 } from "react-icons/fi";
 
-const WalletPage = () => {
+const WalletPage = ({ submit, setSubmit }) => {
+    const { user, logOut } = useAuth();
+    const [ wallet, setWallet ] = useState<string>("");
+    const handleClick = () => {
+        if(!isWeb3Enable) return;
+        web3.eth.requestAccounts()
+        .then(users => setWallet(users[0]))
+        .catch(err => window.console.log(err.message));
+    }
+    const changeWallet = () => {
+        setSubmit(false);
+        UserAPI.confirmWallet(wallet)
+        .then(res => {
+            if(res.data.success) return UserAPI.updateWallet(wallet);
+            else throw new Error("Wallet is already in use");
+        })
+        .then(res => {
+            alert("Changed successfully. Please sign in again.");
+            logOut();
+        })
+        .catch(err => alert(err.message));
+    }
+
+    useEffect(() => user.walletAddress && setWallet(user.walletAddress), [user]);
+    useEffect(() => {
+        if(submit) changeWallet();
+    }, [submit])
+
     return (
         <div className="py-5 bg-slate-50">
             <div className="max-w-[900px] w-full mx-auto px-3">
@@ -15,7 +45,7 @@ const WalletPage = () => {
                         <div className="text-sm font-bold">Your wallet</div>
                         <button className="flex items-center px-3 py-2 mt-3 text-white bg-teal-700 rounded-sm">
                             <FiLink2 />
-                            <div className="pl-2">Connect wallet</div>
+                            <div onClick={handleClick} className="pl-2">{wallet || "Connect wallet"}</div>
                         </button>
                     </div>
                 </div>

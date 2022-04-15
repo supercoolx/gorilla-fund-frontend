@@ -46,7 +46,7 @@ const Login = () => {
             .catch(err => {
                 errMessage.style.display = 'block';
                 loginButton.disabled = false;
-                if(!err.response) setError("You're offline.");
+                if(!err.response) setError("Sever do not response.");
                 else if(err.response.data.message) setError(err.response.data.message);
                 else setError(err.message);
             });
@@ -73,7 +73,10 @@ const Login = () => {
             logIn(res.data.token);
             navigate(redirect);
         })
-        .catch(err => alert(err.message));
+        .catch(err => {
+            if(err.response.status === 403) alert('Your account has been closed.');
+            else alert(err.message)
+        });
     }
 
     useEffect(() => {

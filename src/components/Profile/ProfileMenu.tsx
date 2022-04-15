@@ -1,8 +1,10 @@
 import React from "react";
 
-const ProfileMenu = ({index, setIndex}) => {
+const ProfileMenu = ({setSubmit, index, setIndex}) => {
     const isActive = i => index === i ? ' font-bold text-teal-700 rounded-sm bg-teal-700/20' : ' text-gray-500 rounded-sm cursor-pointer hover:bg-teal-700/20 hover:text-teal-700';
     const setActive = i => (() => setIndex(i));
+    const handleSubmit = () => setSubmit(true);
+
     return (
         <div className="w-full bg-white">
             <div className="max-w-[900px] mx-auto px-3">
@@ -16,7 +18,7 @@ const ProfileMenu = ({index, setIndex}) => {
                     </div>
                     <div className="flex gap-2">
                         <button className="px-3 py-2 font-semibold bg-gray-300 rounded-sm hover:shadow-md">Discard changes</button>
-                        <button className="px-3 py-2 font-semibold text-white bg-teal-700 rounded-sm hover:shadow-md">Save changes</button>
+                        <button onClick={handleSubmit} className="px-3 py-2 font-semibold text-white bg-teal-700 rounded-sm hover:shadow-md">Save changes</button>
                     </div>
                 </div>
             </div>

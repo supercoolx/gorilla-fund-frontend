@@ -19,6 +19,7 @@ const AuthProvider = ({children}) => {
         Token.clear();
         setUser({});
     }
+    const reload = () => Auth.me().then(res => setUser(res.data)).catch(err => setUser({}));
 
     useEffect(() => {
         const token = Token.get();
@@ -26,7 +27,7 @@ const AuthProvider = ({children}) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, setUser, logIn, logOut }} >
+        <AuthContext.Provider value={{ user, setUser, reload, logIn, logOut }} >
             {children}
         </AuthContext.Provider>
     )
