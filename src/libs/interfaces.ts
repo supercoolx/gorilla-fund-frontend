@@ -20,8 +20,9 @@ export interface FundStoryInterface {
 }
 
 export interface ButtonInterface {
-    icon:string
+    icon: JSX.Element
     text: string
+    value: number
 }
 
 export interface StepInterface {

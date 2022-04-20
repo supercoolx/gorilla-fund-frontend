@@ -36,6 +36,7 @@ export const SOCIAL = {
 
 export const FUNDCATEGORY = [
     {
+        value: null,
         label: "All"
     },
     {
