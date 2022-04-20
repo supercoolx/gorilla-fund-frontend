@@ -65,7 +65,7 @@ const SearchProjects = () => {
                         </div>
                         <input type="text" value={keyword} onChange={onChangeKeyword} onKeyDown={onKeydownKeyword} className="w-48 py-2 pr-4 focus:outline-none" placeholder="Search by name, category" />
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex flex-wrap gap-3">
                         <div className="flex px-2">
                             <div className="flex items-center justify-center pr-3 text-gray-500">
                                 Categories:

@@ -19,11 +19,11 @@ const Footer = () => {
                     <div className="flex flex-col justify-between gap-5 sm:flex-row md:justify-start">
                         <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Fundraising for</div>
-                            <Link to="#" className="hover:text-black">Gaming</Link>
-                            <Link to="#" className="hover:text-black">Charity</Link>
-                            <Link to="#" className="hover:text-black">Startups</Link>
-                            <Link to="#" className="hover:text-black">School</Link>
-                            <Link to="#" className="hover:text-black">IT Industry</Link>
+                            <Link to={URL.SEARCH + '?category=2'} className="hover:text-black">Gaming</Link>
+                            <Link to={URL.SEARCH + '?category=3'} className="hover:text-black">Medical</Link>
+                            <Link to={URL.SEARCH + '?category=5'} className="hover:text-black">Startups</Link>
+                            <Link to={URL.SEARCH + '?category=1'} className="hover:text-black">School</Link>
+                            <Link to={URL.SEARCH + '?category=4'} className="hover:text-black">IT Industry</Link>
                         </div>
                         <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Learn more</div>
