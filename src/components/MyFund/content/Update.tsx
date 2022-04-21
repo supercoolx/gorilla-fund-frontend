@@ -12,7 +12,7 @@ const Update = () => {
             <div className="font-bold text-black">No updates yet!</div>
             <div className="text-xs">Keep your donors and followers up to date on your fundraisers!</div>
             <button onClick={handleOpen} className="px-3 py-2 font-bold text-black border-[1px] hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">Post an update</button>
-            <Modal isOpen={isOpen}>
+            <Modal isOpen={isOpen} onClose={handleClose}>
                 <div className="w-full max-w-md p-6 bg-white">
                     <div className="flex justify-between">
                         <div className="text-base font-bold text-black">Post an update</div>

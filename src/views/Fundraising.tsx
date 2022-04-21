@@ -12,7 +12,7 @@ import FundPhoto from "components/Fundraising/FundPhoto";
 import FundStory from "components/Fundraising/FundStory";
 import FundPreview from "components/Fundraising/FundPreview";
 import FundSuccess from "components/Fundraising/FundSuccess";
-import Logo from "assets/img/svg/logo.svg";
+import Logo from "assets/img/svg/gorilla.svg";
 
 const FundraisingPage = () => {
     const { step, welcome } = useFund();

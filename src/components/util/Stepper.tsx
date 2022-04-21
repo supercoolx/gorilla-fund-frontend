@@ -1,7 +1,7 @@
 import React from "react";
-import Logo from "assets/img/svg/logo.svg";
+import Logo from "assets/img/svg/gorilla.svg";
 import { Link } from "react-router-dom";
-import { URL } from "libs/constants";
+import { URL, APP_NAME } from "libs/constants";
 import { StepInterface } from "libs/interfaces";
 import { FiCheck } from "react-icons/fi";
 import { FaCircle } from "react-icons/fa";
@@ -11,7 +11,7 @@ const Stepper = ({step, data}: {step: number, data: StepInterface[]}) => {
         <div className="flex flex-col gap-16 p-12 bg-white">
             <Link to={URL.HOME} className="flex items-center gap-2">
                 <img src={Logo} className="w-7" alt="" />
-                <div className="font-bold">Logoipsum</div>
+                <div className="font-bold">{APP_NAME}</div>
             </Link>
             <div className="flex">
                 <div className="relative w-[2px] h-full left-[15px] bg-gray-200"></div>

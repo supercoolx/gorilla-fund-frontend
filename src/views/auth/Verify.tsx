@@ -63,7 +63,7 @@ const Verify = () => {
                     <div className="flex justify-center w-full py-6">
                         <ReactInputVerificationCode passwordMask="x" onChange={setCode} />
                     </div>
-                    <button onClick={handleClick} className="w-full py-2 font-bold text-white bg-teal-700">Get started</button>
+                    <button onClick={handleClick} className="w-full rounded-[4px] py-2 font-bold text-white bg-teal-700">Get started</button>
                     <div className="pt-5 text-gray-500">Didn't receive the email? <span onClick={sendEmail} className="font-bold text-teal-700 cursor-pointer">Resend</span></div>
                     <Link to={URL.LOGIN} className="flex items-center justify-center w-full py-2 mt-3">
                         <FiArrowLeft size={16} />

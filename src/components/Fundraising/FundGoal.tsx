@@ -32,7 +32,7 @@ const FundGoal = () => {
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">How much would you like to raise?</div>
-                <CurrencyInput prefix="$ " defaultValue={amount} onValueChange={handleChangeAmount} placeholder="Please enter your goal" className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" />
+                <CurrencyInput suffix=" ETH" allowDecimals={false} defaultValue={amount} onValueChange={handleChangeAmount} placeholder="Please enter your goal" className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" />
             </div>
             <div className="flex flex-col w-full pt-6">
                 <div className="pb-1 font-bold">What are you fundarising for?</div>

@@ -84,7 +84,7 @@ const SearchProjects = () => {
                     { data.map((prop, key: number) => <ProjectCard data={prop} key={key} />) }
                 </div>
                 <div className="flex justify-center">
-                    <button className="border-[1px] border-teal-700 text-teal-700 font-bold px-6 py-3 rounded-sm text-sm hover:bg-teal-700 hover:text-white transition-all duration-300">Load more</button>
+                    <button className="border-[1px] border-teal-700 text-teal-700 font-bold px-6 py-3 rounded-[4px] text-sm hover:bg-teal-700 hover:text-white transition-all duration-300">Load more</button>
                 </div>
             </div>
         </div>

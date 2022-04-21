@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { URL, SOCIAL } from "libs/constants";
-import logo from "assets/img/svg/logo.svg";
+import { URL, APP_NAME, SOCIAL } from "libs/constants";
+import gorilla from "assets/img/svg/gorilla.svg";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
@@ -11,8 +11,8 @@ const Footer = () => {
                 <div className="flex flex-col justify-between gap-10 md:flex-row">
                     <div className="flex flex-col gap-4 w-[270px]">
                         <Link to={URL.HOME} className="flex items-center gap-4">
-                            <img src={logo} alt="" />
-                            <div className="text-lg font-bold text-teal-700">GorillaFundMe</div>
+                            <img src={gorilla} alt="" />
+                            <div className="text-lg font-bold text-teal-700">{APP_NAME}</div>
                         </Link>
                         <div>My life has changed forever because of Norma and what happend. It gave me hope again.</div>
                     </div>
@@ -43,7 +43,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-5 pt-16 sm:flex-row">
-                    <div>© 2020 All rights reserved - GorillaFundMe</div>
+                    <div>© {(new Date()).getFullYear()} All rights reserved - GorillaFundMe</div>
                     <div className="flex items-center gap-5">
                         <a href={SOCIAL.INSTAGRAM}><FaInstagram size={30} className="transition-all duration-200 hover:text-black" /></a>
                         <a href={SOCIAL.TWITTER}><FaTwitter size={30} className="transition-all duration-200 hover:text-sky-500" /></a>

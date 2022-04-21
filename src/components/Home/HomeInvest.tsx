@@ -59,7 +59,7 @@ const HomeInvest = () => {
                         ))
                     }
                 </div>
-                <Link to={URL.SIGNUP} className="px-6 py-3 font-bold text-white transition-all duration-200 bg-teal-700 hover:shadow-lg hover:-translate-y-1">Create account</Link>
+                <Link to={URL.SIGNUP} className="px-6 py-3 font-bold text-white transition-all duration-200 rounded-[4px] bg-teal-700 hover:shadow-lg hover:-translate-y-1">Create account</Link>
             </div>
         </div>
     )

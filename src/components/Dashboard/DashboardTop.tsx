@@ -9,7 +9,7 @@ const DashboardTop = () => {
             </div>
             <div className="py-8 bg-slate-50">
                 <div className="max-w-[900px] mx-auto">
-                    <div className="grid grid-cols-3 mx-2 bg-white md:grid-cols-5">
+                    <div className="grid grid-cols-3 mx-2 bg-white md:grid-cols-5 rounded-[4px] shadow-md">
                         <div className="p-4">
                             <div className="flex items-center gap-1">
                                 <FaEthereum className="text-teal-700" />

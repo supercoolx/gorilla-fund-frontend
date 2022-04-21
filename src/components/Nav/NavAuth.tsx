@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Menu, MenuItem, MenuDivider } from "@szhsin/react-menu";
 import { Link, useNavigate } from "react-router-dom";
-import { URL } from "libs/constants";
+import { URL, APP_NAME } from "libs/constants";
 import { addressFormat } from "libs/utils";
 import { useAuth } from "contexts/AuthContext";
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
-import logo from "assets/img/svg/logo.svg";
+import logo from "assets/img/svg/gorilla.svg";
 import { ImSearch } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -30,7 +30,7 @@ const NavAuth = () => {
                 <div className="flex gap-3">
                     <Link to={URL.HOME} className="flex items-center gap-3">
                         <img src={logo} className="w-7" alt="" />
-                        <div className="hidden font-extrabold sm:block">Logoipsum</div>
+                        <div className="hidden font-extrabold sm:block">{APP_NAME}</div>
                     </Link>
                     <div className="flex bg-white border-l">
                         <div className="flex items-center justify-center px-2">

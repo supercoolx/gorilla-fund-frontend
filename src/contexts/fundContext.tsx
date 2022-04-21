@@ -6,7 +6,7 @@ const FundContext = createContext<any>(undefined);
 const FundProvider = ({children}) => {
     const [step, setStep] = useState<number>(1);
     const [name, setName] = useState<string>("");
-    const [amount, setAmount] = useState<string>("1000");
+    const [amount, setAmount] = useState<string>("3");
     const [category, setCategory] = useState<any>(0);
     const [address, setAddress] = useState<string>("");
     const [image, setImage] = useState<string>("");

@@ -31,7 +31,7 @@ const Fund = () => {
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
                     <FundContent photo={data.image} categoryId={data.categoryId} date={data.createdAt} story={data.description} />
-                    <FundLeft uid={data.uid} donate={527260} goal={data.amount} />
+                    <FundLeft uid={data.uid} donate={52.726} goal={data.amount} />
                 </div>
                 <hr className="my-5" />
                 <FundDonations />

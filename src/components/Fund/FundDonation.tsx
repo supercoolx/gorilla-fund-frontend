@@ -27,7 +27,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -37,7 +37,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -47,7 +47,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -57,7 +57,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -67,7 +67,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -77,7 +77,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -87,7 +87,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>
@@ -97,7 +97,7 @@ const FundDonations = () => {
                     <img src={imgAvatar} className="h-10 rounded-full" alt="" />
                     <div className="flex flex-col flex-1 gap-2">
                         <div className="flex flex-wrap justify-between gap-3">
-                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated $5,400.00</div>
+                            <div className="text-gray-500"><span className="font-bold text-black">Wade Warren</span> donated 5.4 ETH</div>
                             <div className="text-gray-500">30 minutes ago</div>
                         </div>
                         <div>Earth is the third planet from the Sun and the only astronomical object known to harbor life. According to radiometric dating estimation and other evidence, Earth formed over 4.5 billion years ago.</div>

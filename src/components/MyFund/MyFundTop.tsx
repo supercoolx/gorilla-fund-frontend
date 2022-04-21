@@ -24,15 +24,15 @@ const MyFundTop = () => {
 
     return (
         <div className="bg-white">
-            <img src={data.image} className="object-cover w-full opacity-30 h-44" alt="" />
+            <img src={data.image} className="object-cover rounded-[4px] w-full opacity-30 h-44" alt="" />
             <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5 max-w-[900px] px-3 mx-auto -translate-y-20 -mb-20">
                 <img src={data.image} className="object-cover h-40 w-72" alt="" />
                 <div className="flex flex-col w-full gap-2 sm:flex-1">
                     <div className="text-sm text-gray-500">Fundraising progress</div>
                     <Progress percent={50} />
                     <div className="flex justify-between">
-                        <div className="text-sm font-bold">15.00 ETH raised</div>
-                        <div className="text-sm text-gray-500">50.00 ETH Goal</div>
+                        <div className="text-sm font-bold">0 ETH raised</div>
+                        <div className="text-sm text-gray-500">{data.amount} ETH Goal</div>
                     </div>
                 </div>
             </div>
@@ -43,18 +43,18 @@ const MyFundTop = () => {
                     <div className="text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex gap-3">
-                    <Link to={URL.SETTING.replace(':uid', uid || '')} className="flex items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
+                    <Link to={URL.SETTING.replace(':uid', uid || '')} className="flex rounded-[4px] items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <MdOutlineSettings size={20} />
                         <div className="text-sm font-bold">Setting</div>
                     </Link>
-                    <button onClick={handleOpen} className="flex items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
+                    <button onClick={handleOpen} className="flex rounded-[4px] items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <FiShare2 size={20} />
                         <div className="text-sm font-bold">Share fundraiser</div>
                     </button>
                 </div>
             </div>
-            <Modal isOpen={isOpen}>
-                <div className="w-full max-w-md p-6 bg-white">
+            <Modal isOpen={isOpen} onClose={handleClose}>
+                <div className="w-full rounded-[4px] max-w-md p-6 bg-white">
                     <div className="flex items-end justify-between">
                         <div className="font-bold text-black">Help by sharing</div>
                         <div onClick={handleClose} className="text-2xl font-bold text-gray-500 cursor-pointer">&times;</div>

@@ -10,7 +10,7 @@ const StartFundraising = () => {
                 <p className="text-center">"My life has changed forever because of Norma and what happened.</p>
                 <p className="text-center">It gave me hope again. Changing someone's life will change your own forever."</p>
             </div>
-            <Link to={URL.FUNDRAISE} className="px-5 py-2 font-bold text-teal-700 border-[1px] border-teal-700 bg-white hover:bg-teal-700 hover:border-white hover:text-white transition-all duration-200">Start a GorillaFund</Link>
+            <Link to={URL.FUNDRAISE} className="px-5 py-2 font-bold text-teal-700 border-[1px] rounded-[4px] border-teal-700 bg-white hover:bg-teal-700 hover:border-white hover:text-white transition-all duration-200">Start a GorillaFund</Link>
         </div>
     )
 }

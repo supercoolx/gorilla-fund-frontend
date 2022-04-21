@@ -130,11 +130,11 @@ const ProfilePage = ({submit, setSubmit}) => {
                     <div className="text-sm font-bold">Your photo</div>
                     <div className="flex items-center py-3">
                         <input type="file" onChange={onChangePhoto} ref={inputPhoto} className="hidden" />
-                        <img src={imageUrl} onClick={onClickPhoto} className="w-12 h-12 cursor-pointer bg-teal-300 rounded-full" alt={user.username} />
+                        <img src={imageUrl} onClick={onClickPhoto} className="w-12 h-12 bg-teal-300 rounded-full cursor-pointer" alt={user.username} />
                         <div className="pl-5">
                             <div className="flex gap-3">
-                                <button onClick={onClickPhoto} className="px-3 py-2 text-xs font-bold text-white bg-teal-700 rounded-sm">Update photo</button>
-                                <button onClick={onDeletePhoto} className="px-3 py-2 text-xs font-bold bg-gray-200 rounded-sm">Delete photo</button>
+                                <button onClick={onClickPhoto} className="px-3 py-2 text-xs font-bold text-white bg-teal-700 rounded-[4px] hover:shadow-md transition-all duration-200">Update photo</button>
+                                <button onClick={onDeletePhoto} className="px-3 py-2 text-xs font-bold bg-gray-200 rounded-[4px] hover:shadow-md transition-all duration-200">Delete photo</button>
                             </div>
                             <div className="pt-1 text-xs font-bold text-gray-500">SVG, PNG, JPG or GIF (max. 500x500px)</div>
                         </div>
@@ -144,42 +144,42 @@ const ProfilePage = ({submit, setSubmit}) => {
                         <div className="flex gap-3">
                             <div className="w-full">
                                 <div className="pb-2 font-bold">First name</div>
-                                <input type="text" value={firstName} onChange={onChangeFirst} className="py-2 rounded-sm px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="First name" />
+                                <input type="text" value={firstName} onChange={onChangeFirst} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="First name" />
                             </div>
                             <div className="w-full">
                                 <div className="pb-2 font-bold">Last name</div>
-                                <input type="text" value={lastName} onChange={onChangeLast} className="py-2 rounded-sm px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Last name" />
+                                <input type="text" value={lastName} onChange={onChangeLast} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Last name" />
                             </div>
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Username</div>
-                            <input type="text" value={username} onChange={onChangeName} className="py-2 rounded-sm px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Username" />
+                            <input type="text" value={username} onChange={onChangeName} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Username" />
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Email address</div>
-                            <div className="flex rounded-sm bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-[4px] bg-white w-full border-[1px] border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <AiOutlineMail className="text-gray-500" size={16} />
                                 </div>
-                                <input type="text" value={email} onChange={onChangeEmail} className="w-full py-2 pr-4 focus:outline-none" placeholder="Email address" />
+                                <input type="text" value={email} onChange={onChangeEmail} className="w-full rounded-[4px] py-2 pr-4 focus:outline-none" placeholder="Email address" />
                             </div>
                         </div>
                         <div className="pt-4">
-                            <div className="pb-2 font-bold rounded-sm">Phone number</div>
-                            <div className="flex rounded-sm bg-white w-full border-[1px] border-slate-200">
+                            <div className="pb-2 font-bold">Phone number</div>
+                            <div className="flex rounded-[4px] bg-white w-full border-[1px] border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <MdOutlinePhone className="text-gray-500" size={16} />
                                 </div>
-                                <input type="text" value={phone} onChange={onChangePhone} className="w-full py-2 pr-4 focus:outline-none" placeholder="Phone number" />
+                                <input type="text" value={phone} onChange={onChangePhone} className="w-full rounded-[4px] py-2 pr-4 focus:outline-none" placeholder="Phone number" />
                             </div>
                         </div>
                         <div className="pt-4">
                             <div className="pb-2 font-bold">Residental address</div>
-                            <div className="flex rounded-sm bg-white w-full border-[1px] border-slate-200">
+                            <div className="flex rounded-[4px] bg-white w-full border-[1px] border-slate-200">
                                 <div className="flex items-center justify-center px-3">
                                     <GoLocation className="text-gray-500" size={16} />
                                 </div>
-                                <input type="text" value={address} onChange={onChangeAddress} className="w-full py-2 pr-4 focus:outline-none" placeholder="Residental address" />
+                                <input type="text" value={address} onChange={onChangeAddress} className="w-full rounded-[4px] py-2 pr-4 focus:outline-none" placeholder="Residental address" />
                             </div>
                         </div>
                         <div className="pt-4">
@@ -189,11 +189,11 @@ const ProfilePage = ({submit, setSubmit}) => {
                         <div className="flex gap-3 pt-4">
                             <div className="w-full">
                                 <div className="pb-2 font-bold">City</div>
-                                <input type="text" value={city} onChange={onChangeCity} className="py-2 rounded-sm px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="City" />
+                                <input type="text" value={city} onChange={onChangeCity} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="City" />
                             </div>
                             <div className="w-full">
                                 <div className="pb-2 font-bold">Zip code</div>
-                                <input type="text" value={zipCode} onChange={onChangeZip} className="py-2 rounded-sm px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Zip code" />
+                                <input type="text" value={zipCode} onChange={onChangeZip} className="py-2 rounded-[4px] px-3 w-full focus:outline-none border-[1px] border-slate-200" placeholder="Zip code" />
                             </div>
                         </div>
                     </div>
@@ -204,11 +204,11 @@ const ProfilePage = ({submit, setSubmit}) => {
                             <div className="text-xs text-gray-500">You will no longer have access to this fundraiser after deleting.</div>
                             <div className="text-xs text-gray-500">If your received donations, your donors will still be able to view a summary.</div>
                         </div>
-                        <button onClick={handleModalOpen} className="px-3 transition-all duration-200 py-2 text-sm font-bold text-white bg-red-400 rounded-sm hover:bg-red-500">Delete my account</button>
+                        <button onClick={handleModalOpen} className="px-3 py-2 text-sm font-bold text-white transition-all duration-200 bg-red-400 rounded-[4px] hover:bg-red-500">Delete my account</button>
                     </div>
                 </div>
             </div>
-            <Modal isOpen={isModalOpen}>
+            <Modal isOpen={isModalOpen} onClose={handleModalClose}>
                 <form onSubmit={handleUserDelete} className="w-full max-w-md p-6 bg-white">
                     <div className="flex items-end justify-between">
                         <div className="font-bold text-black">Delete your account</div>

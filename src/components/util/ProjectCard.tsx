@@ -14,8 +14,8 @@ const ProjectCard = ({data, className}: {data: any, className?: string}) => {
                 <div className="pt-10 pb-3">{"Last donation is " + timeAgoFormat(data.createdAt)}</div>
                 <Progress percent={40} />
                 <div className="flex justify-between pt-5">
-                    <div className="font-bold text-black">$0M raised</div>
-                    <div>${nFormatter(data.amount, 1)} Goal</div>
+                    <div className="font-bold text-black">ETH 0 raised</div>
+                    <div>ETH {nFormatter(data.amount, 1)} Goal</div>
                 </div>
             </div>
         </Link>

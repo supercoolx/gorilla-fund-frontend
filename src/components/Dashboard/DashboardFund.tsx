@@ -28,7 +28,7 @@ const DashboardFund = () => {
                                     <img src={item.image} className="object-cover w-16 h-16 mb-2 -mt-12 rounded-md" alt="" />
                                     <div className="text-lg font-bold line-clamp-1">{item.headline}</div>
                                     <div className="pt-10 pb-3 text-gray-500">{"Campaign created " + timeAgoFormat(item.createdAt)}</div>
-                                    <Link to={URL.MYFUND.replace(':uid', item.uid)} className="w-full p-2 font-bold text-center transition-all duration-200 bg-gray-200 rounded-md hover:bg-teal-700 hover:text-white">Manage campaign</Link>
+                                    <Link to={URL.MYFUND.replace(':uid', item.uid)} className="w-full p-2 font-bold text-center transition-all duration-200 bg-gray-200 rounded-[4px] hover:bg-teal-700 hover:text-white">Manage campaign</Link>
                                 </div>
                             </div>
                         ))

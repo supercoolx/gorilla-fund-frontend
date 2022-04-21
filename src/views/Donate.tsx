@@ -6,7 +6,7 @@ import EthAPI from "api/eth";
 import FundAPI from "api/fund";
 import { addressFormat } from "libs/utils";
 import web3, { isWeb3Enable, switchNetwork } from "libs/web3";
-import { URL } from "libs/constants";
+import { URL, APP_NAME } from "libs/constants";
 import { useAuth } from "contexts/AuthContext";
 import NotFound from "views/NotFound";
 import Progress from "components/util/Progress";
@@ -15,7 +15,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsExclamationOctagon } from "react-icons/bs";
 import { FaEthereum, FaExchangeAlt } from "react-icons/fa";
-import logo from "assets/img/svg/logo.svg";
+import logo from "assets/img/svg/gorilla.svg";
 
 const Donate = () => {
     const { user } = useAuth();
@@ -69,7 +69,7 @@ const Donate = () => {
                     </Link>
                     <Link to={URL.HOME} className="flex items-center gap-3">
                         <img src={logo} className="h-8" alt="" />
-                        <div className="text-lg font-bold">Logoipsum</div>
+                        <div className="text-lg font-bold">{APP_NAME}</div>
                     </Link>
                     {
                         user.loggedIn ? 
@@ -99,7 +99,8 @@ const Donate = () => {
                     </div>
                     <div className="flex flex-col sm:flex-row gap-[2px] bg-slate-50">
                         <div className="flex flex-col w-full p-6 bg-white">
-                            <div className="font-semibold text-gray-500"><span className="text-lg font-bold text-teal-700">$527,260 </span>pledged of US$ {data.amount?.toLocaleString('en')} goal</div>
+                            <div className="font-semibold text-gray-500">
+                                <span className="text-lg font-bold text-teal-700">0 ETH </span>pledged of {data.amount?.toLocaleString('en')} ETH goal</div>
                             <div className="pt-1 text-teal-700">9.4K donations</div>
                             <Progress percent={40} className="py-4" />
                             <hr className="mt-3" />

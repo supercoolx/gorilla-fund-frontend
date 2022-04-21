@@ -12,7 +12,7 @@ const Donation = () => {
                             <img src={imgAvatar} className="w-10 h-10" alt="" />
                             <div className="flex-1 text-gray-500">
                                 <div className="flex justify-between">
-                                    <div className="font-bold"><span className="text-black">Wade Warren</span> donated 0.05 ETH</div>
+                                    <div className="font-bold"><span className="text-black">Wade Warren</span> donated 0.5 ETH</div>
                                     <div className="text-xs">30 minutes ago</div>
                                 </div>
                                 <div className="text-xs">Today's Fortune 500 list rolls over faster than ever. Today, only 12 percent of the companies that made the list in 1955 still remain. And 94 percent of the Fortune 500 list believes they'll change more in the next five years than in the past 50.</div>

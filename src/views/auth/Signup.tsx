@@ -5,7 +5,7 @@ import { URL } from "libs/constants";
 import web3, { isWeb3Enable } from "libs/web3";
 import Auth from "api/auth";
 import { useAuth } from "contexts/AuthContext";
-import iconLogo from "assets/img/svg/logo.svg";
+import iconLogo from "assets/img/svg/gorilla.svg";
 import iconMetamask from "assets/img/svg/metamask.svg";
 
 const Signup = () => {
@@ -94,22 +94,22 @@ const Signup = () => {
                 <div className="pt-3 text-gray-500">Welcome! You must be Ape Gorilla holder to sign up.</div>
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Username*</div>
-                    <input type="text" value={username} onChange={handleChangeUsername} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your username" autoComplete="true" />
+                    <input type="text" value={username} onChange={handleChangeUsername} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your username" autoComplete="true" />
                 </div>
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Email*</div>
-                    <input type="email" value={email} onChange={handleChangeEmail} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your email" autoComplete="true" />
+                    <input type="email" value={email} onChange={handleChangeEmail} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your email" autoComplete="true" />
                 </div>
                 <div className="flex flex-col w-full py-6">
                     <div className="pb-1 font-bold">Password*</div>
-                    <input type="password" value={password} onChange={handleChangePassword} className="w-full py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your password" autoComplete="true" />
+                    <input type="password" value={password} onChange={handleChangePassword} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your password" autoComplete="true" />
                     <div className="pt-2 text-gray-500">Must be at least 8 characters.</div>
                 </div>
                 <div ref={el => errMessage = el} className="hidden w-full py-3 mb-6 text-center bg-red-400">{error}</div>
-                <button type="submit" ref={el => signupButton = el} className="w-full py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign up</button>
-                <button type="button" onClick={handleMetamaskSignup} className="flex justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
+                <button type="submit" ref={el => signupButton = el} className="w-full rounded-[4px] py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign up</button>
+                <button type="button" onClick={handleMetamaskSignup} className="flex rounded-[4px] justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />
-                    <div className="pl-1 font-bold border-slate-200">Sign in with Metamask</div>
+                    <div className="pl-1 font-bold">Sign in with Metamask</div>
                 </button>
                 <div className="pt-6 text-gray-500">
                     Already have an account?

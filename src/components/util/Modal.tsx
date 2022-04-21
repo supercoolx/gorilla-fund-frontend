@@ -1,11 +1,12 @@
 import React from "react";
 
-const Modal = ({children, isOpen}) => {
+const Modal = ({children, isOpen, onClose}) => {
     return (
         <div className={`fixed inset-0 z-10 overflow-y-auto${isOpen ? "" : " hidden"}`}>
-            <div className="fixed inset-0 bg-black bg-opacity-50"></div>
-            <div className="relative flex items-center justify-center h-full mx-3 overflow-hidden transition-all shadow-xl">
-                {children}
+            <div onClick={onClose} className="relative flex items-center justify-center h-full overflow-hidden bg-black bg-opacity-50 shadow-xl cursor-pointer">
+                <div onClick={e => e.stopPropagation()} className="cursor-auto">
+                    {children}
+                </div>
             </div>
         </div>
     )
