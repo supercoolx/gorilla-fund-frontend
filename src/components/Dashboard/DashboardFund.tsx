@@ -8,7 +8,7 @@ const DashboardFund = () => {
     const [ data, setData ] = useState<any[]>([]);
 
     useEffect(() => {
-        FundAPI.getMyFunds().then(res => setData(res.data.funds)).catch(err => alert(err.message));
+        FundAPI.getMyFunds().then(res => setData(res.data)).catch(err => alert(err.message));
     }, []);
 
     return (

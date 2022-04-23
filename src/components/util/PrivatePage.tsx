@@ -14,7 +14,7 @@ const PrivatePage = ({ children }) => {
         Auth.me()
         .then(res => setComponent(children))
         .catch(err => {
-            if(err.response.status === 401) setComponent(<Navigate to={URL.LOGIN + '?' + params} />);
+            if(err?.response?.status === 401) setComponent(<Navigate to={URL.LOGIN + '?' + params} />);
             else setComponent(<NotFound />);
         })
     }, [children, params]);
