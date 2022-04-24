@@ -5,7 +5,6 @@ const FundAPI = {
     update: data => API.put('/fund/' + data.uid, data),
     findByUid: uid => API.get('/fund/' + uid),
     overview: () => API.get('/fund/overview'),
-    myOverview: () => API.get('/fund/my_overview'),
     getMyFunds: () => API.get('/fund/my'),
     myFund: uid => API.get('/fund/my/' + uid),
     topRated: count => API.get('/fund/top_rated', { params: { count: count }}),

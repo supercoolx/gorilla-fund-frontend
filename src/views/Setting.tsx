@@ -10,7 +10,7 @@ const Setting = () => {
     const { uid } = useParams();
     const [ is404, set404 ] = useState<boolean>(false);
     useEffect(() => {
-        FundAPI.myFund(uid).then(res => set404(false)).catch(err => set404(true));
+        uid && FundAPI.myFund(uid).then(res => set404(false)).catch(err => set404(true));
     }, [uid]);
 
     return is404 ? <NotFound /> : (

@@ -25,7 +25,7 @@ const Footer = () => {
                             <Link to={URL.SEARCH + '?category=1'} className="hover:text-black">School</Link>
                             <Link to={URL.SEARCH + '?category=4'} className="hover:text-black">IT Industry</Link>
                         </div>
-                        <div className="flex flex-col gap-3">
+                        {/* <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Learn more</div>
                             <Link to="#" className="hover:text-black">How GorillaFundMe works</Link>
                             <Link to="#" className="hover:text-black">Frequently Asked Questions</Link>
@@ -39,7 +39,7 @@ const Footer = () => {
                             <Link to="#" className="hover:text-black">Press Center</Link>
                             <Link to="#" className="hover:text-black">About</Link>
                             <Link to="#" className="hover:text-black">Founders</Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-5 pt-16 sm:flex-row">

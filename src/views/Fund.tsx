@@ -12,12 +12,12 @@ import NotFound from "views/NotFound";
 
 const Fund = () => {
     const { uid } = useParams();
-    const [ data, setData ] = useState<any>({});
+    const [ fund, setFund ] = useState<any>({});
     const [ error, setError ] = useState<boolean>(false);
-    
+
     useEffect(() => {
-        FundAPI.findByUid(uid)
-        .then(res => setData(res.data))
+        uid && FundAPI.findByUid(uid)
+        .then(res => setFund(res.data))
         .catch(err => setError(true));
     }, [uid]);
 
@@ -26,15 +26,15 @@ const Fund = () => {
             <Nav />
             <div className="flex flex-col max-w-[900px] mx-auto">
                 <div className="px-3">
-                    <div className="pt-16 text-lg font-bold">{data.name}</div>
-                    <div className="py-6 pt-1 text-sm text-gray-500">{data.headline}</div>
+                    <div className="pt-16 text-lg font-bold">{fund.name}</div>
+                    <div className="py-6 pt-1 text-sm text-gray-500">{fund.headline}</div>
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
-                    <FundContent photo={data.image} categoryId={data.categoryId} date={data.createdAt} story={data.description} />
-                    <FundLeft uid={data.uid} donate={52.726} goal={data.amount} />
+                    <FundContent photo={fund.image} categoryId={fund.categoryId} date={fund.createdAt} story={fund.description} />
+                    <FundLeft uid={fund.uid} donations={fund.donates} goal={fund.amount} />
                 </div>
                 <hr className="my-5" />
-                <FundDonations />
+                <FundDonations organizer={fund.user} donations={fund.donates} />
                 <FundProject />
             </div>
             <StartFundraising />

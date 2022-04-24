@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "components/util/Modal";
 import Progress from "components/util/Progress";
 import CopyInput from "components/util/CopyInput";
-import FundAPI from "api/fund";
 import { URL } from "libs/constants";
 import { FiShare2 } from "react-icons/fi";
 import { ImTwitter } from "react-icons/im";
@@ -11,16 +10,17 @@ import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineSettings } from "react-icons/md";
 import { BsFacebook, BsInstagram, BsDiscord } from "react-icons/bs";
 
-const MyFundTop = () => {
-    const { uid } = useParams();
+const MyFundTop = ({ fund }) => {
     const [ data, setData ] = useState<any>({});
+    const [ raised, setRaise ] = useState<number>(0);
     const [ isOpen, setOpen ] = useState<boolean>(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     useEffect(() => {
-        FundAPI.myFund(uid).then(res => setData(res.data)).catch(err => {});
-    }, [uid]);
+        setData(fund);
+        setRaise(fund.donates?.reduce((sum, donate) => sum + donate.ethAmount, 0));
+    }, [fund]);
 
     return (
         <div className="bg-white">
@@ -31,7 +31,7 @@ const MyFundTop = () => {
                     <div className="text-sm text-gray-500">Fundraising progress</div>
                     <Progress percent={50} />
                     <div className="flex justify-between">
-                        <div className="text-sm font-bold">0 ETH raised</div>
+                        <div className="text-sm font-bold">{raised} ETH raised</div>
                         <div className="text-sm text-gray-500">{data.amount} ETH Goal</div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ const MyFundTop = () => {
                     <div className="text-sm text-gray-500">{data.headline}</div>
                 </div>
                 <div className="flex gap-3">
-                    <Link to={URL.SETTING.replace(':uid', uid || '')} className="flex rounded-[4px] items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
+                    <Link to={URL.SETTING.replace(':uid', data.uid || '')} className="flex rounded-[4px] items-center gap-2 border-[1px] py-2 px-3 hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">
                         <MdOutlineSettings size={20} />
                         <div className="text-sm font-bold">Setting</div>
                     </Link>

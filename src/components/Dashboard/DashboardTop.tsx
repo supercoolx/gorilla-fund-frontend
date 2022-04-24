@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import FundAPI from "api/fund";
+import React, { useMemo } from "react";
 import { FaEthereum } from "react-icons/fa";
 
-const DashboardTop = () => {
-    const [ raised, setRaised ] = useState<number>(0);
-    const [ donate, setDonate ] = useState<number>(0);
-    const [ active, setActive ] = useState<number>(0);
-    const [ finish, setFinish ] = useState<number>(0);
-    const [ success, setSuccess ] = useState<number>(0);
-
-    useEffect(() => {
-        FundAPI.myOverview()
-        .then(res => {
-            setRaised(res.data.raised || 0);
-            setDonate(res.data.donate || 0);
-            setActive(res.data.active || 0);
-            setFinish(res.data.finish || 0);
-            setSuccess(res.data.success || 0);
+const DashboardTop = ({ funds }) => {
+    const { raised, donate, active, finish, success } = useMemo(() => {
+        const overview = {
+            raised: 0,
+            donate: 0,
+            active: 0,
+            finish: 0,
+            success: 0
+        }
+        funds?.forEach(fund => {
+            let raised = fund.donates.reduce((sum, donate) => sum + donate.ethAmount, 0);
+            overview.raised += raised;
+            overview.donate += fund.donates.length;
+            if(raised > fund.amount) overview.finish ++;
+            else overview.active ++;
         })
-        .catch(err => alert(err.message));
-    }, [])
+        return overview;
+    }, [funds]);
 
     return (
         <div className="w-full">

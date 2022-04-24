@@ -9,16 +9,21 @@ import NotFound from "views/NotFound";
 
 const MyFund = () => {
     const { uid } = useParams();
+    const [ fund, setFund ] = useState<any>({});
     const [ is404, set404 ] = useState<boolean>(false);
     useEffect(() => {
-        FundAPI.myFund(uid).then(res => set404(false)).catch(err => set404(true));
+        uid && FundAPI.myFund(uid)
+        .then(res => {
+            set404(false);
+            setFund(res.data);
+        }).catch(err => set404(true));
     }, [uid]);
 
     return is404 ? <NotFound /> : (
         <div className="bg-slate-100">
             <NavAuth />
-            <MyFundTop />
-            <MyFundContent />
+            <MyFundTop fund={fund} />
+            <MyFundContent fund={fund} />
             <Footer />
         </div>
     )

@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import FundAPI from "api/fund";
 import { URL } from "libs/constants";
 import { timeAgoFormat } from "libs/utils";
 
-const DashboardFund = () => {
-    const [ data, setData ] = useState<any[]>([]);
-
-    useEffect(() => {
-        FundAPI.getMyFunds().then(res => setData(res.data)).catch(err => alert(err.message));
-    }, []);
+const DashboardFund = ({ funds }) => {
 
     return (
         <div className="w-full bg-slate-50">
@@ -21,7 +15,7 @@ const DashboardFund = () => {
                 <hr className="mb-8" />
                 <div className="grid gap-3 pb-8 sm:grid-cols-2 md:grid-cols-3">
                     {
-                        data.map((item, key) => (
+                        funds.map((item, key) => (
                             <div className="flex flex-col overflow-hidden text-sm bg-white rounded-md shadow" key={key}>
                                 <img src={item.image} className="object-cover h-44 opacity-20" alt="" />
                                 <div className="flex flex-col px-4 py-5">

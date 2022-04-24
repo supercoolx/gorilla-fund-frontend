@@ -3,16 +3,16 @@ import Donation from "components/MyFund/content/Donation";
 import Comment from "components/MyFund/content/Comment";
 import Update from "components/MyFund/content/Update";
 
-const MyFundContent = () => {
+const MyFundContent = ({ fund }) => {
     const [ index, setIndex ] = useState<number>(1);
-    const [ content, setContent ] = useState<any>(<Donation />);
+    const [ content, setContent ] = useState<any>(<Donation donates={fund.donates} />);
     const changeContent = i => (() => setIndex(i));
 
     useEffect(() => {
-        index === 1 && setContent(<Donation />);
+        index === 1 && setContent(<Donation donates={fund.donates} />);
         index === 2 && setContent(<Comment />);
         index === 3 && setContent(<Update />);
-    }, [index])
+    }, [index, fund])
 
     return (
         <div className="flex flex-col text-sm text-gray-500 bg-white max-w-[876px] my-6 mx-auto">

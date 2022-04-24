@@ -17,7 +17,7 @@ const SettingPage = () => {
     const updateFund = () => FundAPI.update(data).then(res => alert("Saved successfully.")).catch(err => alert(err.message));
 
     useEffect(() => {
-        FundAPI.findByUid(uid).then(res => setData(res.data)).catch(err => {});
+        uid && FundAPI.myFund(uid).then(res => setData(res.data)).catch(err => {});
     }, [uid]);
     useEffect(() => {
         index === 1 && setContent(<SettingOverview data={data} setData={setData} />);
@@ -28,12 +28,12 @@ const SettingPage = () => {
     
     return (
         <div className="bg-white">
-            <div className="bg-center bg-image" style={{backgroundImage: `url(${data.image})`}}>
+            <div className="bg-center bg-no-repeat" style={{backgroundImage: `url(${data.image})`}}>
                 <div className="w-full bg-white bg-opacity-70">
-                    <div className="flex gap-2 items-center py-6 max-w-[900px] mx-auto px-3 text-gray-800">
+                    <Link to={URL.MYFUND.replace(':uid', uid || "")} className="flex gap-2 items-center py-6 max-w-[900px] mx-auto px-3 text-gray-800">
                         <FiArrowLeft size={16} />
-                        <Link to={URL.MYFUND.replace(':uid', uid || "")} className="text-sm font-semibold opacity-100">Back to manage</Link>
-                    </div>
+                        <div className="text-sm font-semibold opacity-100">Back to manage</div>
+                    </Link>
                 </div>
             </div>
             <div className="max-w-[900px] mx-auto px-3 flex flex-wrap justify-between items-end pt-3">

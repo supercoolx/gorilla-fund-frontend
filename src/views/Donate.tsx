@@ -4,6 +4,7 @@ import QRCode from "react-qr-code";
 import { Link, useParams } from "react-router-dom";
 import EthAPI from "api/eth";
 import FundAPI from "api/fund";
+import DonateAPI from "api/donate";
 import { addressFormat } from "libs/utils";
 import web3, { isWeb3Enable, switchNetwork } from "libs/web3";
 import { URL, APP_NAME } from "libs/constants";
@@ -26,15 +27,15 @@ const Donate = () => {
     const [ USD, setUSD ] = useState<any>('0');
     
     const handleChange = e => setAmount(e.target.value);
-    const handleDonate = () => {
+    const handleDonate = async () => {
         if(!isWeb3Enable) return alert('Please install metamask.');
         if(amount === '0') return alert('Donation must be greater than 0');
         let eth = ethers.utils.parseEther(amount);
-        switchNetwork(1)
-        .then(() => web3.eth.requestAccounts())
-        .then(user => user[0])
-        .then(wallet_address =>
-            (window as any).ethereum.request({
+        try {
+            await switchNetwork(1);
+            let wallet_users = await web3.eth.requestAccounts();
+            let wallet_address = wallet_users[0];
+            let transactionId = await (window as any).ethereum.request({
                 method: 'eth_sendTransaction',
                 params: [{
                     from: wallet_address,
@@ -42,10 +43,18 @@ const Donate = () => {
                     gas: '0x5208',
                     value: eth._hex
                 }]
-            })
-        )
-        .then(res => console.log(res))
-        .catch(err => alert(err.message));
+            });
+            await DonateAPI.create({
+                fundId: data.id,
+                fromAddress: wallet_address,
+                transactionId: transactionId,
+                toAddress: data.walletAddress,
+                ethAmount: parseFloat(amount),
+                usdAmount: parseFloat(USD)
+            });
+            alert('Thank you for fund!');
+        }
+        catch(err: any) { alert(err.message) }
     }
 
     useEffect(() => {
@@ -54,7 +63,7 @@ const Donate = () => {
         .catch(err => setUSD("Cannot fetch exchange rate."));
     }, [amount]);
     useEffect(() => {
-        FundAPI.findByUid(uid)
+        uid && FundAPI.findByUid(uid)
         .then(res => setData(res.data))
         .catch(err => setError(true));
     }, [uid]);

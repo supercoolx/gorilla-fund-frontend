@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, MenuItem, MenuDivider } from "@szhsin/react-menu";
 import { Link, useNavigate } from "react-router-dom";
 import { URL, APP_NAME } from "libs/constants";
-import { addressFormat } from "libs/utils";
+import { getUserName } from "libs/utils";
 import { useAuth } from "contexts/AuthContext";
 import '@szhsin/react-menu/dist/index.css';
 import '@szhsin/react-menu/dist/transitions/slide.css';
@@ -28,8 +28,8 @@ const Nav = () => {
                     <div className="">
                         <Menu menuButton={
                                 <div className="flex items-center justify-end gap-3 cursor-pointer">
-                                    <div>{user.username || addressFormat(user.walletAddress)}</div>
-                                    <img src={user.avatar} className="rounded-full w-8 border-[1px] bg-teal-300" alt="" />
+                                    <div>{getUserName(user)}</div>
+                                    <img src={user.avatar} className="rounded-full w-8 h-8 border-[1px] bg-teal-300" alt="" />
                                 </div>
                         } align="end" transition>
                             <Link to={URL.DASHBOARD}><MenuItem>Dashboard</MenuItem></Link>

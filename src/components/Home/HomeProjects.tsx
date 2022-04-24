@@ -49,7 +49,7 @@ const HomeProjects = () => {
                 <div className="relative flex gap-5 pt-10 transition-all duration-200 w-max" style={{ left: `${pos}px` }}>
                     {   data.length ?
                         data.map((prop, key: number) => <ProjectCard data={prop} key={key} className="w-64" />) :
-                        <div className="font-semibold">Nothing to show...</div>
+                        <div className="font-semibold">No fundraising yet ...</div>
                     }
                 </div>
                 <div className="relative z-10 left-8 sm:-top-60 w-min">
