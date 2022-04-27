@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "components/util/Loading";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 const Comment = () => {
@@ -18,7 +19,7 @@ const Comment = () => {
                     //         </div>
                     //     </div>
                     // )
-                    <div className="py-5 font-bold text-center text-black">No comments yet!</div>
+                    <Loading />
                 }
             </div>
             <hr />

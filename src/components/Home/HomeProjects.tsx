@@ -41,7 +41,7 @@ const HomeProjects = () => {
                     <div className="flex items-center text-2xl font-bold text-black">
                         <ImFire /> Top Rated Project
                     </div>
-                    <Link to={URL.SEARCH} className="flex items-center">
+                    <Link to={URL.SEARCH} className="flex items-center hover:font-bold">
                         <div className="pr-3">See more</div>
                         <IoIosArrowForward />
                     </Link>

@@ -24,17 +24,17 @@ const Fund = () => {
     return error ? <NotFound /> : (
         <div className="bg-slate-50">
             <Nav />
-            <div className="flex flex-col max-w-[900px] mx-auto">
+            <div className="flex flex-col max-w-[900px] w-full mx-auto">
                 <div className="px-3">
                     <div className="pt-16 text-lg font-bold">{fund.name}</div>
                     <div className="py-6 pt-1 text-sm text-gray-500">{fund.headline}</div>
                 </div>
                 <div className="flex flex-wrap gap-5 px-3">
                     <FundContent photo={fund.image} categoryId={fund.categoryId} date={fund.createdAt} story={fund.description} />
-                    <FundLeft uid={fund.uid} donations={fund.donates} goal={fund.amount} />
+                    <FundLeft uid={fund.uid} raised={fund.sumDonateETH} cnt={fund.cntDonate} donations={fund.donates} goal={fund.amount} />
                 </div>
                 <hr className="my-5" />
-                <FundDonations organizer={fund.user} donations={fund.donates} />
+                <FundDonations organizer={fund.user} cnt={fund.cntDonate} donations={fund.donates} />
                 <FundProject />
             </div>
             <StartFundraising />

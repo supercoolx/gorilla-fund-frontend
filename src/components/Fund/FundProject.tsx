@@ -17,7 +17,7 @@ const FundProject = () => {
             <div className="flex flex-wrap items-end justify-between gap-3">
                 <div className="flex items-center text-2xl font-bold text-black">Featured Projects</div>
                 <div className="flex items-center">
-                    <Link to={URL.SEARCH} className="pr-3">See more</Link>
+                    <Link to={URL.SEARCH} className="pr-3 hover:font-bold">See more</Link>
                     <IoIosArrowForward />
                 </div>
             </div>

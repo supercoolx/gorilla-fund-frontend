@@ -1,0 +1,18 @@
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+div.loading-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    overflow: none;
+}
+img.loading-img{
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+}

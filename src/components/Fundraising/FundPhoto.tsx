@@ -57,17 +57,17 @@ const FundPhoto = () => {
             <div className="pt-3 text-center text-gray-500">A high-quality photo will help tell your story.</div>
             <input ref={el => imageInput = el} type="file" accept="image/*" onChange={handleChange} className="hidden" />
             {
-                photo ? <img onClick={handleClick} src={photo} className="w-full mt-6 border-2 border-teal-700 cursor-pointer" alt="" /> :
+                photo ? <img onClick={handleClick} src={photo} className="w-full mt-6 border-2 border-teal-700 rounded-md cursor-pointer" alt="" /> :
                 <div className="flex flex-col w-full pt-6">
                     <div className="pb-1 font-bold">Cover Image*</div>
-                    <div onClick={handleClick} className="border-[1px] bg-white flex items-center justify-center px-2 cursor-pointer">
+                    <div onClick={handleClick} className="border-[1px] bg-white rounded-[4px] flex items-center justify-center px-2 cursor-pointer">
                         <FiPaperclip size={20} className="rotate-45" />
                         <div className="w-full px-3 py-2 text-gray-500">Attach or drag and drop file</div>
                     </div>
                 </div>
             }
-            <button onClick={handleNext} ref={el => nextButton = el} className={`w-full disabled:opacity-50 py-2 mt-6 text-white ${photo ? "bg-teal-700" : "bg-teal-700/50 cursor-default"}`}>Save</button>
-            <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 bg-white">
+            <button onClick={handleNext} ref={el => nextButton = el} className={`w-full rounded-[4px] disabled:opacity-50 py-2 mt-6 text-white ${photo ? "bg-teal-700" : "bg-teal-700/50 cursor-default"}`}>Save</button>
+            <button onClick={handlePrev} className="flex items-center justify-center w-full py-2 mt-3 transition-all duration-200 bg-white border border-white hover:border-teal-700 rounded-[4px]">
                 <FiArrowLeft size={16} />
                 <div className="pl-1 font-bold">Go back</div>
             </button>

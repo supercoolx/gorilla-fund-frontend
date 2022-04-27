@@ -1,35 +1,55 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
 import { getUserName, timeAgoFormat } from "libs/utils";
 import Progress from "components/util/Progress";
 import { FaEthereum } from "react-icons/fa";
 
-const FundLeft = ({ uid, donations, goal }) => {
-    const donated = useMemo(() => {
-        if(donations?.length) return donations?.reduce((sum, donation) => sum + donation.ethAmount, 0);
-        else return 0;
-    }, [donations])
+const FundLeft = ({ uid, raised, cnt, donations, goal }) => {
+    const [ DOM, setDOM ] = useState<JSX.Element>(
+        <div className="flex flex-col gap-8 p-5 min-w-[380px] bg-white animate-pulse">
+            <div className="w-full">
+                <div className="h-5 rounded-full bg-slate-300" />
+                <div className="w-40 h-4 mt-2 rounded-full bg-slate-300" />
+                <div className="w-full h-1 mt-3 mb-8 rounded-full bg-slate-300" />
+                <button className="inline-block font-bold rounded-[4px] w-full py-2 text-center text-white bg-teal-700">...</button>
+            </div>
+            <div className="flex flex-col gap-8">
+                <div className="w-24 h-5 rounded-full bg-slate-300" />
+                {
+                    Array(3).fill(0).map((item, key) => (
+                        <div className="flex gap-3" key={key}>
+                            <div className="w-10 h-10 bg-teal-300 rounded-full" />
+                            <div className="flex flex-col justify-between flex-1 w-full py-1">
+                                <div className="w-full h-4 rounded-full bg-slate-300" />
+                                <div className="w-20 h-3 rounded-full bg-slate-300" />
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    );
 
-    return (
-        <div className="flex flex-col flex-1 gap-8 p-5 min-w-[300px] text-sm bg-white">
+    useEffect(() => uid && donations && goal && setDOM(
+        <div className="flex flex-col gap-8 p-5 min-w-[380px] text-sm bg-white">
             <div className="w-full">
                 <div className="flex items-center">
                     <FaEthereum className="text-teal-700" size={20} />
                     <div className="text-gray-500">
                         <span className="text-lg font-bold text-teal-700">
-                            {donated?.toLocaleString('en')}
+                            {raised?.toLocaleString('en')}
                         </span> pledged of {goal?.toLocaleString('en')} ETH goal
                     </div>
                 </div>
-                <div className="text-teal-700">{donations?.length} donations</div>
-                <Progress percent={50} className="mt-3 mb-8" />
+                <div className="text-teal-700">{cnt} donations</div>
+                <Progress percent={raised / goal * 100} className="mt-3 mb-8" />
                 <Link to={URL.DONATE.replace(':uid', uid)} className="inline-block font-bold rounded-[4px] w-full py-2 text-center text-white bg-teal-700">Donate now</Link>
             </div>
             <div className="flex flex-col gap-8">
                 <div className="text-base font-bold">Top donations</div>
                 {
-                    donations?.length ?
+                    cnt ?
                     donations?.map((donation, key) => (
                         <div className="flex gap-3" key={key}>
                             <img src={donation.user.avatar} className="w-10 h-10 bg-teal-300 rounded-full" alt="" />
@@ -44,7 +64,9 @@ const FundLeft = ({ uid, donations, goal }) => {
                 <button className="w-full bg-slate-200 rounded-[4px] transition-all duration-200 py-2 text-black font-bold hover:border-teal-700 hover:bg-teal-700 hover:text-white">See all donations</button>
             </div>
         </div>
-    )
+    ), [uid, raised, cnt, donations, goal]);
+
+    return DOM;
 }
 
 export default FundLeft;
