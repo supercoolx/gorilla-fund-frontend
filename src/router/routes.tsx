@@ -18,6 +18,7 @@ import Setting from "views/Setting";
 import Pong from "views/Pong";
 import Profile from "views/Profile";
 import Admin from "views/Admin";
+import AdminAuth from "views/auth/Admin";
 import AdminUser from "components/admin/AdminUser";
 import AdminFund from "components/admin/AdminFund";
 import AdminDonate from "components/admin/AdminDonate";
@@ -113,7 +114,7 @@ const routes = [
             },
             {
                 url: "",
-                component: <AdminUser />
+                component: <AdminAuth />
             }
         ]
     },

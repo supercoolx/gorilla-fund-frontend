@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import AdminAPI from "api/admin";
 import Modal from "components/util/Modal";
 import Toggle from "components/util/Toggle";
 import Loading from "components/util/Loading";
-import { timeAgoFormat } from "libs/utils";
+import { timeAgoFormat, getUserName } from "libs/utils";
 import { FUNDCATEGORY } from "libs/constants";
-import { BsExclamationOctagon } from "react-icons/bs";
 
 const AdminFund = () => {
     const [ funds, setFunds ] = useState<any[]>();
@@ -45,11 +43,17 @@ const AdminFund = () => {
                     funds.length ?
                     funds.map((fund, key) => (
                         <div key={key} className="rounded-[4px] hover:shadow-md border">
-                            <div onClick={onClick(fund.uid)} className="px-3 py-2 text-white cursor-pointer hover:underline rounded-t-[4px] bg-teal-700 line-clamp-1">{fund.name}</div>
+                            <div onClick={onClick(fund.uid)} className="px-3 py-2 flex justify-between text-white rounded-t-[4px] bg-teal-700">
+                                <div className="cursor-pointer line-clamp-1 hover:underline">{fund.name}</div>
+                                <div>Goal: {fund.amount} ETH</div>
+                            </div>
                             <div className="px-3 my-2 text-gray-600 line-clamp-3">{fund.description}</div>
                             <hr />
                             <div className="flex justify-between px-3 py-2 text-sm">
-                                <div>Goal: {fund.amount} ETH</div>
+                                <div className="flex items-center gap-3">
+                                    <img src={fund.user?.avatar} alt="" className="w-8 h-8 bg-teal-300 rounded-full" />
+                                    <div>{getUserName(fund.user)}</div>
+                                </div>
                                 <div className="flex items-center gap-3">
                                     <div>{"Created " + timeAgoFormat(fund.createdAt)}</div>
                                     <div className="flex gap-1">

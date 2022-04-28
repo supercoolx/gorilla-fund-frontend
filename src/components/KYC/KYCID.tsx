@@ -39,8 +39,8 @@ const KYCID = () => {
 
     return (
         <>
-            <input ref={el => docElement1 = el} onChange={changeImg1} type="file" accept="image/*" className="hidden" />
-            <input ref={el => docElement2 = el} onChange={changeImg2} type="file" accept="image/*" className="hidden" />
+            <input ref={el => docElement1 = el} onChange={changeImg1} type="file" className="hidden" />
+            <input ref={el => docElement2 = el} onChange={changeImg2} type="file" className="hidden" />
             <div className="flex items-center justify-center w-12 h-12 bg-teal-100 rounded-full">
                 <MdOutlineCameraEnhance className="text-teal-700" size={30} />
             </div>

@@ -11,12 +11,10 @@ import toast from "react-hot-toast";
 
 const Signup = () => {
     var signupButton;
-    var errMessage;
     const navigate = useNavigate();
     const [ username, setUsername ] = useState<string>("");
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
-    const [ error, setError ] = useState<string>("");
     const { logIn } = useAuth();
 
     const handleChangeUsername = e => setUsername(e.target.value);
@@ -30,36 +28,30 @@ const Signup = () => {
     const signUp = (e) => {
         e.preventDefault();
         signupButton.disabled = true;
-        errMessage.style.display = 'none';
         if(!/^\w+$/.test(username)) {
-            errMessage.style.display = 'block';
             signupButton.disabled = false;
-            setError("Name must be at least 2 characters and alphanumeric.");
+            toast.error("Name must be at least 2 characters and alphanumeric.");
         }
         else if(!validator.isEmail(email)) {
-            errMessage.style.display = 'block';
             signupButton.disabled = false;
-            setError("Input email correctly.");
+            toast.error("Input email correctly.");
         }
         else if(!validator.isLength(password, { min: 8 })) {
-            errMessage.style.display = 'block';
             signupButton.disabled = false;
-            setError("Password must be at least 8 characters");
+            toast.error("Password must be at least 8 characters");
         }
         else {
             Auth.signup({ username, email, password })
             .then(res => {
                 logIn(res.data.token);
-                errMessage.style.display = 'none';
                 navigate(URL.EMAIL_VERIFY);
                 signupButton.disabled = false;
             })
             .catch(err => {
-                errMessage.style.display = 'block';
                 signupButton.disabled = false;
-                if(!err.response) setError("You're offline.");
-                else if(err.response.status === 409) setError(err.response.data.message);
-                else setError(err.message);
+                if(!err.response) toast.error("You're offline.");
+                else if(err.response.status === 409) toast.error(err.response.data.message);
+                else toast.error(err.message);
             });
         }
     }
@@ -106,7 +98,6 @@ const Signup = () => {
                     <input type="password" value={password} onChange={handleChangePassword} className="w-full rounded-[4px] py-2 px-3 focus:outline-none border-[1px] border-slate-200" placeholder="Enter your password" autoComplete="true" />
                     <div className="pt-2 text-gray-500">Must be at least 8 characters.</div>
                 </div>
-                <div ref={el => errMessage = el} className="hidden w-full py-3 mb-6 text-center bg-red-400">{error}</div>
                 <button type="submit" ref={el => signupButton = el} className="w-full rounded-[4px] py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign up</button>
                 <button type="button" onClick={handleMetamaskSignup} className="flex rounded-[4px] justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />

@@ -11,10 +11,8 @@ import toast from "react-hot-toast";
 
 const Login = () => {
     var loginButton;
-    var errMessage;
     const [ email, setEmail ] = useState<string>("");
     const [ password, setPassword ] = useState<string>("");
-    const [ error, setError ] = useState<string>("");
     const { logIn } = useAuth();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -25,31 +23,27 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         loginButton.disabled = true;
-        errMessage.style.display = 'none';
         if(!validator.isEmail(email)) {
-            errMessage.style.display = 'block';
-            setError("Input email correctly.");
+            toast.error("Input email correctly.");
             loginButton.disabled = false;
         }
         else if(!validator.isLength(password, { min: 8 })) {
-            errMessage.style.display = 'block';
-            setError("Password must be at least 8 characters");
+            toast.error("Password must be at least 8 characters");
             loginButton.disabled = false;
         }
         else {
             Auth.login({ email, password})
             .then(res => {
-                errMessage.style.display = 'none';
+                toast.success('Welcome back!');
                 logIn(res.data.token);
                 navigate(redirect);
                 loginButton.disabled = false;
             })
             .catch(err => {
-                errMessage.style.display = 'block';
                 loginButton.disabled = false;
-                if(!err.response) setError("Sever do not response.");
-                else if(err.response.data.message) setError(err.response.data.message);
-                else setError(err.message);
+                if(!err.response) toast.error("Sever do not response.");
+                else if(err.response.data.message) toast.error(err.response.data.message);
+                else toast.error(err.message);
             });
         }
     }
@@ -105,7 +99,6 @@ const Login = () => {
                     </div>
                     <Link to={URL.PASSWORD_EMAIL} className="font-bold text-teal-700">Forget password</Link>
                 </div>
-                <div ref={el => errMessage = el} className="hidden w-full py-3 mb-5 text-center bg-red-400">{error}</div>
                 <button type="submit" ref={el => loginButton = el} className="w-full rounded-[4px] py-2 font-bold text-white bg-teal-700 disabled:opacity-50">Sign in</button>
                 <button type="button" onClick={handleMetamaskLogin} className="flex rounded-[4px] justify-center w-full py-2 mt-3 border-[1px] border-slate-200">
                     <img src={iconMetamask} alt="" />

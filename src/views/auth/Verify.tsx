@@ -11,13 +11,13 @@ import toast from "react-hot-toast";
 const Verify = () => {
     const [ code, setCode ] = useState<string>("");
     const [ isVerified, setIsVerified ] = useState<boolean>(false);
-    const { user, setUser } = useAuth();
+    const { user } = useAuth();
 
     const handleClick = () => {
         Auth.verifyEmail(code)
         .then(res => {
             if(res.data.success) {
-                setUser({...user, email_verified_at: res.data.email_verified_at});
+                toast.success('Email verified.');
                 setIsVerified(true);
             }
         })
