@@ -17,6 +17,10 @@ import MyFund from "views/Myfund";
 import Setting from "views/Setting";
 import Pong from "views/Pong";
 import Profile from "views/Profile";
+import Admin from "views/Admin";
+import AdminUser from "components/admin/AdminUser";
+import AdminFund from "components/admin/AdminFund";
+import AdminDonate from "components/admin/AdminDonate";
 
 const routes = [
     {
@@ -90,6 +94,28 @@ const routes = [
         url: URL.PROFILE,
         component: <Profile />,
         auth: true
+    },
+    {
+        url: URL.ADMIN,
+        component: <Admin />,
+        child: [
+            {
+                url: URL.ADMIN_USERS,
+                component: <AdminUser />
+            },
+            {
+                url: URL.ADMIN_FUNDS,
+                component: <AdminFund />
+            },
+            {
+                url: URL.ADMIN_DONATES,
+                component: <AdminDonate />
+            },
+            {
+                url: "",
+                component: <AdminUser />
+            }
+        ]
     },
     {
         url: "*",

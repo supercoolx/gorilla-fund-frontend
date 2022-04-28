@@ -3,6 +3,7 @@ import { zeroPad } from "libs/utils";
 import imgStory from "assets/img/home/stories.png";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import FundAPI from "api/fund";
+import toast from "react-hot-toast";
 
 const HomeStories = () => {
     const [data, setData] = useState<any[]>([]); 
@@ -18,7 +19,7 @@ const HomeStories = () => {
     }
 
     useEffect(() => {
-        FundAPI.topRated(5).then(res => setData(res.data)).catch(err => alert(err.message));
+        FundAPI.topRated(5).then(res => setData(res.data)).catch(err => toast.error(err.message));
     }, []);
 
     return (

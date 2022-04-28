@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Toaster } from "react-hot-toast";
 import ScrollToTopWrapper from 'components/util/ScrollToTopWrapper';
 import PrivatePage from "components/util/PrivatePage";
 import routes from 'router/routes';
@@ -22,6 +23,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<ScrollToTopWrapper>
+				<Toaster />
 				<Routes>
 					{component}
 				</Routes>

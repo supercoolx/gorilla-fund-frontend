@@ -3,6 +3,7 @@ import UserAPI from "api/user";
 import web3, { isWeb3Enable } from "libs/web3";
 import { useAuth } from "contexts/AuthContext";
 import { FiLink2 } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const WalletPage = ({ submit, setSubmit }) => {
     const { user, logOut } = useAuth();
@@ -21,10 +22,10 @@ const WalletPage = ({ submit, setSubmit }) => {
             else throw new Error("Wallet is already in use");
         })
         .then(res => {
-            alert("Changed successfully. Please sign in again.");
+            toast.success("Changed successfully. Please sign in again.");
             logOut();
         })
-        .catch(err => alert(err.message));
+        .catch(err => toast.error(err.message));
     }
 
     useEffect(() => user.walletAddress && setWallet(user.walletAddress), [user]);
@@ -43,7 +44,7 @@ const WalletPage = ({ submit, setSubmit }) => {
                 <div className="p-5 bg-white">
                     <div className="max-w-[400px] text-sm">
                         <div className="text-sm font-bold">Your wallet</div>
-                        <button className="flex items-center px-3 py-2 mt-3 text-white bg-teal-700 rounded-sm">
+                        <button className="flex items-center px-3 py-2 mt-3 text-white bg-teal-700 rounded-[4px]">
                             <FiLink2 />
                             <div onClick={handleClick} className="pl-2">{wallet || "Connect wallet"}</div>
                         </button>

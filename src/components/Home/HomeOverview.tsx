@@ -4,6 +4,7 @@ import hand from "assets/img/svg/hand.svg";
 import box from "assets/img/svg/box.svg";
 import active from "assets/img/svg/active.svg";
 import money from "assets/img/svg/money.svg";
+import toast from "react-hot-toast";
 
 const HomeOverview = () => {
     const [ finish, setFinish ] = useState<number>(0);
@@ -19,7 +20,7 @@ const HomeOverview = () => {
             setFunds(res.data.funds || 0);
             setGoals(res.data.goals || 0);
         })
-        .catch(err => alert(err.message));
+        .catch(err => toast.error(err.message));
     }, []);
 
     return (

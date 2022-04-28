@@ -6,6 +6,7 @@ import { useKYC } from "contexts/KycContext";
 import { FaEthereum } from "react-icons/fa";
 import { FiArrowLeft } from "react-icons/fi";
 import WalletAddressInput from "components/util/WalletAddressInput";
+import toast from "react-hot-toast";
 
 const KYCWallet = () => {
     const navigate = useNavigate();
@@ -16,12 +17,12 @@ const KYCWallet = () => {
         UserAPI.confirmWallet(walletAddress)
         .then(res => {
             if(res.data.success) return submit().then(res => {
-                alert("Submitted successfully.");
+                toast.success("Submitted successfully.");
                 navigate(URL.DASHBOARD);
             })
-            else return alert('Wallet address is already in use.');
+            else return toast.error('Wallet address is already in use.');
         })
-        .catch(err => alert(err.message));
+        .catch(err => toast.error(err.message));
     }
     const onPrev = () => setStep(2);
 

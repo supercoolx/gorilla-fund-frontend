@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useFund } from "contexts/FundContext";
 import FundAPI from "api/fund";
 import { FiArrowLeft, FiPaperclip } from "react-icons/fi";
@@ -40,7 +41,7 @@ const FundPhoto = () => {
                 setStep(3);
             })
             .catch(err => {
-                alert(err);
+                toast.error(err.message);
                 nextButton.disabled = false;
             });
         }

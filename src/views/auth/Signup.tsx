@@ -7,6 +7,7 @@ import Auth from "api/auth";
 import { useAuth } from "contexts/AuthContext";
 import iconLogo from "assets/img/svg/gorilla.svg";
 import iconMetamask from "assets/img/svg/metamask.svg";
+import toast from "react-hot-toast";
 
 const Signup = () => {
     var signupButton;
@@ -64,7 +65,7 @@ const Signup = () => {
     }
     const handleMetamaskSignup = () => {
         if(!isWeb3Enable) {
-            alert('Please install metamask.');
+            toast.error('Please install metamask.');
             return;
         }
         web3.eth.requestAccounts()
@@ -83,7 +84,7 @@ const Signup = () => {
             logIn(res.data.token);
             navigate(URL.HOME);
         })
-        .catch(err => alert(err.message));
+        .catch(err => toast.error(err.message));
     }
 
     return (

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { URL } from "libs/constants";
 import Auth from "api/auth";
 import NotFound from "views/NotFound";
+import toast from "react-hot-toast";
 
 const Reset = () => {
     const [ password, setPassword ] = useState<string>("");
@@ -21,7 +22,7 @@ const Reset = () => {
     }
     const handleClick = (e: any) => {
         if(!(password.length >=8 && password === confirmPass)) {
-            alert("Email must be at least 8");
+            toast.error("Email must be at least 8");
             return;
         }
 
@@ -32,9 +33,9 @@ const Reset = () => {
             }
         })
         .catch(err => {
-            if(!err.response) alert("You're offline.");
-            else if(err.response.data.message) alert(err.response.data.message);
-            else alert(err.message);
+            if(!err.response) toast.error("You're offline.");
+            else if(err.response.data.message) toast.error(err.response.data.message);
+            else toast.error(err.message);
         });
     }
 

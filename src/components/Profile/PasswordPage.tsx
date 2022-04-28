@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Auth from "api/auth";
 import { MdLockOutline } from "react-icons/md";
+import toast from "react-hot-toast";
 
 const PasswordPage = ({submit, setSubmit}) => {
     const [ current, setCurrent ] = useState<string>("");
@@ -13,14 +14,14 @@ const PasswordPage = ({submit, setSubmit}) => {
 
     const setPassword = () => {
         setSubmit(false);
-        if(newPass.length < 8) return alert('Password must be at least 8 characters.');
-        if(newPass !== repeat) return alert('Please input password correctly.');
+        if(newPass.length < 8) return toast.error('Password must be at least 8 characters.');
+        if(newPass !== repeat) return toast.error('Please input password correctly.');
         Auth.changePassword(current, newPass)
         .then(res => {
-            if(res.data.success) return alert("Changed successfully.");
-            else return alert(res.data.message);
+            if(res.data.success) return toast.success("Changed successfully.");
+            else return toast.error(res.data.message);
         })
-        .catch(err => alert(err?.response.data.message || err.message));
+        .catch(err => toast.error(err?.response.data.message || err.message));
     }
 
     useEffect(() => {

@@ -54,7 +54,7 @@ const MyFundTop = ({ fund }) => {
                 </div>
             </div>
             <Modal isOpen={isOpen} onClose={handleClose}>
-                <div className="w-full rounded-[4px] max-w-md p-6 bg-white">
+                <div className="w-full max-w-md p-6 bg-white">
                     <div className="flex items-end justify-between">
                         <div className="font-bold text-black">Help by sharing</div>
                         <div onClick={handleClose} className="text-2xl font-bold text-gray-500 cursor-pointer">&times;</div>

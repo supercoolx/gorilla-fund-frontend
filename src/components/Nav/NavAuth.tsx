@@ -17,7 +17,6 @@ const NavAuth = () => {
     const onChangeKeyword = e => setKeyword(e.target.value);
     const onKeydownKeyword = e => {
         if(e.keyCode !== 13) return;
-        alert('search');
     }
     const handleLogout = () => {
         logOut();

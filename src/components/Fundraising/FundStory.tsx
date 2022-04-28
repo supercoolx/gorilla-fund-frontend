@@ -1,6 +1,7 @@
 import React from "react";
 import { useFund } from "contexts/FundContext";
 import { FiArrowLeft } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const FundStory = () => {
     const { setStep, head, setHead, desc, setDesc } = useFund();
@@ -12,7 +13,7 @@ const FundStory = () => {
         if(head.trim().length < 10) isValid = false;
         if(desc.trim().length < 10) isValid = false;
         if(isValid) setStep(4);
-        else alert("Please provide correct details.");
+        else toast.error("Please provide correct details.");
     };
     const handlePrev = () => setStep(2);
     

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import ProjectCard from "components/util/ProjectCard";
 import FundAPI from "api/fund";
 import { URL } from "libs/constants";
@@ -9,7 +10,7 @@ const FundProject = () => {
     const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
-        FundAPI.topRated(3).then(res => setData(res.data)).catch(err => alert(err.message));
+        FundAPI.topRated(3).then(res => setData(res.data)).catch(err => toast.error(err.message));
     }, []);
 
     return (

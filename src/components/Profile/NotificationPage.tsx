@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "contexts/AuthContext";
 import UserAPI from "api/user";
+import toast from "react-hot-toast";
 
 const NotificationPage = ({ submit, setSubmit }) => {
     const { user, reload } = useAuth();
@@ -10,10 +11,10 @@ const NotificationPage = ({ submit, setSubmit }) => {
         setSubmit(false)
         UserAPI.changeEmailSetting(parseInt(option))
         .then(res => {
-            alert("Changed successfully");
+            toast.success("Changed successfully");
             reload();
         })
-        .catch(err => alert(err.message));
+        .catch(err => toast.success(err.message));
     }
 
     useEffect(() => {
@@ -37,14 +38,6 @@ const NotificationPage = ({ submit, setSubmit }) => {
                         <label className="flex items-center gap-3 pl-1 mt-4 cursor-pointer">
                             <input type="radio" value={1} onChange={handleChange} checked={option === "1"} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
                             <div className="">Send me a daily highlight of donations and comments</div>
-                        </label>
-                        <label className="flex items-center gap-3 pl-1 mt-4 cursor-pointer">
-                            <input type="radio" value={2} onChange={handleChange} checked={option === "2"} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
-                            <div className="">Send me an email for every donation or comment</div>
-                        </label>
-                        <label className="flex items-center gap-3 pl-1 mt-4 cursor-pointer">
-                            <input type="radio" value={3} onChange={handleChange} checked={option === "3"} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />
-                            <div className="">Send me an email for every donation or comment</div>
                         </label>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import FundAPI from "api/fund";
+import toast from "react-hot-toast";
 
 const SettingPhoto = ({data, setData}) => {
     var imageInput;
@@ -14,7 +15,7 @@ const SettingPhoto = ({data, setData}) => {
         .then(res => {
             setData({ ...data, image: res.data.filePath });
         })
-        .catch(err => alert(err));
+        .catch(err => toast.error(err.message));
     }
     
     return (

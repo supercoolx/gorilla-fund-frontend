@@ -35,7 +35,7 @@ export const zeroPad = (num: number, places: number) => String(num).padStart(pla
 export const addressFormat = (address: string) => address ? address.slice(0, 6) + '...' + address.slice(address.length - 4, address.length) : "";
 
 export const getUserName = user => {
-    const fullName = user?.firstName + ' ' + user?.lastName;
+    const fullName = (user?.firstName || "") + ' ' + (user?.lastName || "");
     if(fullName.trim()) return fullName;
     if(user?.username) return '@' + user.username;
     if(user?.walletAddress) return addressFormat(user.walletAddress);

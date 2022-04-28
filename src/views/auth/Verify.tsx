@@ -6,6 +6,7 @@ import { useAuth } from "contexts/AuthContext";
 import { URL } from "libs/constants";
 import Auth from "api/auth";
 import "assets/styles/ReactInputVerificationCode.css";
+import toast from "react-hot-toast";
 
 const Verify = () => {
     const [ code, setCode ] = useState<string>("");
@@ -21,20 +22,20 @@ const Verify = () => {
             }
         })
         .catch(err => {
-            if(!err.response) alert("You're offline.");
-            if(err.response.data.message) alert(err.response.data.message);
-            else alert(err.message);
+            if(!err.response) toast.error("You're offline.");
+            if(err.response.data.message) toast.error(err.response.data.message);
+            else toast.error(err.message);
         })
     }
     const sendEmail = () => {
         Auth.setVerifyEmail()
         .then(res => {
             if(res.data.success) {
-                alert("Email sent.");
+                toast.success("Email sent.");
             }
         })
         .catch(err => {
-            alert(err.message);
+            toast.error(err.message);
         });
     }
 
@@ -47,7 +48,7 @@ const Verify = () => {
                     </div>
                     <div className="pt-6 text-2xl font-bold">Email verified</div>
                     <div className="py-4 text-center text-gray-500">Your email has been successfully verified. Click below to log in automatically.</div>
-                    <Link to={URL.HOME} className="w-full py-2 font-bold text-center text-white bg-teal-700">Get started</Link>
+                    <Link to={URL.HOME} className="w-full py-2 font-bold text-center rounded-[4px] text-white bg-teal-700">Get started</Link>
                     <Link to={URL.LOGIN} className="flex items-center justify-center w-full py-2 mt-3">
                         <FiArrowLeft size={16} />
                         <div className="pl-1 font-bold">Back to log in</div>

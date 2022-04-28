@@ -38,7 +38,7 @@ const FundLeft = ({ uid, raised, cnt, donations, goal }) => {
                     <FaEthereum className="text-teal-700" size={20} />
                     <div className="text-gray-500">
                         <span className="text-lg font-bold text-teal-700">
-                            {raised?.toLocaleString('en')}
+                            {(raised || 0).toLocaleString('en')}
                         </span> pledged of {goal?.toLocaleString('en')} ETH goal
                     </div>
                 </div>

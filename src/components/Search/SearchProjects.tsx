@@ -5,6 +5,7 @@ import ProjectCard from "components/util/ProjectCard";
 import FundAPI from "api/fund";
 import { FUNDCATEGORY, FUNDSORT } from "libs/constants";
 import { ImFire, ImSearch } from "react-icons/im";
+import toast from "react-hot-toast";
 
 const SearchProjects = () => {
     const [ searchParams, setSearchParams ] = useSearchParams();
@@ -35,14 +36,14 @@ const SearchProjects = () => {
             s: searchParams.get('s'),
             category: searchParams.get('category'),
             sort: searchParams.get('sort')
-        }).then(res => setData(res.data)).catch(err => alert(err.message));
+        }).then(res => setData(res.data)).catch(err => toast.error(err.message));
     }
     const setSort = val => setQuery({ sort: val.value });
     const setCategory = val => setQuery({ category: val.value });
 
     useEffect(() => {
-        FundAPI.topRated(3).then(res => setTop(res.data)).catch(err => alert(err.message));
-        FundAPI.search({}).then(res => setData(res.data)).catch(err => alert(err.message));
+        FundAPI.topRated(3).then(res => setTop(res.data)).catch(err => toast.error(err.message));
+        FundAPI.search({}).then(res => setData(res.data)).catch(err => toast.error(err.message));
     }, []);
     useEffect(search, [searchParams]);
 

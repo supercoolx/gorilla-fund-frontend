@@ -7,6 +7,7 @@ import Auth from "api/auth";
 import { useAuth } from "contexts/AuthContext";
 import iconLogo from "assets/img/svg/gorilla.svg";
 import iconMetamask from "assets/img/svg/metamask.svg";
+import toast from "react-hot-toast";
 
 const Login = () => {
     var loginButton;
@@ -54,7 +55,7 @@ const Login = () => {
     }
     const handleMetamaskLogin = () => {
         if(!isWeb3Enable) {
-            alert('Please install metamask.');
+            toast.error('Please install metamask.');
             return;
         }
         web3.eth.requestAccounts()
@@ -74,8 +75,8 @@ const Login = () => {
             navigate(redirect);
         })
         .catch(err => {
-            if(err.response.status === 403) alert('Your account has been closed.');
-            else alert(err.message)
+            if(err.response.status === 403) toast.error('Your account has been closed.');
+            else toast.error(err.message)
         });
     }
 

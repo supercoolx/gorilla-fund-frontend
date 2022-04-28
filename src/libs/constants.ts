@@ -18,6 +18,10 @@ export const URL = {
     PASSWORD_EMAIL: '/email',
     PASSWORD_RESET: '/reset/:email/:token',
     EMAIL_VERIFY: '/verify',
+    ADMIN: '/admin',
+    ADMIN_USERS: 'users',
+    ADMIN_FUNDS: 'funds',
+    ADMIN_DONATES: 'donates'
 }
 
 export const SOCIAL = {

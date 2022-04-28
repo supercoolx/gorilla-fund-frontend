@@ -8,6 +8,7 @@ import CopyInput from "components/util/CopyInput";
 import WalletAddressInput from "components/util/WalletAddressInput";
 import FundAPI from "api/fund";
 import { FUNDCATEGORY, URL } from "libs/constants";
+import toast from "react-hot-toast";
 
 const SettingOverview = ({data, setData}) => {
 
@@ -26,7 +27,7 @@ const SettingOverview = ({data, setData}) => {
     const handleDelete = (e) => {
         e.preventDefault();
         if(!isValid) return;
-        FundAPI.delete(data.uid).then(res => navigate(URL.DASHBOARD)).catch(err => alert(err.message));
+        FundAPI.delete(data.uid).then(res => navigate(URL.DASHBOARD)).catch(err => toast.error(err.message));
     }
     const handleChange = e => setValid(e.target.value === "delete");
     const handleOpen = () => setOpen(true);
@@ -79,7 +80,7 @@ const SettingOverview = ({data, setData}) => {
                         <div className="text-gray-700">Remove from search results</div>
                         <Toggle onChange={changeSearch} checked={data.allowSearch} />
                     </div>
-                    <div className="text-xs text-gray-500">Your fundraiser will not appear in online search engines or GoFundMe search results.</div>
+                    <div className="text-xs text-gray-500">Your fundraiser will not appear in online search engines or GorillaFund search results.</div>
                     <div className="text-xs text-gray-500">AnyOne with a link will still be able to view the fundraiser.</div>
                 </div>
                 <div className="flex items-center justify-between p-5 mt-5 text-sm bg-white">
@@ -94,7 +95,7 @@ const SettingOverview = ({data, setData}) => {
                 </div>
             </div>
             <Modal isOpen={isOpen} onClose={handleClose}>
-                <form onSubmit={handleDelete} className="w-full max-w-md p-6 bg-white rounded-[4px]">
+                <form onSubmit={handleDelete} className="w-full max-w-md p-6 bg-white">
                     <div className="flex items-end justify-between">
                         <div className="font-bold text-black">Delete your fundraisers</div>
                         <div onClick={handleClose} className="text-2xl font-bold text-gray-500 cursor-pointer">&times;</div>

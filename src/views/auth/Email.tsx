@@ -4,6 +4,7 @@ import { FiArrowLeft, FiMail } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { URL } from "libs/constants";
 import Auth from "api/auth";
+import toast from "react-hot-toast";
 
 const Email = () => {
     const [ email, setEmail ] = useState<string>("");
@@ -23,9 +24,9 @@ const Email = () => {
                 }
             })
             .catch(err => {
-                if(!err.response) alert("You're offline.");
-                else if(err.response.data.message) alert(err.response.data.message);
-                else alert(err.message);
+                if(!err.response) toast.error("You're offline.");
+                else if(err.response.data.message) toast.error(err.response.data.message);
+                else toast.error(err.message);
             });
         }
     }

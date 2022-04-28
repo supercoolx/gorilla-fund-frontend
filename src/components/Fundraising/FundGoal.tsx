@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+import toast from "react-hot-toast";
 import CurrencyInput from "react-currency-input-field";
 import { useFund } from "contexts/FundContext";
 import { FUNDCATEGORY } from "libs/constants";
@@ -19,7 +20,7 @@ const FundGoal = () => {
         if(!category) isValid = false;
         if(!address) isValid = false;
         if(isValid) setStep(2);
-        else alert("Please provide correct details.");
+        else toast.error("Please provide correct details.");
     }
 
     return (

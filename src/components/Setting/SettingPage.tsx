@@ -7,6 +7,7 @@ import SettingPhoto from "components/Setting/SettingPhoto";
 import SettingStory from "components/Setting/SettingStory";
 import SettingNotification from "components/Setting/SettingNotification";
 import { FiCheck, FiArrowLeft } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const SettingPage = () => {
     const { uid } = useParams();
@@ -14,7 +15,7 @@ const SettingPage = () => {
     const [ index, setIndex ] = useState<number>(1);
     const [ content, setContent ] = useState<any>();
     const changeContent = i => (() => setIndex(i));
-    const updateFund = () => FundAPI.update(data).then(res => alert("Saved successfully.")).catch(err => alert(err.message));
+    const updateFund = () => FundAPI.update(data).then(res => toast.success("Saved successfully.")).catch(err => toast.error(err.message));
 
     useEffect(() => {
         uid && FundAPI.myFund(uid).then(res => setData(res.data)).catch(err => {});

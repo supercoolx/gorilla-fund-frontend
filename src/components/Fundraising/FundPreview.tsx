@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 import { nFormatter } from "libs/utils";
 import { useFund } from "contexts/FundContext";
 import { FiArrowLeft } from "react-icons/fi";
@@ -13,7 +14,7 @@ const FundPreview = () => {
             setWel(res.data.uid);
         })
         .catch(err => {
-            alert(err.message);
+            toast.error(err.message);
             button.disabled = false;
         });
     }

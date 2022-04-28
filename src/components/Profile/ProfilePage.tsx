@@ -11,6 +11,7 @@ import { GoLocation } from "react-icons/go";
 import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlinePhone } from "react-icons/md";
 import "assets/styles/ReactSelect.css";
+import toast from "react-hot-toast";
 
 const ProfilePage = ({submit, setSubmit}) => {
     const imageType = ["image/png", "image/jpeg", "image/gif", "image/svg+xml"];
@@ -62,7 +63,7 @@ const ProfilePage = ({submit, setSubmit}) => {
             logOut();
             navigate(URL.HOME);
         })
-        .catch(err => alert(err.message));
+        .catch(err => toast.error(err.message));
     }
 
     const submitData = () => {
@@ -78,11 +79,11 @@ const ProfilePage = ({submit, setSubmit}) => {
             })
             .then(res => UserAPI.updateProfile(data))
             .then(res => {
-                alert("Updated successfully");
+                toast.success("Updated successfully");
                 reload();
             })
             .catch(err => {
-                alert(err.message);
+                toast.error(err.message);
             });
         }
         else {
@@ -92,11 +93,11 @@ const ProfilePage = ({submit, setSubmit}) => {
                 else throw new Error("Email already in use.");
             })
             .then(res => {
-                alert("Updated successfully");
+                toast.success("Updated successfully");
                 reload();
             })
             .catch(err => {
-                alert(err.message);
+                toast.error(err.message);
             });
         }
     }

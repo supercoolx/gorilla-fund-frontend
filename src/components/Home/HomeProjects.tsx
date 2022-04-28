@@ -5,6 +5,7 @@ import { URL } from "libs/constants";
 import { ImFire } from "react-icons/im";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import ProjectCard from "components/util/ProjectCard";
+import toast from "react-hot-toast";
 
 const HomeProjects = () => {
     const [data, setData] = useState<any[]>([]); 
@@ -13,7 +14,7 @@ const HomeProjects = () => {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        FundAPI.topRated(8).then(res => setData(res.data)).catch(err => alert(err.message));
+        FundAPI.topRated(8).then(res => setData(res.data)).catch(err => toast.error(err.message));
     }, []);
 
     useEffect(() => {

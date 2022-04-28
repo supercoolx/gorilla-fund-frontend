@@ -17,6 +17,7 @@ import { AiFillDollarCircle } from "react-icons/ai";
 import { BsExclamationOctagon } from "react-icons/bs";
 import { FaEthereum, FaExchangeAlt } from "react-icons/fa";
 import logo from "assets/img/svg/gorilla.svg";
+import toast from "react-hot-toast";
 
 const Donate = () => {
     const { user } = useAuth();
@@ -28,8 +29,8 @@ const Donate = () => {
     
     const handleChange = e => setAmount(e.target.value);
     const handleDonate = async () => {
-        if(!isWeb3Enable) return alert('Please install metamask.');
-        if(amount === '0') return alert('Donation must be greater than 0');
+        if(!isWeb3Enable) return toast.error('Please install metamask.');
+        if(amount === '0') return toast.error('Donation must be greater than 0');
         let eth = ethers.utils.parseEther(amount);
         try {
             await switchNetwork(1);
@@ -52,9 +53,9 @@ const Donate = () => {
                 ethAmount: parseFloat(amount),
                 usdAmount: parseFloat(USD)
             });
-            alert('Thank you for fund!');
+            toast.success('Thank you for fund!');
         }
-        catch(err: any) { alert(err.message) }
+        catch(err: any) { toast.error(err.message) }
     }
 
     useEffect(() => {

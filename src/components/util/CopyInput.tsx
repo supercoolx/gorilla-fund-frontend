@@ -1,7 +1,8 @@
+import toast from "react-hot-toast";
 import { MdOutlineContentCopy } from "react-icons/md";
 
 const CopyInput = ({value, className}: {value: string, className?: string}) => {
-    const handleCopy = () => window.navigator.clipboard.writeText(value).then(() => alert('Copied.'));
+    const handleCopy = () => window.navigator.clipboard.writeText(value).then(() => toast.success('Copied.'));
 
     return (
         <div className={"border-[1px] rounded-[4px] flex items-center justify-center px-1 " + className}>
