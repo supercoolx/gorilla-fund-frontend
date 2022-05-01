@@ -1,11 +1,13 @@
 import React from "react";
-import web3, { isWeb3Enable } from "libs/web3";
+import toast from "react-hot-toast";
+import web3, { isWeb3Enable, switchNetwork } from "libs/web3";
 
 const WalletAddressInput = ({value, onChange}: {value?: string, onChange: Function}) => {
 
     const handleClick = () => {
-        if(!isWeb3Enable) return;
-        web3.eth.requestAccounts()
+        if(!isWeb3Enable) return toast.error("Please install metamask.");
+        switchNetwork(1)
+        .then(() => web3.eth.requestAccounts())
         .then(users => onChange(users[0]))
         .catch(err => window.console.log(err.message));
     }
