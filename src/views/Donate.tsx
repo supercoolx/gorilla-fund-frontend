@@ -110,9 +110,9 @@ const Donate = () => {
                     <div className="flex flex-col sm:flex-row gap-[2px] bg-slate-50">
                         <div className="flex flex-col w-full p-6 bg-white">
                             <div className="font-semibold text-gray-500">
-                                <span className="text-lg font-bold text-teal-700">0 ETH </span>pledged of {data.amount?.toLocaleString('en')} ETH goal</div>
-                            <div className="pt-1 text-teal-700">9.4K donations</div>
-                            <Progress percent={40} className="py-4" />
+                                <span className="text-lg font-bold text-teal-700">{data.sumDonateETH || 0} ETH </span>pledged of {data.amount?.toLocaleString('en')} ETH goal</div>
+                            <div className="pt-1 text-teal-700">{data.cntDonate} donations</div>
+                            <Progress percent={data.sumDonateETH / data.amount * 100} className="py-4" />
                             <hr className="mt-3" />
                             <div className="pt-6 pb-2 font-bold">Enter your donation</div>
                             <div className="relative">

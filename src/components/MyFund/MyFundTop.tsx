@@ -29,7 +29,7 @@ const MyFundTop = ({ fund }) => {
                 <img src={data.image} className="object-cover h-40 w-72" alt="" />
                 <div className="flex flex-col w-full gap-2 sm:flex-1">
                     <div className="text-sm text-gray-500">Fundraising progress</div>
-                    <Progress percent={50} />
+                    <Progress percent={raised / data.amount * 100} />
                     <div className="flex justify-between">
                         <div className="text-sm font-bold">{raised} ETH raised</div>
                         <div className="text-sm text-gray-500">{data.amount} ETH Goal</div>

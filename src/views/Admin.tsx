@@ -7,9 +7,9 @@ import { MdLogout } from "react-icons/md";
 import { FiUsers } from "react-icons/fi";
 import logo from "assets/img/svg/gorilla.svg";
 import avatar from "assets/img/home/banner_big.png";
-import { useAdminAuth } from "contexts/AdminContext";
+import AdminProvider, { useAdminAuth } from "contexts/AdminContext";
 
-const Admin = () => {
+const AdminHeader = () => {
     const navigate = useNavigate();
     const { email, setEmail } = useAdminAuth();
     const logOut = () => {
@@ -48,5 +48,11 @@ const Admin = () => {
         </Fragment>
     )
 }
+
+const Admin = () => (
+    <AdminProvider>
+        <AdminHeader />
+    </AdminProvider>
+)
 
 export default Admin;
