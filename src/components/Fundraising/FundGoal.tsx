@@ -1,27 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import toast from "react-hot-toast";
 import CurrencyInput from "react-currency-input-field";
 import { useFund } from "contexts/FundContext";
+import { contract } from "libs/web3";
 import { FUNDCATEGORY } from "libs/constants";
+import logo from "assets/img/svg/gorilla.svg";
 import "assets/styles/ReactSelect.css";
 import WalletAddressInput from "components/util/WalletAddressInput";
 
 const FundGoal = () => {
     const { setStep, name, setName, category, setCategory, amount, setAmount, address, setAddress } = useFund();
+    const [ verify, setVerify ] = useState<boolean>(false);
 
     const handleChangeName = e => setName(e.target.value);
     const handleChangeAmount = val => setAmount(val);
     const handleChangeAddress = val => setAddress(val);
     const handleNext = () => {
-        let isValid = true;
-        if(name.trim().length < 10) isValid = false;
-        if(!amount) isValid = false;
-        if(!category) isValid = false;
-        if(!address) isValid = false;
-        if(isValid) setStep(2);
-        else toast.error("Please provide correct details.");
+        if(!name.trim().length) return toast.error('Please input name of fundraising.');
+        if(!amount) return toast.error('Please input amount of fundraising.');
+        if(!category) return toast.error('Please select category.');
+        if(!address) return toast.error('Please input your wallet address.');
+        if(!verify) return toast.custom(() => (
+            <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
+                <img src={logo} alt="" />
+                <div>
+                    <p>You don't have ApeGorilla NFT in your wallet.</p>
+                    <p>Please mint an ApeGorilla from ApeGorilla.com to create a funding proposal.</p>
+                </div>
+            </div>
+        ));
+        setStep(2);
     }
+
+    useEffect(() => {
+        if(!address) return;
+        contract.methods.balanceOf(address).call()
+        .then(balance => {
+            if(parseInt(balance) > 0) {
+                toast.success('You have ' + parseInt(balance) + ' AGC tokens in your wallet.');
+                setVerify(true);
+            }
+            else toast.custom(() => (
+                <div className="flex gap-3 p-2 bg-white rounded-lg shadow-md">
+                    <img src={logo} alt="" />
+                    <div>
+                        <p>You don't have ApeGorilla NFT in your wallet.</p>
+                        <p>Please mint an ApeGorilla from ApeGorilla.com to create a funding proposal.</p>
+                    </div>
+                </div>
+            ));
+        })
+        .catch(err => toast.error(err.message));
+    }, [address]);
 
     return (
         <>

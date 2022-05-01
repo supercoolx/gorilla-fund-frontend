@@ -42,7 +42,7 @@ const FundraisingPage = () => {
         <FundPreview />
     ];
 
-    return welcome ? <FundSuccess uid={welcome} /> : (
+    return welcome ? <FundSuccess /> : (
         <div className="flex flex-wrap bg-slate-50">
             <Stepper step={step} data={data} />
             <div className="flex flex-col flex-1 min-w-[360px] gap-16 px-2 py-12">
