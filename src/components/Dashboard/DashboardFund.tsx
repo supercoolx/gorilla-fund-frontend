@@ -17,6 +17,9 @@ const DashboardFund = ({ funds }) => {
                     {
                         funds.map((item, key) => (
                             <div className="flex flex-col overflow-hidden text-sm bg-white rounded-md shadow" key={key}>
+                                <div className="relative z-10" title={item.approved ? "active" : "not approved"}>
+                                    <div className={"absolute w-3 h-3 border rounded-full shadow-sm cursor-pointer top-2 right-2 shadow-black " + (item.approved ? "bg-green-400" : "bg-gray-300")}></div>
+                                </div>
                                 <img src={item.image} className="object-cover h-44 opacity-20" alt="" />
                                 <div className="flex flex-col px-4 py-5">
                                     <img src={item.image} className="object-cover w-16 h-16 mb-2 -mt-12 rounded-md" alt="" />
