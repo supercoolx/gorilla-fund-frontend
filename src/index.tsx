@@ -2,16 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import AuthProvider from 'contexts/AuthContext';
-import AdminProvider from 'contexts/AdminContext';
 import reportWebVitals from './reportWebVitals';
 import 'assets/styles/index.css';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<AuthProvider>
-			<AdminProvider>
-				<App />
-			</AdminProvider>
+			<App />
 		</AuthProvider>
 	</React.StrictMode>,
   document.getElementById('root')
