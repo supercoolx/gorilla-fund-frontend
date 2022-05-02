@@ -21,10 +21,10 @@ const SettingPhoto = ({data, setData}) => {
     return (
         <div className="w-full bg-slate-50">
             <div className="max-w-[900px] mx-auto px-3 py-5">
-                <div className="flex flex-col items-center p-5 text-sm bg-white">
+                <div className="flex flex-col items-center p-5 text-sm bg-white rounded-md">
                     <input ref={el => imageInput = el} type="file" accept="image/*" onChange={handleChange} className="hidden" />
-                    <img src={data.image} alt="" />
-                    <button onClick={handleClick} className="px-10 py-3 mt-5 font-semibold text-white bg-teal-700">Change Photo</button>
+                    <img src={data.image} className="border-2 border-teal-700 rounded-md" alt="" />
+                    <button onClick={handleClick} className="px-10 py-3 mt-5 font-semibold text-white bg-teal-700 rounded-[4px]">Change Photo</button>
                 </div>
             </div>
         </div>

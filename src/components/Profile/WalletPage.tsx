@@ -36,12 +36,12 @@ const WalletPage = ({ submit, setSubmit }) => {
     return (
         <div className="py-5 bg-slate-50">
             <div className="max-w-[900px] w-full mx-auto px-3">
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-t-md">
                     <div className="font-bold">Wallet</div>
                     <div className="text-sm text-gray-500">Connect your wallet and get exclusive access to GorillaFund.</div>
                 </div>
                 <hr />
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-b-md">
                     <div className="max-w-[400px] text-sm">
                         <div className="text-sm font-bold">Your wallet</div>
                         <button className="flex items-center px-3 py-2 mt-3 text-white bg-teal-700 rounded-[4px]">

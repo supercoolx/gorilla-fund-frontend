@@ -24,12 +24,12 @@ const NotificationPage = ({ submit, setSubmit }) => {
     return (
         <div className="py-5 bg-slate-50">
             <div className="max-w-[900px] w-full mx-auto px-3">
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-t-md">
                     <div className="font-bold">Notifications</div>
                     <div className="text-sm text-gray-500">Update your photo and personal details here.</div>
                 </div>
                 <hr />
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-b-md">
                     <div className="max-w-[400px] text-sm">
                         <label className="flex items-center gap-3 pl-1 cursor-pointer">
                             <input type="radio" value={0} onChange={handleChange} checked={option === "0"} name="setting" className="w-2 h-2 rounded-full appearance-none outline outline-1 outline-offset-4 checked:outline-teal-700 outline-gray-300 checked:bg-teal-700" />

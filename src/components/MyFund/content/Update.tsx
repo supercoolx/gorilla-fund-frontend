@@ -11,7 +11,7 @@ const Update = () => {
         <div className="flex flex-col items-center gap-3 py-5">
             <div className="font-bold text-black">No updates yet!</div>
             <div className="text-xs">Keep your donors and followers up to date on your fundraisers!</div>
-            <button onClick={handleOpen} className="px-3 py-2 font-bold text-black border-[1px] hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md">Post an update</button>
+            <button onClick={handleOpen} className="px-3 py-2 font-bold text-black border-[1px] hover:border-teal-700 hover:bg-teal-700 hover:text-white transition-all duration-200 hover:shadow-md rounded-[4px]">Post an update</button>
             <Modal isOpen={isOpen} onClose={handleClose}>
                 <div className="w-full max-w-md p-6 bg-white">
                     <div className="flex justify-between">
@@ -19,8 +19,8 @@ const Update = () => {
                         <button onClick={handleClose}><FaTimes size={16} /></button>
                     </div>
                     <hr className="my-5" />
-                    <div className="pb-1 font-bold text-black">Share via link</div>
-                    <textarea className="w-full h-32 focus:outline-none border-[1px] py-2 px-3"></textarea>
+                    <div className="pb-1 font-bold text-black">Keep your donors and followers up to date on your fundraisers!</div>
+                    <textarea className="w-full h-32 focus:outline-none border-[1px] py-2 px-3 rounded-[4px]"></textarea>
                     <hr className="my-5" />
                     <div className="font-bold text-black">Send update to</div>
                     <label className="flex items-center gap-3 pt-3 pl-1 cursor-pointer">
@@ -40,7 +40,7 @@ const Update = () => {
                         <div className="font-semibold">Twitter</div>
                     </label>
                     <hr className="my-5" />
-                    <button className="w-full py-2 font-bold text-white bg-teal-700">Post an update</button>
+                    <button onClick={() => alert(process.env.APP_URL)} className="w-full py-2 font-bold text-white bg-teal-700 rounded-[4px]">Post an update</button>
                 </div>
             </Modal>
         </div>

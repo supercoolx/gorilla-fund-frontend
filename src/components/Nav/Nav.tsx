@@ -20,8 +20,8 @@ const Nav = () => {
         <div className="w-full bg-white">
             <div className="flex flex-wrap items-center justify-between w-full h-16 px-3 max-w-[900px] mx-auto">
                 <Link to={URL.HOME} className="flex items-center gap-3">
-                    <img src={logo} className="w-7" alt="" />
-                    <div className="hidden font-extrabold sm:flex">{APP_NAME}</div>
+                    <img src={logo} className="w-10" alt="" />
+                    <div className="hidden text-lg font-bold text-teal-700 sm:flex">{APP_NAME}</div>
                 </Link>
                 {
                     user.loggedIn ?

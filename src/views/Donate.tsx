@@ -24,7 +24,7 @@ const Donate = () => {
     const { uid } = useParams();
     const [ data, setData ] = useState<any>({});
     const [ error, setError ] = useState<boolean>(false);
-    const [ amount, setAmount ] = useState<any>('0');
+    const [ amount, setAmount ] = useState<any>('0.1');
     const [ USD, setUSD ] = useState<any>('0');
     
     const handleChange = e => setAmount(e.target.value);
@@ -94,8 +94,8 @@ const Donate = () => {
                     }
                 </div>
                 <div className="flex flex-col gap-[2px] pt-6">
-                    <div>
-                        <img src={data.image} className="object-cover w-full h-60" alt="" />
+                    <div className="rounded-t-md">
+                        <img src={data.image} className="object-cover w-full bg-white rounded-t-md h-60" alt="" />
                         <div className="flex flex-wrap items-center justify-between gap-3 p-6 bg-white">
                             <div className="flex flex-col gap-2">
                                 <div className="text-lg font-bold">{data.name}</div>
@@ -108,7 +108,7 @@ const Donate = () => {
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-[2px] bg-slate-50">
-                        <div className="flex flex-col w-full p-6 bg-white">
+                        <div className="flex flex-col w-full p-6 bg-white rounded-bl-md">
                             <div className="font-semibold text-gray-500">
                                 <span className="text-lg font-bold text-teal-700">{data.sumDonateETH || 0} ETH </span>pledged of {data.amount?.toLocaleString('en')} ETH goal</div>
                             <div className="pt-1 text-teal-700">{data.cntDonate} donations</div>
@@ -129,11 +129,11 @@ const Donate = () => {
                                 </div>
                             </div>
                             <div className="py-8 text-gray-500">Please ensure before making any transaction that the address entered matches the address displayed here.</div>
-                            <button onClick={handleDonate} className="w-full py-2 font-bold text-white bg-teal-700">Donate</button>
+                            <button onClick={handleDonate} className="w-full py-2 font-bold text-white rounded-[4px] bg-teal-700">Donate</button>
                         </div>
-                        <div className="w-full p-6 bg-white">
+                        <div className="w-full p-6 bg-white rounded-br-md">
                             <div className="flex justify-center">
-                                <div className="border-[1px] p-2 border-gray-500">
+                                <div className="border-[1px] rounded p-2 border-gray-500">
                                     <QRCode value={`ethereum:${data.walletAddress}`} level="M" size={130} />
                                 </div>
                             </div>

@@ -18,7 +18,7 @@ const SettingNotification = () => {
     return (
         <div className="w-full bg-slate-50">
             <div className="max-w-[900px] mx-auto px-3 py-5">
-                <div className="p-5 text-sm bg-white">
+                <div className="p-5 text-sm bg-white rounded-md">
                     <div className="font-bold">Donation email notifications</div>
                     <div className="pt-1 text-xs text-gray-500">Choose how you would like to receive emails when others donate or comment on your GorillaFund.</div>
                     <label className="flex items-center gap-3 pt-6 pl-1 cursor-pointer">

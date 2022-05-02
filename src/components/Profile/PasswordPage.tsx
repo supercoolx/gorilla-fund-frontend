@@ -31,12 +31,12 @@ const PasswordPage = ({submit, setSubmit}) => {
     return (
         <div className="py-5 bg-slate-50">
             <div className="max-w-[900px] w-full mx-auto px-3">
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-t-md">
                     <div className="font-bold">Password and Security</div>
                     <div className="text-sm text-gray-500">Update your photo and personal details here.</div>
                 </div>
                 <hr />
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-b-md">
                     <div className="max-w-[400px] text-sm">
                         <div className="">
                             <div className="pb-2 font-bold">Current password</div>

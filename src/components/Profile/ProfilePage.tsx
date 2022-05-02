@@ -122,12 +122,12 @@ const ProfilePage = ({submit, setSubmit}) => {
     return (
         <div className="py-5 bg-slate-50">
             <div className="max-w-[900px] w-full mx-auto px-3">
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-t-md">
                     <div className="font-bold">Profile</div>
                     <div className="text-sm text-gray-500">Update your photo and personal details here.</div>
                 </div>
                 <hr />
-                <div className="p-5 bg-white">
+                <div className="p-5 bg-white rounded-b-md">
                     <div className="text-sm font-bold">Your photo</div>
                     <div className="flex items-center py-3">
                         <input type="file" onChange={onChangePhoto} ref={inputPhoto} className="hidden" />

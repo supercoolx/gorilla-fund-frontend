@@ -36,7 +36,7 @@ const SettingOverview = ({data, setData}) => {
     return (
         <div className="w-full bg-slate-50">
             <div className="max-w-[900px] mx-auto px-3 py-5">
-                <div className="p-5 text-sm bg-white">
+                <div className="p-5 text-sm bg-white rounded-md">
                     <div className="flex gap-3">
                         <div className="flex-1">
                             <div className="pb-1 font-bold">Name</div>
@@ -83,7 +83,7 @@ const SettingOverview = ({data, setData}) => {
                     <div className="text-xs text-gray-500">Your fundraiser will not appear in online search engines or GorillaFund search results.</div>
                     <div className="text-xs text-gray-500">AnyOne with a link will still be able to view the fundraiser.</div>
                 </div>
-                <div className="flex items-center justify-between p-5 mt-5 text-sm bg-white">
+                <div className="flex items-center justify-between p-5 mt-5 text-sm bg-white rounded-md">
                     <div className="">
                         <div className="pb-1 font-bold">Delete my fundraiser</div>
                         <div className="text-xs text-gray-500">You will no longer have access to this fundraiser after deleting.</div>

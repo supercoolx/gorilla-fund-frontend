@@ -22,7 +22,7 @@ const DashboardFund = ({ funds }) => {
                                 </div>
                                 <img src={item.image} className="object-cover h-44 opacity-20" alt="" />
                                 <div className="flex flex-col px-4 py-5">
-                                    <img src={item.image} className="object-cover w-16 h-16 mb-2 -mt-12 rounded-md" alt="" />
+                                    <img src={item.image} className="z-10 object-cover w-16 h-16 mb-2 -mt-12 bg-white border border-teal-700 rounded-md" alt="" />
                                     <div className="text-lg font-bold line-clamp-1">{item.headline}</div>
                                     <div className="pt-10 pb-3 text-gray-500">{"Campaign created " + timeAgoFormat(item.createdAt)}</div>
                                     <Link to={URL.MYFUND.replace(':uid', item.uid)} className="w-full p-2 font-bold text-center transition-all duration-200 bg-gray-200 rounded-[4px] hover:bg-teal-700 hover:text-white">Manage campaign</Link>

@@ -42,7 +42,7 @@ const SettingPage = () => {
                     <div className="text-lg font-bold text-black">Edit campaign</div>
                     <div className="text-sm text-gray-500">{data.name}</div>
                 </div>
-                <button onClick={updateFund} className="flex items-center gap-2 px-3 py-2 mt-3 text-white bg-teal-700">
+                <button onClick={updateFund} className="flex items-center gap-2 px-3 py-2 mt-3 text-white bg-teal-700 rounded-[4px]">
                     <FiCheck />
                     <div className="text-sm font-semibold">Save changes</div>
                 </button>

@@ -11,7 +11,7 @@ const ProjectCard = ({data, className}: {data: any, className?: string}) => {
             <div className="flex flex-col px-4 py-5">
                 <div className="text-lg font-bold text-black line-clamp-1">{data.headline}</div>
                 <div className="pt-2 text-justify line-clamp-4">{data.description}</div>
-                <div className="pt-10 pb-3">{"Last donation is " + timeAgoFormat(data.createdAt)}</div>
+                <div className="pt-10 pb-3">{"Created " + timeAgoFormat(data.createdAt)}</div>
                 <Progress percent={data.raised / data.amount * 100} />
                 <div className="flex justify-between pt-5">
                     <div className="font-bold text-black">ETH {data.raised || 0} raised</div>
