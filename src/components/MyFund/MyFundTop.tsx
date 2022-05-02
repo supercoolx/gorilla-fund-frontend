@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import Modal from "components/util/Modal";
 import Progress from "components/util/Progress";
 import CopyInput from "components/util/CopyInput";
-import { URL } from "libs/constants";
+import { URL, APP_URL, APP_NAME, SOCIAL } from "libs/constants";
 import { FiShare2 } from "react-icons/fi";
 import { ImTwitter } from "react-icons/im";
 import { AiOutlineMail } from "react-icons/ai";
 import { MdOutlineSettings } from "react-icons/md";
-import { BsFacebook, BsInstagram, BsDiscord } from "react-icons/bs";
+import { BsFacebook, BsLinkedin, BsDiscord } from "react-icons/bs";
 
 const MyFundTop = ({ fund }) => {
     const [ data, setData ] = useState<any>({});
@@ -26,7 +26,7 @@ const MyFundTop = ({ fund }) => {
         <div className="bg-white">
             <img src={data.image} className="object-cover rounded-[4px] w-full opacity-30 h-44" alt="" />
             <div className="flex flex-col sm:flex-row items-center sm:items-end gap-5 max-w-[900px] px-3 mx-auto -translate-y-20 -mb-20">
-                <img src={data.image} className="object-cover h-40 w-72" alt="" />
+                <img src={data.image} className="object-cover h-40 w-72 rounded-[4px] border border-teal-700 bg-white" alt="" />
                 <div className="flex flex-col w-full gap-2 sm:flex-1">
                     <div className="text-sm text-gray-500">Fundraising progress</div>
                     <Progress percent={raised / data.amount * 100} />
@@ -62,30 +62,30 @@ const MyFundTop = ({ fund }) => {
                     <div className="pt-2 text-sm text-gray-500">Fundraisers shared on social networks raise up to 5x more</div>
                     <hr className="my-5" />
                     <div className="grid grid-cols-3 gap-3 text-sm font-semibold text-gray-500">
-                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                        <a href={`https://www.facebook.com/sharer/sharer.php?u=${APP_URL + URL.FUND.replace(':uid', data.uid)}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <BsFacebook size={30} className="text-blue-600" />
                             <div>Facebook</div>
-                        </div>
-                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                        </a>
+                        <a href={`https://twitter.com/intent/tweet/?text=${data.name}&url=${APP_URL + URL.FUND.replace(':uid', data.uid)}&via=${APP_NAME}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <ImTwitter size={30} className="text-sky-500" />
                             <div>Twitter</div>
-                        </div>
-                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
-                            <BsInstagram size={30} />
-                            <div>Instagram</div>
-                        </div>
-                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                        </a>
+                        <a href={`https://www.linkedin.com/shareArticle?mini=true&source=${APP_NAME}&title=${data.name}&url=${APP_URL + URL.FUND.replace(':uid', data.uid)}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
+                            <BsLinkedin size={30} />
+                            <div>LinkedIn</div>
+                        </a>
+                        <a href={SOCIAL.DISCORD} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <BsDiscord size={30} className="text-indigo-400" />
                             <div>Discord</div>
-                        </div>
-                        <div className="border-[1px] cursor-pointer flex flex-col gap-3 items-center py-5">
+                        </a>
+                        <a href={`mailto:?body=Check it out: ${APP_URL + URL.FUND.replace(':uid', data.uid)} via ${APP_NAME}&subject=${data.name}`} target="_blank" rel="noreferrer" className="border-[1px] flex flex-col gap-3 items-center py-5 rounded-[4px]">
                             <AiOutlineMail size={30} />
                             <div>Email</div>
-                        </div>
+                        </a>
                     </div>
                     <hr className="my-5" />
                     <div className="pb-1 font-bold text-gray-800">Share via link</div>
-                    <CopyInput value="https://www.gorillafund.me/f/p35aef-help-me" className="text-sm text-gray-500" />
+                    <CopyInput value={APP_URL + URL.FUND.replace(':uid', data.uid)} className="text-sm text-gray-500" />
                 </div>
             </Modal>
         </div>
