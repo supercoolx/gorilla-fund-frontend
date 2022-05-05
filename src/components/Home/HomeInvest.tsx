@@ -13,41 +13,41 @@ const HomeInvest = () => {
     const [ data ] = useState<WhyFundInterface[]>([
         {
             icon: iconPencil,
-            title: "Simple Setup",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ..."
+            title: "Project Proposals",
+            content: "Owning an Ape Gorilla NFT allows you to submit a proposal for a project, business, or charity of yours to receive crypto donations ..."
         },
         {
             icon: iconSecurity,
             title: "Secure",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ..."
+            content: "All donations received go from the donors ETH wallet to your ETH wallet, no middle man in the process ..."
         },
         {
             icon: iconPolicy,
             title: "Transparency",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ..."
+            content: "Donations are given from the community/public directly to the projects proposed by Ape Gorilla holders ..."
         },
         {
             icon: iconHand,
             title: "Community Benefits",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ..."
+            content: "Ape Gorilla community benefits from receiving support from others in the community and public to fund their missions to make a positive impact ..."
         },
         {
             icon: iconFlash,
             title: "One Stop Funding",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ..."
+            content: "This is the best way to receive crowd-funding, or donations for a mission that is driven to doing good! ..."
         },
         {
             icon: iconGorilla,
             title: "Ape Gorilla Club",
-            content: "We've spent the last 5 years helping over 35,000 teams just like yourself to create and sustain successful online support ..."
+            content: "Ape Gorilla Club will hold 20% of the public sale of the NFT's to directly fund proposals upto $100,000 each in the GorillaFund platform ..."
         }
     ]);
 
     return (
         <div className="w-full bg-white">
             <div className="flex flex-col items-center px-3 py-24 max-w-[900px] mx-auto">
-                <div className="text-2xl font-bold text-black">Why Should I Invest Though</div>
-                <div className="text-2xl font-bold text-teal-700">GorillaFundMe</div>
+                <div className="text-2xl font-bold text-black">Receive Crypto Donations and Funding</div>
+                <div className="text-2xl font-bold text-teal-700">Gorilla Fund</div>
                 <div className="grid grid-cols-1 gap-4 pt-6 pb-16 sm:grid-cols-2 md:grid-cols-3">
                     {
                         data.map((prop: WhyFundInterface, key: number) => (
