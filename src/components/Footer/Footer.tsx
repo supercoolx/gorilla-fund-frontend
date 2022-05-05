@@ -14,18 +14,18 @@ const Footer = () => {
                             <img src={gorilla} alt="" />
                             <div className="text-lg font-bold text-teal-700">{APP_NAME}</div>
                         </Link>
-                        <div>My life has changed forever because of Norma and what happend. It gave me hope again.</div>
+                        <div>Change your life, and receive crypto donations to fund your project and missions to do good and help others.</div>
                     </div>
-                    <div className="flex flex-col justify-between gap-5 sm:flex-row md:justify-start">
-                        <div className="flex flex-col gap-3">
+                    {/* </div className="flex flex-col justify-between gap-5 sm:flex-row md:justify-start">
+                     <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Fundraising for</div>
                             <Link to={URL.SEARCH + '?category=2'} className="hover:text-black">Gaming</Link>
                             <Link to={URL.SEARCH + '?category=3'} className="hover:text-black">Medical</Link>
                             <Link to={URL.SEARCH + '?category=5'} className="hover:text-black">Startups</Link>
                             <Link to={URL.SEARCH + '?category=1'} className="hover:text-black">School</Link>
                             <Link to={URL.SEARCH + '?category=4'} className="hover:text-black">IT Industry</Link>
-                        </div>
-                        {/* <div className="flex flex-col gap-3">
+                        </div> 
+                         <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Learn more</div>
                             <Link to="#" className="hover:text-black">How GorillaFundMe works</Link>
                             <Link to="#" className="hover:text-black">Frequently Asked Questions</Link>
@@ -43,7 +43,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex flex-col items-center justify-between gap-5 pt-16 sm:flex-row">
-                    <div>© {(new Date()).getFullYear()} All rights reserved - GorillaFundMe</div>
+                    <div>© {(new Date()).getFullYear()} All rights reserved - ApeGorilla</div>
                     <div className="flex items-center gap-5">
                         <a href={SOCIAL.INSTAGRAM}><FaInstagram size={30} className="transition-all duration-200 hover:text-black" /></a>
                         <a href={SOCIAL.TWITTER}><FaTwitter size={30} className="transition-all duration-200 hover:text-sky-500" /></a>
