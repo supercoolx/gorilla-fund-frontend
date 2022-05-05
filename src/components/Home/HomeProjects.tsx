@@ -40,7 +40,7 @@ const HomeProjects = () => {
             <div className="px-3 pt-24 max-w-[900px] mx-auto">
                 <div className="flex flex-wrap items-end justify-between gap-3">
                     <div className="flex items-center text-2xl font-bold text-black">
-                        <ImFire /> Top Rated Project
+                        <ImFire /> Ape Gorilla Project Proposals
                     </div>
                     <Link to={URL.SEARCH} className="flex items-center hover:font-bold">
                         <div className="pr-3">See more</div>
