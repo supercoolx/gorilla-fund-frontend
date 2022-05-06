@@ -15,7 +15,6 @@ const Footer = () => {
                             <div className="text-lg font-bold text-teal-700">{APP_NAME}</div>
                         </Link>
                         <div>Change your life, and receive crypto donations to fund your project and missions to do good and help others.</div>
-                    </div>
                     {/* </div className="flex flex-col justify-between gap-5 sm:flex-row md:justify-start">
                      <div className="flex flex-col gap-3">
                             <div className="font-bold text-teal-700">Fundraising for</div>

@@ -27,7 +27,7 @@ const HomeTop = () => {
                     {/* <button onClick={handleOpen} className="flex items-center gap-3 px-4 py-2 text-gray-500 transition-all duration-200 hover:text-teal-700">
                         <FaRegPlayCircle size={30} />
                         <div className="font-bold">How it works?</div>
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className="bg-[url('../../assets/img/home/e-sport.png')] w-full mb-0 mt-4 md:mt-0 bg-cover bg-center md:w-[500px] h-[400px]"></div>
@@ -38,7 +38,7 @@ const HomeTop = () => {
                         Your brower does not support HTML video.
                     </video>
                 </div> 
-            </Modal> */}
+            </Modal>
         </div>
     )
 }
